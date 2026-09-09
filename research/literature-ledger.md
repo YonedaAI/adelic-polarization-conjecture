@@ -27,7 +27,7 @@ No source extracts are reproduced. Equation and theorem locations provide the au
 | Orthogonal nonpositive enlargement cannot realize the positive \(W_{11}\) increment. | Its increment is the diagonal value of the added nonpositive summand. | Assumes sign at a nontrivial intermediate extension; does not contradict support-complete assembly. |
 | Fixed-support prime sums are finite. | Autocorrelation support is contained in the difference of test supports. | Finiteness does not establish positivity or infinite Euler-product convergence. |
 
-The two candidate obstructions are working mathematical deductions awaiting the requested external review. Their novelty has not been established. The exact finite packet avoids relying on a numerical limit or a Fejer argument.
+The two candidate obstructions received the requested external mathematical reviews, with the authors' corrections recorded in the final manuscript receipts. This does not establish priority or novelty. The exact finite packet avoids relying on a numerical limit or a Fejer argument. The synthesis additionally proves that its compact-bump origin class is killed by each shell embedding; that exact source received AGY ACCEPT. The separate logarithmic-class follow-up remains a coordinator-checked working note outside the manuscript reviews.
 
 ## Construction gaps
 

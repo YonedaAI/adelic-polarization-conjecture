@@ -1,0 +1,116 @@
+{
+  "checked_at": "2026-09-09T05:06:20.849Z",
+  "origin": "https://adelic-polarization-conjecture.vercel.app",
+  "status": "PASS",
+  "scope": "Twelve local drafts only; no social accounts were published to.",
+  "entries": [
+    {
+      "path": "posts/twitter/local-correspondence.md",
+      "characters": 245,
+      "words": 23,
+      "paragraphs": 1,
+      "hashtags": 3,
+      "sha256": "0896d9e81d8ce54902eb3dc641a54a92ed73286a4cadd19c81ea7dd02a06ae48",
+      "status": "PASS"
+    },
+    {
+      "path": "posts/twitter/polarization-obstructions.md",
+      "characters": 258,
+      "words": 25,
+      "paragraphs": 1,
+      "hashtags": 3,
+      "sha256": "d1975a6bf71648a93a6d917e831f9bd1b724e62ca651010bd8fc6b1590f7b6a1",
+      "status": "PASS"
+    },
+    {
+      "path": "posts/twitter/synthesis.md",
+      "characters": 239,
+      "words": 23,
+      "paragraphs": 1,
+      "hashtags": 3,
+      "sha256": "2530474809f2cb3ad2f34256ef003ac07c6e155b6fbec22e6262163230918976",
+      "status": "PASS"
+    },
+    {
+      "path": "posts/bluesky/local-correspondence.md",
+      "characters": 268,
+      "words": 23,
+      "paragraphs": 1,
+      "hashtags": 2,
+      "sha256": "6ff5c0610192f5f755d554f785884639c38710c263d1550de963a65d35678879",
+      "status": "PASS"
+    },
+    {
+      "path": "posts/bluesky/polarization-obstructions.md",
+      "characters": 262,
+      "words": 29,
+      "paragraphs": 1,
+      "hashtags": 2,
+      "sha256": "e552ff72c7882ad28ee73d62cd070692aa2042a6b3c2f506fe4ab3f4b6e447d3",
+      "status": "PASS"
+    },
+    {
+      "path": "posts/bluesky/synthesis.md",
+      "characters": 253,
+      "words": 28,
+      "paragraphs": 1,
+      "hashtags": 2,
+      "sha256": "7a3f3897ffb494c05f6430d874254ab574be33f69ab0a288a631e073a5702588",
+      "status": "PASS"
+    },
+    {
+      "path": "posts/linkedin/local-correspondence.md",
+      "characters": 1855,
+      "words": 243,
+      "paragraphs": 4,
+      "hashtags": 6,
+      "sha256": "1e2f757dd7d701e246f173d676577f8bc1e1a26c763206fe248213bc92d6368d",
+      "status": "PASS"
+    },
+    {
+      "path": "posts/linkedin/polarization-obstructions.md",
+      "characters": 2010,
+      "words": 270,
+      "paragraphs": 4,
+      "hashtags": 6,
+      "sha256": "39e6fabdf49fbcd096553c830611149248e0408b4a80bc3d24645b92eb0bad2e",
+      "status": "PASS"
+    },
+    {
+      "path": "posts/linkedin/synthesis.md",
+      "characters": 1928,
+      "words": 263,
+      "paragraphs": 4,
+      "hashtags": 6,
+      "sha256": "1fbd33e75dc45aff7cd172d6ca01126684eb33447d0364513c3ca351bf238c5a",
+      "status": "PASS"
+    },
+    {
+      "path": "posts/facebook/local-correspondence.md",
+      "characters": 959,
+      "words": 131,
+      "paragraphs": 6,
+      "hashtags": 3,
+      "sha256": "5dd7aed65a2fbe72253b3baad393a4a574c873db14d34d7628d7b9293fbc15d0",
+      "status": "PASS"
+    },
+    {
+      "path": "posts/facebook/polarization-obstructions.md",
+      "characters": 1017,
+      "words": 139,
+      "paragraphs": 6,
+      "hashtags": 3,
+      "sha256": "715e9288fc2b975d86e9395d9eba1db0e6880340c2fb6fbc230626244fe1ced9",
+      "status": "PASS"
+    },
+    {
+      "path": "posts/facebook/synthesis.md",
+      "characters": 935,
+      "words": 128,
+      "paragraphs": 6,
+      "hashtags": 3,
+      "sha256": "46bff09a4e2f9064747181a433c793abad575e841abfd1853ed1b9eabc2bb0ea",
+      "status": "PASS"
+    }
+  ]
+}

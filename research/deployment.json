@@ -1,0 +1,15 @@
+{
+  "provider": "Vercel",
+  "project": "adelic-polarization-conjecture",
+  "scope": "magnetonios-projects",
+  "deployment_id": "dpl_CiNe6GTx5Zn7ozaRGPiXTrryUU35",
+  "deployment_url": "https://adelic-polarization-conjecture-pqfcjtrso-magnetonios-projects.vercel.app",
+  "production_alias": "https://adelic-polarization-conjecture.vercel.app",
+  "ready_state": "READY",
+  "target": "production",
+  "method": "vercel build --prod, then vercel deploy --prebuilt --prod --yes",
+  "source_commit": "c2516d142f30ba978fea0dfafb9114ac1434324d",
+  "pre_deployment_review": "reviews/website-codex-review.md",
+  "pre_deployment_review_verdict": "PASS",
+  "public_verification": "Recorded separately in production-http-verification.json and production-browser-review.md"
+}

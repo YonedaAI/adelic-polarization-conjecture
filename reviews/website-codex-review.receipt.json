@@ -1,0 +1,17 @@
+{
+  "reviewer": "codex",
+  "actual_invocations": 2,
+  "first_invocation": "timed out after 900 seconds without a verdict",
+  "resumed_session": "01a08470-a388-7f51-ad02-64b01b57afe9",
+  "review": "reviews/website-codex-review-round-2.md",
+  "canonical": "reviews/website-codex-review.md",
+  "characters": 2879,
+  "review_sha256": "8ea64750dbe2a0db58e53fb145f648598b328d2f594088bf43b7e1a2721bc67f",
+  "verdict": "PASS",
+  "exit_code": 0,
+  "source_commit": "c2516d142f30ba978fea0dfafb9114ac1434324d",
+  "reviewed_code_changed_since_commit": false,
+  "independent_fixture_tests": "Both isolated fixture tests passed in root and independent math-fixer runs; reviewer read-only sandbox could not create temporary files",
+  "live_browser_review": false,
+  "checked_at": "2026-09-09T04:53:36.690Z"
+}

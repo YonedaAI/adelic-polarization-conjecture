@@ -16,5 +16,17 @@
     "message_file": "reviews/slack-polarization-obstructions.md",
     "lint_exit_code": 0,
     "message_url": "https://magneton.slack.com/archives/C0AK269AVSA/p1788923627018649"
+  },
+  {
+    "milestone": "synthesis",
+    "message_file": "reviews/slack-synthesis.md",
+    "lint_exit_code": 0,
+    "message_url": "https://magneton.slack.com/archives/C0AK269AVSA/p1788928618707369"
+  },
+  {
+    "milestone": "deployment",
+    "message_file": "reviews/slack-deployment.md",
+    "lint_exit_code": 0,
+    "message_url": "https://magneton.slack.com/archives/C0AK269AVSA/p1788929838278869"
   }
 ]

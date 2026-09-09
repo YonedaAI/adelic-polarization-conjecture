@@ -2,6 +2,8 @@
 
 Research papers and Lean proofs on prime-adjoining adelic correspondences and the arithmetic polarization problem.
 
+[Read the papers on the website](https://adelic-polarization-conjecture.vercel.app)
+
 The papers test concrete ways of transporting analytic and geometric pairings between semilocal adelic spaces. The local constructions yield arithmetic identities and several candidate-specific obstructions. They do not construct a global adelic polarization or prove the Riemann Hypothesis.
 
 ## Papers

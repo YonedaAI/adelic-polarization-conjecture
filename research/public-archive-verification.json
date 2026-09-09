@@ -1,0 +1,92 @@
+{
+  "checked_at": "2026-09-09T04:36:59.706Z",
+  "repository": "https://github.com/YonedaAI/adelic-polarization-conjecture",
+  "commit": "c2516d142f30ba978fea0dfafb9114ac1434324d",
+  "public_exact_files": [
+    {
+      "path": "README.md",
+      "status": 200,
+      "bytes": 5525,
+      "sha256": "2c1793bff15611fbac42bc99700223408f42443e3d451d88417863379d0019ca"
+    },
+    {
+      "path": "lean/lean-toolchain",
+      "status": 200,
+      "bytes": 29,
+      "sha256": "ce4c4e3d87434b9663f46de25ce34b48a0cf0d392e0a320a0787b4674a2d7b61"
+    },
+    {
+      "path": "lean/lake-manifest.json",
+      "status": 200,
+      "bytes": 3600,
+      "sha256": "9051b4d4604ee6307ae165ae395fd81bebf2ba745f2ed87132f573ce4824ac8c"
+    },
+    {
+      "path": "lean/APC/EntireObstruction.lean",
+      "status": 200,
+      "bytes": 3465,
+      "sha256": "1b1360f9547ea58f8bca02423661657c0deb89e7e539af0eb230963f3a438492"
+    },
+    {
+      "path": "lean/APC/LatticeDistribution.lean",
+      "status": 200,
+      "bytes": 5451,
+      "sha256": "a75ebd1ec35035e32071bf6ccd5199feb8165ed4a1ed6c6bb3757778476a3074"
+    },
+    {
+      "path": "lean/APC/LocalFactor.lean",
+      "status": 200,
+      "bytes": 5387,
+      "sha256": "ba1c2877f14457a91f7066fb9c6836fba1dd7af2a9caaa531a608a9621c98cf1"
+    },
+    {
+      "path": "lean/APC/LocalSigns.lean",
+      "status": 200,
+      "bytes": 2974,
+      "sha256": "5fb7dd1a7e28b8516cfa6e21402a49e6b0fc7d35538ffe52fd56fa8c8e6e30fd"
+    },
+    {
+      "path": "lean/APC/SoninShell.lean",
+      "status": 200,
+      "bytes": 1763,
+      "sha256": "09993666e7b753ab00f9c3d3b0f5fded46e598c862e0eeed1b7a639a9097b9e2"
+    },
+    {
+      "path": "papers/latex/local-correspondence.tex",
+      "status": 200,
+      "bytes": 70124,
+      "sha256": "40ac3940ec7ad4a1eb5d37ee0395f542464ccc0cc7da7783e8870f95bbf75f4a"
+    },
+    {
+      "path": "papers/latex/polarization-obstructions.tex",
+      "status": 200,
+      "bytes": 70698,
+      "sha256": "6ad7e950fc1c758fb9007e15f8c77e5a2c7456c2b55a7ab26c19cf6458d165ee"
+    },
+    {
+      "path": "papers/latex/synthesis.tex",
+      "status": 200,
+      "bytes": 76572,
+      "sha256": "042b9e0e2ccd6e916cd707858bd8cd1e02cda3afd778afeb926b61754aa12f41"
+    },
+    {
+      "path": "papers/pdf/local-correspondence.pdf",
+      "status": 200,
+      "bytes": 446205,
+      "sha256": "6b0d956ec7c5612103698b295fbbb7d9a65ddfcaacd4c350993295c41b0e42d4"
+    },
+    {
+      "path": "papers/pdf/polarization-obstructions.pdf",
+      "status": 200,
+      "bytes": 419705,
+      "sha256": "013f6cd880274c8944a043c3e08feec14320ae4ebd84c4321491f56afa9453da"
+    },
+    {
+      "path": "papers/pdf/synthesis.pdf",
+      "status": 200,
+      "bytes": 443987,
+      "sha256": "6f0820549262ece9f032fa82b79eca9b1fc8c94dd1c3798f831122d2075eedd1"
+    }
+  ],
+  "status": "PASS"
+}
