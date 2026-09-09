@@ -1,0 +1,39 @@
+Perform the third and FINAL Codex format/prose review of Adelic Polarization Conjecture. This is strictly read-only. Do not edit, install, render or explore unrelated files. Read the full supplied manuscript and fresh evidence below. This call follows a bounded substantive addition that AGY round 2 accepted without corrections.
+
+Explicitly allowed files:
+papers/latex/synthesis.log
+papers/latex/synthesis.aux
+papers/pdf/synthesis.pdf
+team/synthesis/codex-3/pdfinfo.txt
+team/synthesis/pre-transition/synthesis.tex
+reviews/synthesis-review-round-2.md
+reviews/synthesis-review-fixes.md
+reviews/synthesis-codex-review-round-2.md
+team/synthesis/reviewer-image-evidence.json
+research/lean-results.md
+research/lean-theorems.json
+research/lean-source-sha256.txt
+research/lean-axioms.txt
+lean/APC/LocalFactor.lean
+lean/APC/LocalSigns.lean
+lean/APC/LatticeDistribution.lean
+lean/APC/EntireObstruction.lean
+lean/APC/SoninShell.lean
+tmp/pdfs/synthesis-round-2/contact.png
+tmp/pdfs/synthesis-round-2/detail-10.png
+tmp/pdfs/synthesis-round-2/detail-11.png
+tmp/pdfs/synthesis-round-2/detail-12.png
+tmp/pdfs/synthesis-codex-3/detail-01.png
+tmp/pdfs/synthesis-codex-3/detail-16.png
+tmp/pdfs/synthesis-codex-3/detail-20.png
+tmp/pdfs/synthesis-codex-3/detail-21.png
+
+Call 2 ended PASS after the only requested formatting fix: standard club, widow and broken-word penalties removed cross-page word hyphenation. These penalties remain. The sole later substantive addition is Proposition 8.3 with its complete proof: a compact-bump origin class, although nonzero at each finite stage, becomes a boundary under either prime shell embedding. It includes odd local signs at p=2, a valid even compact source cutoff, a noncentral target corner, the explicit four-term degree-two Hochschild filling and the cone signs. The abstract, introduction and conclusion state the result accurately. The manuscript is now 21 substantive pages with a 233-word abstract. This theorem does not claim vanishing of every relative H1 class or the full direct limit. AGY round 2 accepted the proof and full consistency. Its incidental parenthetical claim that X is even is an explanatory reviewer slip recorded in the fix ledger; X is odd, and the manuscript correctly says H fixes A,K because these are coefficient elements. No source fix is needed for the reviewer slip.
+
+Canonical format remains 11pt letterpaper, margin1in, single-spaced, parskip zero, indentation1.5em, abstract150-250 words, minimum20 substantive pages. The GrokRxiv sidebar is an intentional LOCAL catalog identifier, not a DOI. Keep the PDF title/author metadata and established author block.
+
+Use actual image-opening calls on the existing previews, especially new proof pages 10 and 11, not merely file listings or PDF text extraction. State the actual visual scope. The earlier image-provenance uncertainty has been resolved: exact session records show nine actual image outputs in call1 and four in call2; CLI text logs omitted those orchestration calls. Do not repeat the superseded suggestion that the prior image claims were unsupported. No new rendering is needed or permitted.
+
+Check clean line breaks and symbols in the new proof, full-document consistency, the concluding scope and unchanged Lean boundary. The algebraic restriction cone is a proposed candidate; arithmetic primitive realization, degree maps, test correspondence and independent geometric duality remain unconstructed. The full complex two-moment Weil criterion is already known. There is no RH proof and no claimed formalization beyond the existing 46 Lean declarations. The new cone-boundary proof is mathematical prose, not a new Lean theorem.
+
+Return a substantive, concise report with critical/major/minor findings (or none), actual evidence inspected, and concrete remaining corrections. Do not request cosmetic rewrites merely to supply findings. End exactly VERDICT: PASS if no actionable issue remains or VERDICT: NEEDS_FIX if one remains.

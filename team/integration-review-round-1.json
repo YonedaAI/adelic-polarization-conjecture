@@ -1,0 +1,43 @@
+{
+  "reviewed_at_utc": "2026-09-09T03:18:21Z",
+  "round": 1,
+  "verdict": "CONFLICTS",
+  "source_sha256": {
+    "local-correspondence": "40ac3940ec7ad4a1eb5d37ee0395f542464ccc0cc7da7783e8870f95bbf75f4a",
+    "polarization-obstructions": "950ffcbcac22b206c27a1405017c69ff7e39c17ad7ed36a40943b6ebeb03e7c4"
+  },
+  "auxiliary_sha256": {
+    "local-correspondence": "f7b2ca2c04e09073b025b98cbec32dab2dd2bb239ba50a2f623535408e26b08b",
+    "polarization-obstructions": "b31155ecb515920c23c68b7c3dd1219192230bef548e0f61012ddde6aae4f382"
+  },
+  "checks": {
+    "both_sources_read_completely": true,
+    "numbered_cross_part_references_resolve": true,
+    "contract_labels_resolve": true,
+    "local_references_resolve": true,
+    "signs_consistent": true,
+    "support_scope_consistent": true,
+    "lean_scope_matches_sources": true,
+    "lean_source_manifest_matches": true,
+    "lean_build_rerun": false,
+    "notation_consistent": false
+  },
+  "conflicts": [
+    {
+      "slug": "polarization-obstructions",
+      "object": "arithmetic test-map notation",
+      "fix": "Replace every test-map Gamma with mathcal G, preserving indices, and update the contract. Every Gamma occurrence in Part II is a test map. Part I owns Gamma_S as a unit group."
+    },
+    {
+      "slug": "polarization-obstructions",
+      "object": "restricted Hilbert-carrier notation",
+      "fix": "Use mathcal H_S=(H,q_S) for the restricted normed carrier in the coherence paragraph and contract. Keep Part I H_S for its full ambient semilocal Hilbert realization."
+    }
+  ],
+  "publication_prerequisites_carried_forward": [
+    "Verify actual public companion-source contents before release as required by research/bibliography-check.md."
+  ],
+  "manuscripts_edited": false,
+  "external_reviewers_invoked": false,
+  "context_repositories_mutated": false
+}

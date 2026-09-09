@@ -1,0 +1,12 @@
+The Round 1 layout fixes are effective. The fresh log reports a successful 20-page build with no overfull/underfull boxes, undefined citations, undefined references, or rerun request. The only warning concerns `everypage` legacy compatibility; because the template explicitly requires that package and hook, it is not a defect. The restrained sidebar remains a manuscript identifier/category/date, contains no DOI or reviewer metadata, and its 30-pt placement stays within the 72-pt left margin without evident text overlap.
+
+The split displays at [lines 657 and 1399](</Users/mlong/Documents/Development/magneton_work/adelic-polarization-conjecture/papers/latex/local-correspondence.tex:657>) are well structured. The real exponent is correctly identified as \(\sigma\), the truncation section supplies genuine operator-norm and matrix-coefficient error bounds, and the prose does not imply that these analytic estimates were Lean-verified. The consolidated caveats are materially less repetitive.
+
+Two substantive issues remain:
+
+- [Line 99](</Users/mlong/Documents/Development/magneton_work/adelic-polarization-conjecture/papers/latex/local-correspondence.tex:99>) assigns “required nonpositivity” to “the arithmetic form.” That conflicts with the manuscript’s own Weil criterion, where \(B_W\) is required to be nonnegative, and with \(B_W=-I\), under which the primitive intersection pairing \(I\) is the nonpositive form. Name \(I\) or the proposed primitive geometric pairing explicitly here.
+- The formal-scope section is careful about exclusions, but it is not sufficiently traceable. [Lines 1505–1533](</Users/mlong/Documents/Development/magneton_work/adelic-polarization-conjecture/papers/latex/local-correspondence.tex:1505>) name Lean declarations yet provide no repository/version, module or file path, toolchain, or artifact citation. “The separate local-factor file” is especially indeterminate, and its support-vanishing theorems are not named. Add a stable reference and precise identifiers so readers can verify the stated boundary.
+
+A minor prose repair is also advisable at line 300: “integrable square integrable functions” should be \(L^1(\mathbb Q_p)\cap L^2(\mathbb Q_p)\), or “integrable, square-integrable functions.”
+
+VERDICT: NEEDS_FIX

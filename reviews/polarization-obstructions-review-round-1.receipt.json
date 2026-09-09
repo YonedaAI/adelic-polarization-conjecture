@@ -1,0 +1,10 @@
+{
+  "reviewer": "agy",
+  "exit_code": 0,
+  "document": "papers/latex/polarization-obstructions.tex",
+  "document_sha256": "eca68c5cc0a1c2dd22a2a7a68afee6683525b7324eb981f5d192f13366aa251b",
+  "prompt_sha256": "43a91988a981974f21ff37f194a8162c4c0979277c20ff36fda89ca136b3fab5",
+  "review_sha256": "47bb3f3761286459998869451a4fa14797eeefc6dbe4e9a44e2603a78aae59fb",
+  "characters": 8172,
+  "verdict": "MINOR REVISIONS"
+}

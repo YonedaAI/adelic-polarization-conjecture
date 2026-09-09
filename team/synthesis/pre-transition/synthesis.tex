@@ -1,0 +1,1594 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[margin=1in]{geometry}
+\linespread{1.0}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{1.5em}
+\clubpenalty=10000
+\widowpenalty=10000
+\brokenpenalty=10000
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{booktabs,tabularx,array,longtable}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,columns=fullflexible,frame=single,framesep=4pt,showstringspaces=false,captionpos=b}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+\hypersetup{pdftitle={Adelic Polarization Conjecture},
+ pdfauthor={Matthew Long; The YonedaAI Collaboration},
+ pdfsubject={Arithmetic correspondences, local obstructions and primitive comparison},
+ pdfkeywords={adeles, Sonin spaces, Hochschild chains, Weil positivity, arithmetic polarization}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\T}{\mathcal T}
+\newcommand{\Sch}{\mathcal S}
+\newcommand{\Acal}{\mathcal A}
+\newcommand{\Bcal}{\mathcal B}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\HH}{\operatorname{HH}}
+\newcommand{\Cone}{\operatorname{Cone}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Dom}{\operatorname{Dom}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Rea}{\operatorname{Re}}
+\newcommand{\ind}{\mathbf1}
+\usepackage{everypage}
+\definecolor{grokgray}{RGB}{110,110,110}
+\AddEverypageHook{%
+ \ifnum\value{page}=1
+  \begin{tikzpicture}[remember picture,overlay]
+   \node[rotate=90,anchor=south,font=\footnotesize\sffamily\color{grokgray},inner sep=0pt]
+    at ([xshift=30pt,yshift=0.5\paperheight]current page.south west)
+    {GrokRxiv:2026.09.synthesis\quad [\,math.NT\,]\quad 08 Sep 2026};
+  \end{tikzpicture}
+ \fi
+}
+\title{Adelic Polarization Conjecture}
+\author{Matthew Long\\
+ \small The YonedaAI Collaboration, YonedaAI Research Collective\\
+ \small Chicago, IL\\
+ \small \texttt{matthew@yonedaai.com}}
+\date{September 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+An arithmetic polarization of the Weil form would have to explain its sign through geometric duality while retaining the complete local explicit formula. Semilocal adelic spaces provide concrete starting objects, but their known Sonin transitions change the inherited Hilbert norm. We synthesize the local correspondence calculations and normalization obstructions, and construct an algebraic restriction cone with signed shell maps and explicit nonzero relative classes. The maps commute for distinct primes and extend the degree-zero Sonin coefficient, yet their higher tensor factors fail componentwise Fourier symmetry. The positive pointwise polar factor cannot preserve a nonzero entire carrier, while intrinsic compressed normalization remains subject to separate test-map equations. Exact smooth packets show that each local prime form has both signs even after both pole moments vanish. They exclude orthogonal nonpositive intermediate enlargement, but do not exclude sign imposed only when all primes relevant to the support have been included. We formulate a support-indexed conjecture for a primitive realization of the restriction complex, with independently constructed duality and explicit arithmetic comparison. The classical Weil criterion already applies on the full two-moment kernel; the missing step is the geometric pairing and its sign. Finite-support comparison is separated from topological completion, scaling domains and realization of the full zero divisor. The resulting conjecture remains unproved, and the algebraic cone is a candidate rather than a constructed arithmetic polarization.
+\end{abstract}
+
+\section{Arithmetic pairing and local maps}
+
+The local Euler factor determines an analytic transition, but it does not
+determine an arithmetic intersection form. For a prime $p$, the Sonin
+transition of Connes, Consani and Moscovici becomes multiplication by
+$1-p^{-1/2-it}$ in logarithmic Fourier coordinates
+\cite[Sections 4.5 to 4.8]{CCM}. Its squared modulus changes the Hilbert
+norm. Its logarithmic derivative gives the prime-power distribution in
+the explicit formula. Those two operations have different kernels and
+different composition laws, so neither can be substituted for the other
+in a geometric comparison.
+
+An intersection interpretation must also survive passage from functions
+to a complex. The actual local Sonin vector has two nonzero shell values,
+$1$ and $-1/p$. Tensoring with it fails pointwise multiplicativity. Part I
+\cite{PartI} repairs the algebraic Hochschild boundary by taking a signed
+sum of the chain maps from the two shell embeddings. The repaired maps
+commute prime by prime. Their degree-zero coefficient is Fourier fixed,
+but every positive-degree coefficient has a nonzero Fourier value on a
+ball where the coefficient itself vanishes. Thus chain compatibility
+and the original local Fourier symmetry have not yet been combined.
+
+Part II \cite{PartII} examines two additional choices. Positive
+pointwise polar normalization of the entire carrier is impossible by
+the parity of a local vanishing order. An orthogonal nonpositive local
+enlargement is incompatible with the required intersection increment
+on sufficiently large test spaces. Both exclusions concern precise
+constructions. They leave intrinsic compressed normalization, mixed
+pairings, changing primitive projections and support-complete sign
+theorems available for investigation.
+
+The arithmetic construction proposed here starts from an explicit
+relative complex. Restrict the semilocal Schwartz crossed product to
+the invertible locus, take the algebraic Hochschild map of that
+restriction, and form its mapping cone. The signed shell embeddings
+act on this cone and retain a commuting finite-prime system. This is
+an algebraic construction with specified maps and signs. A primitive
+quotient, its topological realization and an arithmetic duality on it
+are further structures to construct; the cone alone provides none of
+their positivity properties.
+
+There is a relevant precedent, but no established identification with
+this particular cone. Connes, Consani and Marcolli construct a
+restriction-map cokernel and a trace pairing in their adelic
+cohomological setting \cite[Sections 4.2 to 5]{CCMar}. Their trace
+realization includes every zero with multiplicity, while the sign
+remains a separate criterion. The semilocal crossed products also occur
+as sections of a sheaf over $\operatorname{Spec}\Z$
+\cite[Section 7.3, Theorem 7.2]{C26}. These results motivate testing
+relative complexes; they do not identify their homology with a
+nonpositively polarized primitive space.
+
+The distinction between an available criterion and an unavailable
+pairing is decisive. Positivity of the Weil form on all complex
+compact smooth tests whose two pole moments vanish is already
+equivalent to RH \cite[Appendix C, Proposition 1]{CC20}. No density
+argument is needed to use that theorem on its stated full kernel.
+What remains absent is an arithmetic construction that proves the
+criterion's inequality. Conjecture~\ref{conj:primitive} states that
+construction problem on support-indexed stages and records separately
+the stronger all-test and spectral comparisons.
+
+\section{Test functions and the complete form}
+
+We recall the conventions owned by Part I, Definitions 2.1 and 3.1.
+The complex algebra is $\T=C_c^\infty(\R,\C)$, with
+\begin{align}
+ (f*g)(x)&=\int_\R f(u)g(x-u)\,du,
+ &f^*(x)&=\overline{f(-x)},\label{eq:tests}\\
+ F_f(z)&=\int_\R f(x)e^{zx}\,dx,
+ &\widehat f(t)&=F_f(-it).\label{eq:transforms}
+\end{align}
+All Hermitian forms are linear in the first variable. The Fourier
+inverse is $h(x)=(2\pi)^{-1}\int\widehat h(t)e^{itx}\,dt$.
+On $L^2(\R)$ the unitary transform instead includes the factor
+$(2\pi)^{-1/2}$. No evenness condition is imposed on the logarithmic
+test $f$. Evenness of a function on the real local field, used in the
+Sonin realization, is a different condition.
+
+Compact support permits differentiation under the integral and gives
+the identities
+\begin{equation}
+ F_{f*g}=F_fF_g,\qquad
+ F_{f^*}(z)=\overline{F_f(-\overline z)}.
+ \label{eq:transform-identities}
+\end{equation}
+The transform is entire. Repeated integration by parts shows rapid
+decay on each fixed vertical strip: for every $b>0$ and integer $N$,
+$|F_f(\sigma+it)|\le C_{f,b,N}(1+|t|)^{-N}$ when $|\sigma|\le b$.
+The bound follows by taking $L^1$ norms of the derivatives of
+$e^{\sigma x}f(x)$, which are uniform in that compact $\sigma$ interval.
+
+With $\gamma$ denoting Euler's constant, set
+\begin{align}
+ P(h)&=F_h(1/2)+F_h(-1/2),\label{eq:poles}\\
+ W_p(h)&=(\log p)\sum_{k\ge1}p^{-k/2}
+       \{h(k\log p)+h(-k\log p)\},\label{eq:Wp}\\
+ A(h)&=(\log(4\pi)+\gamma)h(0)\notag\\
+ &\quad+\int_0^\infty
+ \frac{e^{-u/2}(h(u)+h(-u))-2e^{-u}h(0)}{1-e^{-2u}}\,du,
+ \label{eq:arch}\\
+ W(h)&=P(h)-A(h)-\sum_p W_p(h),\qquad
+ B_W(f,g)=W(f*g^*).\label{eq:Weil}
+\end{align}
+The subtraction in the numerator of \eqref{eq:arch} is part of the
+distribution. At zero the numerator is $u h(0)+O(u^2)$ and the
+denominator is $2u+O(u^2)$. At infinity the only term beyond the
+support of $h$ decays exponentially. The integral is therefore
+well defined without splitting it into divergent integrals.
+
+The explicit formula, under the substitution
+$\varphi(y)=y^{-1/2}h(\log y)$, states
+\begin{equation}
+ W(h)=\sum_\rho F_h(\rho-1/2),
+ \label{eq:zeros}
+\end{equation}
+where all nontrivial zeta zeros are counted with multiplicity
+\cite[Appendix B, equations (147) to (150)]{CC20}.
+The usual $O(T\log(T+2))$ zero count, recalled in
+\cite[Section 2.1.5]{C26}, and strip decay imply absolute convergence:
+the dyadic shell of height $2^j$ contributes at most a constant times
+$2^{j(1-N)}(j+1)$ for $N>2$.
+
+For a correlation the summand is
+\begin{equation}
+ B_W(f,g)=\sum_\rho F_f(\rho-1/2)
+                 \overline{F_g(1/2-\overline\rho)}.
+ \label{eq:mixed-zero}
+\end{equation}
+Reflection of the zero divisor under $\rho\mapsto1-\overline\rho$
+makes this Hermitian. In a quadratic value the two factors become
+complex conjugates at the same point only when the zero is on the
+critical line. Convergence and Hermitian symmetry alone do not supply
+nonnegativity.
+
+The pole contribution also retains mixed factors:
+\begin{equation}
+ P(f*g^*)=F_f(1/2)\overline{F_g(-1/2)}
+          +F_f(-1/2)\overline{F_g(1/2)}.
+ \label{eq:mixed-poles}
+\end{equation}
+Write $\T_0=\ker F_{\bullet}(1/2)\cap\ker F_{\bullet}(-1/2)$.
+On this whole complex subspace the pole form vanishes. The cited
+criterion in Appendix C of \cite{CC20}, equation (155), permits a
+finite exceptional Mellin set containing $0,1$ and disjoint from the
+nontrivial zeros. Taking exactly $\{0,1\}$ and applying the centered
+substitution gives
+\begin{equation}
+ \mathrm{RH}\quad\Longleftrightarrow\quad
+ B_W(f,f)\ge0\quad\hbox{for every }f\in\T_0.
+ \label{eq:T0-criterion}
+\end{equation}
+This is a cited analytic theorem. None of the constructions below
+assumes its inequality.
+
+\section{Support and exact finite stages}
+
+For $a>0$ let $\T_a$ consist of tests supported in $[-a,a]$, and
+put $\T_{0,a}=\T_0\cap\T_a$. Equip $\T_a$ with the Fr\'echet
+seminorms $\|f\|_{C^m}=\max_{0\le j\le m}\sup|f^{(j)}|$.
+The full test space has its usual strict inductive-limit topology
+over an increasing exhaustion of support intervals. These topologies
+refer to test functions, not to an assumed Hilbert completion of the
+arithmetic pairing.
+
+A finite place set $S$ always contains infinity; $S_f$ denotes its
+finite primes. Following Part I, Definition 12.1, $(S,a)$ is
+support admissible when $S_f$ contains every prime at most $e^{2a}$.
+The order is $(S,a)\le(T,b)$ if $S\subset T$ and $a\le b$.
+Given two pairs, taking the larger radius and adding its finitely
+many relevant primes produces an upper bound. Thus these pairs form
+a directed set covering every compact test.
+
+\begin{proposition}\label{prop:stability}
+Put $W_S=P-A-\sum_{p\in S_f}W_p$. For a support-admissible pair,
+\begin{equation}
+ W_S(f*g^*)=W(f*g^*)\qquad(f,g\in\T_a).
+ \label{eq:stable}
+\end{equation}
+If $p\notin S$, its increment is zero on these tests. For arbitrary
+finite $S$ and $p\notin S$, without a support assumption,
+\begin{equation}
+ W_{S\cup\{p\}}(f*g^*)-W_S(f*g^*)=-W_p(f*g^*).
+ \label{eq:intermediate}
+\end{equation}
+\end{proposition}
+\begin{proof}
+The correlation is $h(x)=\int f(u)\overline{g(u-x)}\,du$.
+Its support is contained in the difference of the two supports,
+hence in $[-2a,2a]$. A contribution at $\pm k\log p$ therefore
+requires $p^k\le e^{2a}$. All such primes are in $S$, proving
+\eqref{eq:stable}; a prime outside $S$ is too large to contribute.
+The last identity is subtraction of finite prime sums and does not
+require admissibility.
+\end{proof}
+
+The prime-power index remains necessary inside a finite stage.
+At radius just larger than $\log2$, the powers $2$, $3$ and $4$
+are all potentially visible. A place set containing $2$ and $3$
+is sufficient, but the local contribution at $2$ must include its
+second power. The weak cutoff inequality safely includes endpoints,
+even though smooth tests supported in a closed interval vanish there.
+
+At unequal radii $a,b$, the sufficient cutoff is $p^k\le e^{a+b}$.
+For nonsymmetric supports, their actual difference set gives the
+sharper criterion. The symmetric windows are used because they cover
+all tests and make mixed comparisons available at a common stage.
+Restricting only diagonal values to separate windows would otherwise
+obscure how the Hermitian forms fit together.
+
+Finite-stage continuity is also explicit. If $M=\lfloor2a/\log p\rfloor$,
+Cauchy-Schwarz gives
+\begin{equation}
+ |W_p(f*g^*)|\le
+ 2\log p\sum_{k=1}^M p^{-k/2}\|f\|_2\|g\|_2.
+ \label{eq:finite-local-bound}
+\end{equation}
+The pole functionals are continuous on $L^2([-a,a])$, and the
+archimedean distribution is continuous in the smooth topology.
+For the latter statement, use the symmetric second-order Taylor
+remainder near zero in \eqref{eq:arch}; away from zero the integral
+is bounded by finitely many supremum norms on the fixed compact
+support, together with an integrable exponential tail. Convolution
+maps $\T_a\times\T_a$ continuously into $\T_{2a}$. Hence $B_W$
+is a continuous sesquilinear form at each fixed smooth stage.
+
+This exact stabilization does not assert convergence of Hilbert norms
+as all primes are adjoined. It concerns matrix coefficients of a
+distribution on compact supports. A geometric stage may therefore be
+studied before choosing an all-prime Hilbert completion. Conversely,
+an analytic Hilbert completion does not prove \eqref{eq:stable} for
+its own vectors unless a test-map comparison has been established.
+
+\section{Semilocal arithmetic objects}
+
+The arithmetic unit group and quotient are
+\begin{equation}
+ \mathbb A_S=\R\times\prod_{p\in S_f}\Q_p,\qquad
+ \Gamma_S=\{\pm\prod_{p\in S_f}p^{n_p}:n_p\in\Z\},\qquad
+ Y_S=\mathbb A_S/\Gamma_S.
+ \label{eq:adelic-objects}
+\end{equation}
+Here $\Gamma_S$ denotes the unit group throughout; geometric test
+maps will be denoted $\mathcal G$. For $\gamma\in\Gamma_S$, let
+$\alpha_\gamma f(x)=f(\gamma^{-1}x)$. The nonunital coefficient
+algebra is $\Sch(\mathbb A_S)$ with pointwise multiplication.
+The algebraic crossed product is
+\begin{equation}
+ \Acal_S=\Sch(\mathbb A_S)\rtimes_{\rm alg}\Gamma_S,\qquad
+ (fU_\gamma)(gU_\delta)=f\alpha_\gamma(g)U_{\gamma\delta}.
+ \label{eq:crossed-product}
+\end{equation}
+Every sum in the group index is finite. This agrees with the
+inverse-action convention in \cite[Section 4, equations (4.3) to
+(4.6)]{CCMar}. Nonunitality at the real place prevents inserting a
+constant identity coefficient into $\Acal_S$ without explanation.
+
+The notation $H_S=L^2(Y_S)^{K_S}$ refers to the published invariant
+Hilbert realization of the semilocal class space, with $K_S$ the
+maximal compact subgroup of its idele class group
+\cite[Section 4.1]{CCM}. It is not an arbitrary orbit-quotient measure.
+At infinity, $H_\infty=L^2(\R)^{\rm ev}$. The unitary logarithmic
+coordinate map is
+\begin{equation}
+ (Jv)(x)=\sqrt2e^{x/2}v(e^x).
+ \label{eq:log-coordinate}
+\end{equation}
+The square root of two accounts for the negative half of the even
+function. This construction relates real local functions to arbitrary
+logarithmic $L^2$ functions without imposing evenness on the latter.
+
+For each finite prime, normalize Haar measure by
+$\operatorname{vol}(\Z_p)=1$ and choose the additive character
+$e_p(x)=\exp(2\pi i\{x\}_p)$ of conductor $\Z_p$. Write
+$B_n=\{|x|_p\le p^n\}$ and $\epsilon_n=\ind_{B_n}-\ind_{B_{n-1}}$.
+The local Sonin vector is
+\begin{equation}
+ \sigma_p=\epsilon_0-p^{-1}\epsilon_1.
+ \label{eq:shell}
+\end{equation}
+The ball transform $\mathscr F_p\ind_{B_n}=p^n\ind_{B_{-n}}$
+gives $\mathscr F_p\sigma_p=\sigma_p$ and
+$\|\sigma_p\|_2^2=1-p^{-2}$. Both the vector and its transform
+vanish on $B_{-1}$. Among unit-invariant $L^2$ functions these two
+gap conditions determine its one-dimensional span, as recalled and
+proved in Part I, Proposition 4.2, from \cite[Section 4.5]{CCM}.
+
+The semilocal maps use different local vectors:
+\begin{equation}
+ \theta_Sv=[(\bigotimes_{p\in S_f}\sigma_p)\otimes v],\qquad
+ \eta_Sv=[(\bigotimes_{p\in S_f}\ind_{\Z_p})\otimes v].
+ \label{eq:theta-eta}
+\end{equation}
+The brackets denote the semilocal class realization. Theorem 4.6
+of \cite{CCM} identifies the corresponding Sonin spaces
+topologically via $\theta_S$. The mixed identity pairs
+$\theta_Sv$ with $\eta_Sw$, rather than with another $\theta_S$
+image. The resulting distinction persists after conversion to an
+entire-function carrier.
+
+\section{Metric variation and prime powers}
+
+Put $L=\log p$, $r=p^{-1/2}$ and $(T_bu)(x)=u(x-b)$. In logarithmic
+coordinates the one-prime maps in \eqref{eq:theta-eta} become
+\begin{equation}
+ A_p=I-rT_L,\qquad B_p=(A_p^*)^{-1}
+                  =\sum_{k\ge0}r^kT_{-kL}.
+ \label{eq:operators}
+\end{equation}
+The inverse of $A_p$ is $\sum_{k\ge0}r^kT_{kL}$; both geometric
+series converge in operator norm since $r<1$. Their orientations
+are different. The relation $A_p^*B_p=I$ gives
+$\langle A_pu,B_pv\rangle=\langle u,v\rangle$, whereas
+the self-pairing of $A_p$ has metric operator
+\begin{equation}
+ M_p=A_p^*A_p=(1+r^2)I-r(T_L+T_{-L}).
+ \label{eq:metric}
+\end{equation}
+We write $M_p$ here to reserve $\mathcal G$ for test maps.
+Part I denotes the same positive operator by $G_p$.
+
+Its raw defect and full positive weight are
+\begin{equation}
+ D_p=M_p-I,\qquad d_p(t)=r^2-2r\cos(tL),\qquad
+ \omega_p(t)=1+d_p(t)=|1-re^{-itL}|^2.
+ \label{eq:defect-weight}
+\end{equation}
+The bounds $(1-r)^2\le\omega_p\le(1+r)^2$ are sharp.
+The defect is negative near $t=0$ and positive near $t=\pi/L$.
+Frequency localization therefore gives both signs in the ambient
+$L^2$ space. It does not preserve the simultaneous gaps of a fixed
+Sonin subspace, so the same argument does not produce witnesses in
+that subspace.
+
+In the common entire Sonin carrier $\Bcal_\lambda$, put
+\begin{equation}
+ q_S(F,G)=\int_\R F(1/2+it)\overline{G(1/2+it)}w_S(t)\,dt,\qquad
+ w_{S\cup\{p\}}=\omega_pw_S.
+ \label{eq:carrier}
+\end{equation}
+The carrier transition is the identity on entire functions. We write
+$\mathcal H_S=(\Bcal_\lambda,q_S)$ for its restricted Hilbert
+realization, retaining $H_S$ for the ambient space. These norms are
+equivalent for finite $S$, but their equality would require another
+argument. In particular their difference integrates $d_pw_S$.
+
+The arithmetic local term comes from a different operator. For
+$\sigma>0$, replace $r$ by $p^{-\sigma}$ in $A_p$ and $M_p$.
+The positive logarithm satisfies
+\begin{align}
+ \log M_{p,\sigma}
+ &=-\sum_{k\ge1}\frac{p^{-k\sigma}}k(T_{kL}+T_{-kL}),\label{eq:log}\\
+ K_{p,\sigma}:=\partial_\sigma\log M_{p,\sigma}
+ &=L\sum_{k\ge1}p^{-k\sigma}(T_{kL}+T_{-kL}).\label{eq:K}
+\end{align}
+On $\sigma\ge\sigma_0>0$, the derivative series is uniformly
+bounded in operator norm by $2L\sum_{k\ge1}p^{-k\sigma_0}$.
+This proves the differentiated identity from the scalar logarithm
+series by Fourier functional calculus. It yields
+\begin{equation}
+ \langle K_{p,1/2}f,g\rangle=W_p(f*g^*).
+ \label{eq:K-Weil}
+\end{equation}
+Indeed $\langle T_{kL}f,g\rangle=(f*g^*)(-kL)$, and the opposite
+translation gives the value at $kL$. Every positive prime power is
+present, with its prescribed coefficient.
+
+For distinct primes the translations commute. The raw metric obeys
+\begin{equation}
+ M_pM_q-I=D_p+D_q+D_pD_q,
+ \label{eq:metric-mixed}
+\end{equation}
+and $D_pD_q$ contains translations by $\log(pq)$ and $\log(p/q)$.
+The arithmetic prime sum has no composite index $pq$ with distinct
+prime factors. By contrast, the positive logarithms add and
+$\partial_\sigma\log\prod_{p\in E}M_{p,\sigma}=\sum_{p\in E}K_{p,\sigma}$
+for finite $E$. Thus the logarithmic construction has the additive
+local arithmetic structure; the inherited norm change does not.
+
+A compact test distinguishes them without spectral localization.
+For nonzero $\psi$ supported in an interval shorter than $L$,
+$W_p(\psi*\psi^*)=0$ but
+$\langle D_p\psi,\psi\rangle=r^2\|\psi\|_2^2$.
+For $f=\psi+T_{2L}\psi$, with a sufficiently narrow bump,
+$W_p(f*f^*)=2Lr^2\|\psi\|_2^2>0$. These two tests exclude any
+universal scalar proportionality between the raw defect and the
+local arithmetic form.
+
+\section{Algebraic shell correspondences}
+
+The failure of a tensor algebra map can be established before a
+pairing or completion is chosen. For a unit-invariant local
+function $v$ and $p\notin S$, define
+\begin{equation}
+ \Phi_v(fU_\gamma)=(v\otimes f)U_\gamma
+        \quad\hbox{in }\Acal_{S\cup\{p\}}.
+ \label{eq:Phi}
+\end{equation}
+Every old unit $\gamma\in\Gamma_S$ is a $p$-adic unit. It preserves
+$v$, so the crossed-product multiplication gives
+$\Phi_v(a)\Phi_v(b)=\Phi_{v^2}(ab)$. Choosing a nonzero coefficient
+whose square is nonzero proves that multiplicativity requires
+$v^2=v$.
+
+For $v=c\sigma_p\ne0$, idempotence on the inner shell forces
+$c=1$. On the outer shell it would then require
+$p^{-2}=-p^{-1}$, which is impossible. Part I's
+Theorem 13.2 gives this obstruction for every unit-invariant local
+Sonin vector. It does not assert that the published analytic map was
+an algebra homomorphism, nor does it exclude a bimodule or relative
+chain correspondence.
+
+The separate shell functions $e_0=\epsilon_0$ and $e_1=\epsilon_1$
+are idempotents. Each $\Phi_{e_j}$ is an algebra embedding. The images
+have mutually zero products when the group terms remain in the old
+$\Gamma_S$. They are not asserted to be central in the full new
+algebra: the newly available group generator $p$ moves the shells.
+This restriction on group support is essential to the calculation.
+
+For any possibly nonunital complex algebra $A$, use algebraic tensors
+$C_n(A)=A^{\otimes(n+1)}$, $n\ge0$, and $C_n(A)=0$ for $n<0$.
+The multiplication-only Hochschild boundary is
+\begin{align}
+ b(a_0\otimes\cdots\otimes a_n)
+ ={}&\sum_{j=0}^{n-1}(-1)^j
+ a_0\otimes\cdots\otimes a_ja_{j+1}\otimes\cdots\otimes a_n\notag\\
+ &+(-1)^n a_na_0\otimes a_1\otimes\cdots\otimes a_{n-1},
+ \label{eq:boundary}
+\end{align}
+with zero boundary from degree zero. Associativity cancels the terms
+in $b^2$. No unit-dependent degeneracy maps or comparison with cyclic
+homology is assumed.
+
+Part I, Proposition 14.1, defines
+\begin{equation}
+ \Psi_{p,n}^S=\Phi_{e_0}^{\otimes(n+1)}
+                  -p^{-1}\Phi_{e_1}^{\otimes(n+1)}.
+ \label{eq:Psi}
+\end{equation}
+Each algebra embedding intertwines every multiplication in
+\eqref{eq:boundary}, including the cyclic last one. The same fixed
+linear combination therefore satisfies $b\Psi_{p,n}^S=\Psi_{p,n-1}^Sb$.
+At degree zero it equals $\Phi_{\sigma_p}$. At higher degrees it
+differs from $\Phi_{\sigma_p}^{\otimes(n+1)}$, which would produce
+mixed-shell tensors and powers of the coefficient $-p^{-1}$.
+
+For $p\ne q$ outside $S$, the two composites of \eqref{eq:Psi}
+coincide after ordering the local coordinates consistently. Their
+common expression is
+\begin{equation}
+ \sum_{i,j=0}^1 c_{p,i}c_{q,j}
+          \Phi_{e_{p,i}\otimes e_{q,j}}^{\otimes(n+1)},\qquad
+ c_{p,0}=1,\quad c_{p,1}=-p^{-1}.
+ \label{eq:chain-square}
+\end{equation}
+This is Part I, Proposition 15.1. The shell embeddings commute on
+actual coefficients and old group elements, so the identity is a
+chain square rather than merely a multiplier identity.
+
+The local degree-$n$ tensor is
+$e_0^{\otimes(n+1)}-p^{-1}e_1^{\otimes(n+1)}$. It vanishes on
+$B_{-1}^{n+1}$, but its componentwise Fourier transform there is
+\begin{equation}
+ (p-1)^{n+1}\bigl(p^{-(n+1)}-p^{-1}\bigr).
+ \label{eq:Fourier-defect}
+\end{equation}
+This is zero at $n=0$ and strictly negative for $n\ge1$.
+The calculation uses $\mathscr F_pe_0=1-p^{-1}$ and
+$\mathscr F_pe_1=p-1$ on $B_{-1}$. Fourier transformation also
+exchanges pointwise multiplication and additive convolution.
+Consequently neither a componentwise symmetry nor a chain duality
+can be inferred from the Fourier-fixed degree-zero shell.
+
+\section{A restriction-cone candidate}
+
+An explicit relative complex permits the signed shell maps to be
+tested against boundary data. The target of restriction must be
+larger than the image of restriction. If the target were defined
+to be exactly that image, the dense invertible locus would make
+restriction injective, hence an isomorphism onto its image, and
+its cone would be acyclic. Such a choice would leave no relative
+homology to study.
+
+Let $\mathbb A_S^\times=\R^\times\times\prod_{p\in S_f}\Q_p^\times$.
+Define $\mathscr E_S$ to be the algebra of all complex functions on
+this space that are smooth in the real coordinate and locally
+constant in the finite coordinates locally in the product space.
+More precisely, near each point there is a product neighborhood
+on which the function is independent of the finite coordinates
+and smooth in the real coordinate. No compact-support or decay
+condition is imposed. Multiplication and pullback by
+$\Gamma_S$ preserve this class. Set
+\begin{equation}
+ \mathscr D_S=\mathscr E_S\rtimes_{\rm alg}\Gamma_S,\qquad
+ r_S:\Acal_S\longrightarrow\mathscr D_S,\qquad
+ r_S(fU_\gamma)=(f|_{\mathbb A_S^\times})U_\gamma.
+ \label{eq:restriction}
+\end{equation}
+Bruhat-Schwartz functions restrict to the stated local smooth class.
+Restriction commutes with every old group action, so $r_S$ is an
+algebra homomorphism. It need not preserve units; its source has no
+unit. Its target contains coefficients with arbitrary growth near
+zero or infinity, which is a deliberate algebraic choice requiring
+later topological and trace analysis.
+
+\begin{definition}\label{def:cone}
+Let $r_{S,*}:C_*(\Acal_S)\to C_*(\mathscr D_S)$ be the tensor-power
+chain map induced by \eqref{eq:restriction}. The algebraic relative
+complex is
+\begin{align}
+ \mathscr C_{S,n}&=C_{n-1}(\Acal_S)\oplus C_n(\mathscr D_S),\label{eq:cone-space}\\
+ d_S(a,c)&=(-b a,\; b c+r_{S,*}a).
+ \label{eq:cone-differential}
+\end{align}
+Thus $\mathscr C_S=\Cone(r_{S,*})$ in the displayed homological
+grading. Write $H_n(\mathscr C_S)$ for its algebraic homology.
+\end{definition}
+
+The sign on the first component determines the degree shift.
+Applying $d_S$ twice gives first component $b^2a=0$ and second
+component $b^2c+br_{S,*}a-r_{S,*}ba=0$. Therefore this is a
+complex. In degree zero it is $\mathscr D_S$, and in degree one it
+is $\Acal_S\oplus(\mathscr D_S\otimes\mathscr D_S)$.
+A degree-one cycle $(a,c)$ satisfies
+\begin{equation}
+ r_S(a)+bc=0.
+ \label{eq:relative-cycle}
+\end{equation}
+Since the degree-zero boundary in $C_*(\Acal_S)$ vanishes, there
+is no additional condition on $a$ at this degree.
+
+For $p\notin S$, the shell embeddings act on $\mathscr D_S$ by
+the same formula as \eqref{eq:Phi}, with $e_j$ restricted to
+$\Q_p^\times$. These restrictions belong to the local smooth
+coefficient class. Old group elements still act by $p$-adic units,
+so they define algebra homomorphisms
+$\phi_{p,j}^{\times,S}:\mathscr D_S\to\mathscr D_{S\cup\{p\}}$.
+Their restriction square commutes on each elementary term:
+\begin{equation}
+ r_{S\cup\{p\}}\Phi_{e_j}
+     =\phi_{p,j}^{\times,S}r_S.
+ \label{eq:restriction-square}
+\end{equation}
+The equality holds before passing to chains; both sides restrict
+$e_j\otimes f$ and retain $U_\gamma$.
+
+\begin{proposition}\label{prop:cone-maps}
+Let $\Psi_{p,*}^{\times,S}$ be the signed combination of the two
+induced chain maps on $\mathscr D_S$, with coefficients $1,-p^{-1}$
+as in \eqref{eq:Psi}. Then
+\begin{equation}
+ \Xi_{p,n}^S(a,c)=
+       (\Psi_{p,n-1}^Sa,\;\Psi_{p,n}^{\times,S}c)
+ \label{eq:cone-map}
+\end{equation}
+defines a chain map $\mathscr C_S\to\mathscr C_{S\cup\{p\}}$.
+For distinct new primes these maps commute, and hence induce a
+commuting system on every algebraic $H_n(\mathscr C_S)$.
+\end{proposition}
+\begin{proof}
+Taking tensor powers in \eqref{eq:restriction-square} and then
+the fixed signed combination gives
+$r_{S\cup\{p\},*}\Psi_p^S=\Psi_p^{\times,S}r_{S,*}$.
+Each signed map commutes with its Hochschild boundary. Thus
+\begin{align*}
+ d\Xi_p(a,c)
+ &=(-\Psi_pba,\;\Psi_p^\times bc+r_*\Psi_pa)\\
+ &=(-\Psi_pba,\;\Psi_p^\times(bc+r_*a))
+ =\Xi_pd(a,c).
+\end{align*}
+The degree shifts are exactly those in \eqref{eq:cone-space}.
+At degree zero the first summand is zero, so no negative-degree
+map is needed. The two-prime identity follows by expanding the
+four shell embeddings as in \eqref{eq:chain-square}, separately
+in both cone summands. Restricting a local coordinate commutes
+with its permutation past a distinct prime. Chain maps preserve
+cycles and boundaries, giving the homology assertion.
+\end{proof}
+
+This cone and its maps are constructed from local fields, functions
+and arithmetic actions. The larger restriction target permits
+relative classes that disappear on the invertible locus, as the
+next section shows. Selecting an arithmetic realization further
+requires growth conditions, completions and trace domains.
+
+\section{Relative homology and primitive data}
+
+The degree-one homology of the cone has a useful exact description
+that separates a cokernel from a kernel. Here $\HH_n(A)$ means the
+homology of the multiplication-only complex \eqref{eq:boundary}.
+No comparison with a normalized or cyclic theory is used.
+
+\begin{proposition}\label{prop:cone-exact}
+There is a natural short exact sequence
+\begin{equation}
+ 0\longrightarrow\operatorname{coker}(r_*:\HH_1(\Acal_S)\to\HH_1(\mathscr D_S))
+ \longrightarrow H_1(\mathscr C_S)
+ \longrightarrow\ker(r_*:\HH_0(\Acal_S)\to\HH_0(\mathscr D_S))
+ \longrightarrow0.
+ \label{eq:cone-exact}
+\end{equation}
+The maps are compatible with $\Xi_p$.
+\end{proposition}
+\begin{proof}
+Send a target cycle $c\in C_1(\mathscr D_S)$ to the cone cycle
+$(0,c)$. It is a cone boundary precisely when
+$c=be+r_*a$ with $ba=0$, as follows by expanding
+$d(a,e)=(-ba,be+r_*a)$ in degree two. This proves the left
+injection after quotienting by target boundaries and images of
+source cycles.
+
+Send a cone cycle $(a,c)$ to the class $[a]$ in $\HH_0(\Acal_S)$.
+Its restriction is zero there by \eqref{eq:relative-cycle}.
+A cone boundary changes $a$ by a source boundary with a minus
+sign, so the map is well defined. If $[a]$ lies in the stated
+kernel, then $r_S(a)$ is a target boundary; choosing $c$ with
+$bc=-r_S(a)$ produces a cone cycle. Thus the map is onto.
+
+If $a=bt$, adding the boundary $d(t,0)=(-bt,r_*t)$ to
+$(a,c)$ replaces it by $(0,c+r_*t)$. Its second component is a
+target cycle, since $b(c+r_*t)=-r_S(a)+r_S(bt)=0$.
+This proves exactness in the middle. Compatibility follows from
+the restriction square and the explicit component formulas.
+\end{proof}
+
+The cokernel term alone does not generally describe $H_1$.
+Although restriction is injective on coefficients because the
+invertible locus is dense, the induced map on $\HH_0$, a quotient
+by commutators, may have a kernel. A source element can become a
+commutator after enlarging the coefficient algebra. Injectivity
+before quotienting does not exclude that possibility. A proposed
+identification of this cone with an existing cokernel realization
+must therefore control the rightmost term of \eqref{eq:cone-exact}.
+
+\subsection{A nonzero relative class}
+
+The rightmost term in \eqref{eq:cone-exact} is nonzero for the
+specified algebras. The construction uses the action of $-1$ at
+the origin and an explicit commutator on the invertible locus.
+It does not produce a primitive class or a polarized subspace.
+
+\begin{proposition}\label{prop:origin-class}
+For every finite $S$ containing infinity, the map
+$\HH_0(\Acal_S)\to\HH_0(\mathscr D_S)$ has a nonzero kernel.
+Consequently $H_1(\mathscr C_S)\ne0$. A nonzero relative class
+has an explicit representative with source component
+$fU_{-1}$ for any $f\in\Sch(\mathbb A_S)$ with $f(0)=1$.
+\end{proposition}
+\begin{proof}
+Write $0$ for the origin in every local coordinate. Define the
+linear functional
+\begin{equation}
+ \tau_{-1}\left(\sum_{\gamma\in\Gamma_S}f_\gamma U_\gamma\right)
+                     =f_{-1}(0).
+ \label{eq:origin-trace}
+\end{equation}
+This is a trace on the algebraic crossed product. Indeed, the
+coefficient at $-1$ in a product, evaluated at zero, is
+$\sum_{\gamma\delta=-1}f_\gamma(0)g_\delta(0)$, because every
+arithmetic unit fixes zero. The group $\Gamma_S$ is abelian,
+so interchanging $\gamma,\delta$ gives the same sum for the
+reversed product. All sums are finite. Thus $\tau_{-1}$
+vanishes on every commutator and descends to $\HH_0(\Acal_S)$.
+
+Choose $f$ as a real Schwartz bump equal to one at zero,
+tensored with $\ind_{\Z_p}$ at every finite place. Then
+$a=fU_{-1}$ has $\tau_{-1}(a)=1$ and represents a nonzero
+source homology class.
+On the invertible locus, let $X$ be the real coordinate function,
+viewed as $XU_1\in\mathscr D_S$. It never vanishes there.
+Put $g=f|_{\mathbb A_S^\times}/(2X)$, an element of
+$\mathscr E_S$, and $Y=gU_{-1}$. Since
+$\alpha_{-1}X=-X$, the actual crossed-product commutator is
+\begin{equation}
+ [XU_1,Y]=XgU_{-1}-g\alpha_{-1}(X)U_{-1}
+                  =f|_{\mathbb A_S^\times}U_{-1}=r_S(a).
+ \label{eq:origin-commutator}
+\end{equation}
+Neither $X$ nor $g$ is required to extend as a Schwartz
+coefficient across zero; both belong to the stated target.
+It follows that the nonzero class $[a]$ lies in the kernel.
+
+For an explicit lift, the degree-one target chain
+$c=-XU_1\otimes Y$ has
+$bc=-[XU_1,Y]=-r_S(a)$. Hence $(a,c)$ is a cone cycle.
+If it were a cone boundary, its source component would be a
+source commutator sum, on which $\tau_{-1}$ vanishes.
+This contradicts $\tau_{-1}(a)=1$. Thus the relative class
+is nonzero without appealing only to surjectivity in
+\eqref{eq:cone-exact}.
+\end{proof}
+
+This example verifies that the restriction cone contains
+arithmetic boundary information lost on the invertible locus.
+It also identifies why the target growth choice matters:
+division by the real coordinate creates the commutator that
+removes the twisted source class after restriction. Restricting
+the target to functions with prescribed behavior near zero
+could remove this commutator and change the kernel.
+
+The origin trace does not detect the image of this class after
+a prime transition. Each shell coefficient is zero at its
+new local origin, so
+\begin{equation}
+ \tau_{-1}^{S\cup\{p\}}(\Psi_{p,0}^Sa)=0.
+ \label{eq:trace-shell-zero}
+\end{equation}
+This identity alone neither proves nor disproves that the
+image class is zero. It shows that the present nonvanishing
+argument does not persist under adjoining a prime. A stable
+primitive sector cannot be justified by this one trace.
+
+The class records the fixed point of the involution $-1$.
+It gives a calculable sector against which proposed degree
+projections can be checked: a projection may retain it, kill
+it, or relate it to a degree class. A test correspondence
+would have to explain how this sector relates to the complete
+prime and archimedean distributions.
+
+\subsection{Primitive duality}
+
+The primitive sector requires additional data even after the
+relative homology is understood. Suppose a specified topological
+realization $V_{S,a}$ of the relative construction carries two
+geometric degree maps $\delta_+,$ $\delta_-:V_{S,a}\to\C$.
+Their common kernel is a candidate primitive subspace. Calling
+these maps geometric requires a definition through the complex,
+its arithmetic correspondences or its trace. Defining them only
+by the moments of a proposed test preimage is not enough, since
+that definition presupposes a well-defined test correspondence.
+
+A Hermitian pairing can be encoded as a conjugate-linear map
+\begin{equation}
+ \mathfrak d_{S,a}:P_{S,a}\longrightarrow P_{S,a}',\qquad
+ I_{S,a}(x,y)=\mathfrak d_{S,a}(y)(x),
+ \label{eq:duality}
+\end{equation}
+where $P_{S,a}'$ is the continuous complex-linear dual of a specified
+locally convex primitive space. Hermitian symmetry requires
+$\mathfrak d(y)(x)=\overline{\mathfrak d(x)(y)}$. Continuity,
+descent through boundaries and the sign $I(x,x)\le0$ are separate
+properties. Formula \eqref{eq:duality} states the type of the desired
+duality; it does not construct it.
+
+There is no componentwise Fourier operation on the present cone
+that has already been shown to provide \eqref{eq:duality}.
+The target $\mathscr E_S$ has no decay condition, so a Fourier
+integral is not defined on all its elements. Even on suitable
+Schwartz domains, Fourier transformation exchanges products and
+has the coefficient defect \eqref{eq:Fourier-defect}. A replacement
+must specify both the dual complex and a map relating its product
+to the pointwise one. The cone makes these domain questions
+explicit instead of resolving them by a formal symmetry symbol.
+
+\section{Entire normalization and compression}
+
+The normed carriers in \eqref{eq:carrier} have a bounded identity
+map between them. On the ambient weighted spaces its polar
+isometry divides a boundary function by $\sqrt{\omega_p}$.
+Part II, Theorem 3.4, excludes that particular operation on every
+nonzero entire input. The relevant entire denominator is
+\begin{equation}
+ \Delta_p(z)=(1-p^{-z})(1-p^{z-1}),\qquad
+ \Delta_p(1/2+it)=\omega_p(t).
+ \label{eq:Delta}
+\end{equation}
+Here $p^z=e^{z\log p}$ with the real logarithm.
+The symbol $\Delta_p$ is distinct from the raw operator defect
+$D_p$ in \eqref{eq:defect-weight}.
+
+\begin{theorem}\label{thm:entire}
+For $p>1$, no nonzero entire functions $F,G$ satisfy
+$G(1/2+it)=F(1/2+it)/\sqrt{\omega_p(t)}$ almost everywhere.
+In fact the entire identity $\Delta_pG^2=F^2$ is impossible
+for nonzero entire $F,G$.
+\end{theorem}
+\begin{proof}
+Continuity makes an almost-everywhere boundary identity hold
+everywhere on the critical line. Squaring it gives
+$\Delta_pG^2=F^2$ there, and the identity theorem extends it to
+$\C$. At zero, $\Delta_p(0)=0$ and
+$\Delta_p'(0)=\log p(1-p^{-1})\ne0$. Its order is one.
+Nonzero entire functions have finite vanishing orders at zero,
+so the identity would require
+$1+2\ord_0G=2\ord_0F$. This equates an odd integer and an even
+integer. The same proof applies to equality almost everywhere
+for a weight positive almost everywhere, because that weight
+has the same null sets as Lebesgue measure.
+\end{proof}
+
+An arbitrary measurable phase is outside this conclusion.
+For example $F/(1-p^{-z})$ has the required boundary modulus
+but is meromorphic; it is entire if $F$ vanishes on the complete
+denominator lattice. Inputs of the form $(1-p^{-z})H$ demonstrate
+that cancellation can occur. Whether the resulting functions
+belong to the same Sonin carrier requires its growth conditions.
+The positive square root in the stated polar map is what forces
+the odd-order contradiction.
+
+Intrinsic polar decomposition uses the restricted adjoint. Let
+$H$ be a closed subspace of $L^2(w\,dt)$ with orthogonal
+projection $P$, and let $0<c\le d\le C$. On the same vector
+space use the forms $q_0$ and $q_1(x,y)=\langle M_dx,y\rangle$.
+For the identity $J:(H,q_0)\to(H,q_1)$, direct evaluation gives
+\begin{equation}
+ C_d=PM_d|_H,\qquad J^*J=C_d,\qquad U=JC_d^{-1/2}.
+ \label{eq:compressed}
+\end{equation}
+The bounds $cI\le C_d\le CI$ make this operator invertible.
+The new ambient projection is $P_1=C_d^{-1}PM_d$, since
+$q_1(v-P_1v,h)=0$ for all $h\in H$.
+
+The intrinsic map stays in $H$ by its definition. It is not
+pointwise multiplication by $d^{-1/2}$. Already for
+$H=\C(1,1)\subset\C^2$ and $d=\operatorname{diag}(1,4)$,
+intrinsic normalization multiplies $(a,a)$ by $\sqrt{2/5}$,
+while pointwise normalization gives $(a,a/2)$ outside $H$.
+The entire obstruction therefore leaves \eqref{eq:compressed}
+available for the actual restricted carrier.
+
+Its test compatibility is still rigid. If independently defined
+maps satisfy $\mathcal G_1=J\mathcal G_0$, requiring also
+$\mathcal G_1=U\mathcal G_0$ forces
+\begin{equation}
+ (C_d^{-1/2}-I)\mathcal G_0f=0.
+ \label{eq:polar-rigidity}
+\end{equation}
+For a dense test image this gives $C_d=I$ by continuity and
+functional calculus. Without density it gives identity on the
+closed test image. Redefining $\mathcal G_1$ to make the polar
+equation true changes the arithmetic correspondence and requires
+a new comparison theorem.
+
+\section{Prime squares after normalization}
+
+Scalar commutation does not survive an arbitrary compression.
+For commuting self-adjoint ambient multipliers $M_a,M_b$,
+\begin{equation}
+ [PM_a|_H,PM_b|_H]
+ =PM_b(I-P)M_a|_H-PM_a(I-P)M_b|_H.
+ \label{eq:commutator}
+\end{equation}
+The right side records excursions through the orthogonal
+complement. It need not vanish. Part II, Section 5, supplies
+positive diagonal operators in $\C^3$ whose compressions have
+a nonzero commutator. That example establishes a limitation of
+the inference, not noncommutation of the actual Sonin operators.
+
+The metric at the intermediate stage also changes the adjoint.
+Relative to a base form $q_0$, write
+$q_p(x,y)=q_0(C_px,y)$ and
+$q_{pq}(x,y)=q_0(C_{pq}x,y)$, with
+$C_p=PM_{\omega_p}|_H$ and $C_{pq}=PM_{\omega_p\omega_q}|_H$.
+The relative metric from $q_p$ to $q_{pq}$ is
+$C_p^{-1}C_{pq}$, positive and self-adjoint for $q_p$.
+Its positive square root belongs to that Hilbert structure.
+The two successive polar paths agree only if
+\begin{equation}
+ (C_p^{-1}C_{pq})^{-1/2}C_p^{-1/2}
+ =(C_q^{-1}C_{pq})^{-1/2}C_q^{-1/2},
+ \label{eq:polar-square}
+\end{equation}
+with each relative square root understood in its appropriate
+intermediate norm. The algebraic cone square does not prove
+this equation, and this equation would not prove cone duality.
+
+There is a useful abstract comparison. For any family of equivalent
+Hilbert forms $q_S(x,y)=q_0(C_Sx,y)$ on a common carrier, set
+$V_S=C_S^{-1/2}$ and $V_{S,T}=V_TV_S^{-1}$. These are coherent
+isometries between $\mathcal H_S$ and $\mathcal H_T$ because
+$V_{T,U}V_{S,T}=V_{S,U}$. They depend on the chosen base form
+and need not coincide with individual polar factors. In
+particular they need not induce the local shell map, its
+logarithmic derivative or its arithmetic test comparison.
+
+This distinction identifies the additional work in a two-prime
+geometric theorem. The cone maps commute before projection.
+A proposed primitive projection $\pi_{S,a}$ would have to intertwine
+them, or else its failure must appear as an explicit correction.
+A pairing would then require a separate square identity after
+those projections. Arithmetic path independence concerns the
+sum of all resulting mixed, metric and boundary contributions,
+not only equality of the ambient maps.
+
+\section{Exact local signs}
+
+Local positive coefficients do not imply that a local convolution
+operator is positive. Its Fourier multiplier in \eqref{eq:K} is
+$2L\sum_{k\ge1}r^k\cos(ktL)$, positive at zero and negative at
+$\pi/L$. To impose both pole moments exactly, a smooth packet is
+more useful than unconstrained frequency localization.
+
+Choose a nonzero real smooth bump $\psi$ supported in
+$[-\epsilon,\epsilon]$ with $2\epsilon<L$. For a finite complex
+vector $c=(c_0,\ldots,c_n)$ define
+\begin{equation}
+ f_c=\sum_{j=0}^n c_j\psi(\bullet-jL),\qquad
+ C_c(z)=\sum_{j=0}^nc_jz^j.
+ \label{eq:packet}
+\end{equation}
+The translates are disjoint and
+$\|f_c\|_2^2=\|\psi\|_2^2\sum|c_j|^2$.
+Their Laplace transform is $F_\psi(z)C_c(e^{Lz})$, so
+$C_c(r)=C_c(r^{-1})=0$ suffices for $f_c\in\T_0$.
+The autocorrelation samples are exact:
+\begin{equation}
+ W_p(f_c*f_c^*)=L\|\psi\|_2^2Q_r(c),\qquad
+ Q_r(c)=\sum_{i\ne j}c_i\overline{c_j}r^{|i-j|}.
+ \label{eq:Q}
+\end{equation}
+To prove the formula, expand the correlation in translates of
+$\psi*\psi^*$. At $kL$, all terms vanish except those with
+$i-j=k$, since the base correlation is supported in
+$[-2\epsilon,2\epsilon]$ and $2\epsilon<L$.
+Summing over all nonzero $k$ gives each
+ordered pair once. No limiting bump or omitted prime power is
+used.
+
+Put $a_r=r+r^{-1}$ and $P_r(z)=1-a_rz+z^2$.
+Its roots are $r,r^{-1}$. The coefficient vectors of $P_r$
+and $P_r(1+z)$ satisfy
+\begin{align}
+ Q_r(1,-a_r,1)&=-4-2r^2,\label{eq:Qminus}\\
+ Q_r(1,1-a_r,1-a_r,1)&=-8-4r^2+6r+2/r.
+ \label{eq:Qplus}
+\end{align}
+These identities follow by grouping terms of \eqref{eq:Q}
+according to $|i-j|$. At the actual prime $11$ their values
+are $-46/11$ and $(28\sqrt{11}-92)/11>0$. The positive
+inequality follows from $49\cdot11>23^2$. Both moments vanish
+as polynomial identities. Multiplication by
+$L\|\psi\|_2^2>0$ transfers the two signs to smooth tests,
+as in Part II, Theorem 6.3.
+
+There are positive packets at every prime. For $N\ge2$, let
+$C_N=P_r(1+z+\cdots+z^{N-1})$. Part II, Proposition 7.1,
+proves the exact value
+\begin{equation}
+ Q_r(c^{(N)})=\frac{2N(1-r)^3}{r}+4-6r-\frac2r.
+ \label{eq:allprimes}
+\end{equation}
+One way to see the formula is to multiply the Toeplitz symbol
+$k_r=(1-r^2)/(1-2r\cos\theta+r^2)-1$ by $|P_r(e^{i\theta})|^2$.
+The product is the Laurent polynomial
+\begin{equation}
+ (-4-2r^2)+(3r+r^{-1})(z+z^{-1})-(z^2+z^{-2}).
+ \label{eq:Laurent}
+\end{equation}
+The squared modulus of $1+\cdots+z^{N-1}$ has coefficient
+$N-|k|$ at $z^k$ for $|k|<N$. Its constant product coefficient
+with \eqref{eq:Laurent} is \eqref{eq:allprimes}. Since the
+coefficient of $N$ is strictly positive, sufficiently long
+packets give the positive sign for every $0<r<1$.
+
+The support grows with $N$. This does not produce one fixed
+support on which all primes contribute. Centering the four-bump
+positive witness at $11$ gives radius
+$a=3\log(11)/2+\epsilon$. A support-complete stage at that
+radius already contains $11$, since it contains all primes
+at most $11^3e^{2\epsilon}$. Adjoining $11$ while testing this
+packet is therefore an intermediate, support-incomplete step.
+This fact controls the scope of the next obstruction.
+
+\section{Intersection increments and correction terms}
+
+The intended primitive comparison has sign $B_W=-I$.
+Therefore the desired primitive pairing is nonpositive and the
+intersection increment for adjoining $p$ is $+W_p$, opposite to
+\eqref{eq:intermediate}. To analyze an actual proposed transition,
+let $\iota:P_S\to P_T$ and write
+$\mathcal G_Tf=\iota\mathcal G_Sf+\eta f$ on a common test domain.
+Sesquilinearity gives
+\begin{align}
+ &I_T(\mathcal G_Tf,\mathcal G_Tg)-I_S(\mathcal G_Sf,\mathcal G_Sg)\notag\\
+ &\quad=E(f,g)+I_T(\iota\mathcal G_Sf,\eta g)
+       +I_T(\eta f,\iota\mathcal G_Sg)+I_T(\eta f,\eta g),
+ \label{eq:increment}\\
+ E(f,g)&=I_T(\iota\mathcal G_Sf,\iota\mathcal G_Sg)
+                       -I_S(\mathcal G_Sf,\mathcal G_Sg).
+ \label{eq:E}
+\end{align}
+The old-image defect $E$ vanishes only if $\iota$ is isometric
+on that image. Orthogonality is a further condition on the two
+mixed terms.
+
+\begin{theorem}\label{thm:orthogonal}
+Suppose $\iota$ is isometric, its old image is orthogonal to
+$\eta(\T_0)$, and $I_T(\eta f,\eta f)\le0$ for every
+$f\in\T_0$. Then the identity
+\begin{equation}
+ I_T(\mathcal G_Tf,\mathcal G_Tg)-I_S(\mathcal G_Sf,\mathcal G_Sg)
+                    =W_p(f*g^*)
+ \label{eq:one-prime-target}
+\end{equation}
+cannot hold on all of $\T_0$. It also fails on any smaller
+domain containing a positive packet for this prime.
+\end{theorem}
+\begin{proof}
+On the diagonal, \eqref{eq:increment} reduces to
+$I_T(\eta f,\eta f)\le0$. The positive smooth packet from
+\eqref{eq:allprimes} gives $W_p(f*f^*)>0$, a contradiction.
+At $p=11$ the four-bump packet suffices. This is the
+orthogonal-extension obstruction of Part II, Theorem 9.2.
+\end{proof}
+
+Nonpositivity of the whole target does not imply nonpositivity
+of each increment when mixed terms remain. With
+$I(x,y)=-x\overline y$ on $\C$, the old vector $1$ and the
+added vector $-1/2$ have increment $-1/4-(-1)=3/4>0$.
+The added diagonal is $-1/4$, and the mixed term contributes
+$1$. This elementary example prevents extending
+Theorem~\ref{thm:orthogonal} to arbitrary nonpositive pairings.
+
+At an admissible fixed-support transition, the right side of
+\eqref{eq:one-prime-target} is zero by
+Proposition~\ref{prop:stability}. The positive witness cannot be
+inserted while preserving that hypothesis. A support-indexed
+construction can require sign only after every relevant prime
+has been included, allow indefinite intermediate forms, and
+calculate mixed terms during enlargement. None of those options
+is excluded by the theorem.
+
+Corrections must also satisfy a two-prime identity. Suppose the
+geometrically computed complete increment at an intermediate
+stage is $W_p+C_{S,p,a}$ on fixed tests, where $C$ includes
+boundary, degree and projection terms. If both prime paths end
+with the same test pairing, subtraction gives
+\begin{equation}
+ C_{S,p,a}+C_{S\cup\{p\},q,a}
+       =C_{S,q,a}+C_{S\cup\{q\},p,a}.
+ \label{eq:correction-square}
+\end{equation}
+The $W_p,W_q$ terms cancel because they are independent of
+the path. Conversely, this square identity implies independence
+of any ordering of a fixed finite set, since adjacent
+transpositions generate its permutations. It controls ordering,
+not the initial or final value of the correction. A nonzero
+endpoint term cannot be discarded merely because every square
+commutes.
+
+Defining $C$ to be the unexplained difference in
+\eqref{eq:one-prime-target} would make
+\eqref{eq:correction-square} tautological. The arithmetic problem
+requires a formula for $C$ from a boundary map, degree pairing
+or primitive projection, followed by the equality. The cone
+differential \eqref{eq:cone-differential} is concrete enough to
+state such a boundary calculation, but no trace on it has been
+constructed here to perform that calculation.
+
+\section{The support-indexed conjecture}
+
+The following conjecture selects the restriction cone as a candidate
+for further arithmetic work. It is stronger than asking for some
+abstract space with a favorable quadratic form: its realization
+must come from \eqref{eq:restriction}, \eqref{eq:cone-differential}
+and \eqref{eq:cone-map}. It is not known that this choice of
+restriction target or homological degree is adequate. A failure
+of the conjecture for this cone would require revising that choice,
+rather than abandoning every adelic polarization.
+
+\begin{conjecture}[Adelic primitive comparison]\label{conj:primitive}
+For support-admissible pairs $(S,a)$, the relative complexes
+$\mathscr C_S$ admit an arithmetic realization with the following
+properties.
+\begin{enumerate}
+ \item A specified locally convex completion of a specified
+ subcomplex or quotient complex of $\mathscr C_S$ has Hausdorff
+ degree-one homology $V_{S,a}$. The chosen subcomplex, quotient
+ and completion are defined by arithmetic support, growth and
+ degree conditions. Their construction uses no zero spectrum
+ and no assumed sign of $W$.
+ \item Geometric degree maps $\delta_\pm:V_{S,a}\to\C$ and a
+ primitive subquotient $P_{S,a}$ of their common kernel are
+ equipped with a continuous Hermitian duality
+ $\mathfrak d_{S,a}$ as in \eqref{eq:duality}. Its diagonal sign
+ $I_{S,a}(x,x)\le0$ is a consequence of that duality and its
+ arithmetic geometry.
+ \item Continuous complex-linear test correspondences
+ $\mathcal G_{S,a}:\T_{0,a}\to P_{S,a}$ are obtained from
+ arithmetic scaling and restriction classes in the chosen
+ complex. Their transition maps are induced by the signed cone
+ maps $\Xi_p$, with any primitive-projection or boundary
+ corrections explicitly defined and retained. The resulting
+ pairings are coherent on common tests at admissible stages.
+ \item The complete comparison, including the archimedean
+ term, holds on the entire complex moment kernel at each stage:
+ \begin{equation}
+ I_{S,a}(\mathcal G_{S,a}f,\mathcal G_{S,a}g)
+       =A(f*g^*)+\sum_{p\in S_f}W_p(f*g^*)
+       =-B_W(f,g),\quad f,g\in\T_{0,a}.
+ \label{eq:primitive-comparison}
+ \end{equation}
+ The pairing and test maps are constructed before this identity
+ is proved; the identity does not define the pairing.
+\end{enumerate}
+\end{conjecture}
+
+The first clause asks for a topological construction from the
+algebraic cone in Definition~\ref{def:cone}. A solution must name
+its subcomplex and seminorms or equivalent topological definition,
+prove continuity of the boundary, restriction and prime maps,
+identify the relevant closed subspaces, and justify each
+Hausdorff quotient.
+
+The sign is required on support-complete primitive sectors.
+The conjecture does not require orthogonal nonpositive
+intermediate increments on arbitrarily large supports.
+At fixed admissible support, adding an irrelevant prime gives
+zero change on old test images, as follows from
+\eqref{eq:primitive-comparison}. This is compatible with local
+positive witnesses because those witnesses become available at
+larger or incomplete stages. Nontrivial comparison along an
+intermediate path must retain the terms in
+\eqref{eq:increment} and \eqref{eq:correction-square}.
+
+\begin{proposition}\label{prop:RH-consequence}
+Conjecture~\ref{conj:primitive} implies RH by the classical
+criterion \eqref{eq:T0-criterion}.
+\end{proposition}
+\begin{proof}
+For any $f\in\T_0$, choose $a$ containing its support and a
+finite $S$ containing all primes at most $e^{2a}$. The conjectural
+geometric sign and \eqref{eq:primitive-comparison} give
+$B_W(f,f)=-I_{S,a}(\mathcal G_{S,a}f,\mathcal G_{S,a}f)\ge0$.
+This covers every complex test in $\T_0$, exactly the domain of
+\eqref{eq:T0-criterion}. Apply that cited theorem.
+\end{proof}
+
+The implication uses no infinite Euler product or global Hilbert
+completion. Its force comes entirely from the unproved geometric
+sign and exact comparison at every support. Therefore it does
+not establish that the conjectural construction is easier than
+RH. Conversely, RH and a positive Weil form could produce an
+abstract quotient norm by the usual positive-form construction;
+that construction would not prove the arithmetic requirements
+of Conjecture~\ref{conj:primitive}. No equivalence with the
+specified arithmetic cone has been shown.
+
+The sign also makes the radical precise. On a nonpositive
+Hermitian space, if $I(x,x)=0$, then $I(x,y)=0$ for all $y$:
+otherwise the linear term in $-I(x+zy,x+zy)$ would violate
+nonnegativity for a suitable small complex $z$. Thus its null
+cone is a vector radical, and quotienting gives a positive
+definite form $-I$ if desired. This elementary consequence is
+available only after the geometric sign is proved. It cannot
+serve as a method for producing that sign on the original cone.
+
+\section{Pole degrees and all-test comparison}
+
+The criterion on $\T_0$ is sufficient for the conditional
+implication above, but a full geometric explanation should also
+account for the degree terms on arbitrary tests. The two moments
+are continuous and independent on every $\T_a$ with $a>0$.
+They give a closed subspace of codimension two, not a dense
+subspace on which an arbitrary form's sign determines its sign
+everywhere.
+
+To exhibit a complement, choose a nonnegative nonzero bump
+$\beta$ and a nonzero translation by $b$, both supported in
+$(-a,a)$. Put $u=F_\beta(1/2)>0$ and $v=F_\beta(-1/2)>0$.
+Their moment matrix is
+\begin{equation}
+ \begin{pmatrix}u&e^{b/2}u\\v&e^{-b/2}v\end{pmatrix},\qquad
+ \det=uv(e^{-b/2}-e^{b/2})\ne0.
+ \label{eq:moment-matrix}
+\end{equation}
+Solving this two-by-two system supplies continuous test functions
+$\beta_+,\beta_-$ with moments $(1,0)$ and $(0,1)$.
+Every $f\in\T_a$ then has the unique decomposition
+\begin{equation}
+ f=f_0+m_+(f)\beta_++m_-(f)\beta_-,\qquad
+ f_0\in\T_{0,a},\quad m_\pm(f)=F_f(\pm1/2).
+ \label{eq:moment-splitting}
+\end{equation}
+The complement is an analytic choice; no claim of a canonical
+geometric degree section is implicit in it.
+
+Let $B_{ij}=B_W(\beta_i,\beta_j)$ and
+$\ell_i(f_0)=B_W(f_0,\beta_i)$ for $i,j\in\{+,-\}$.
+Sesquilinearity expands $B_W(f,g)$ into its primitive block,
+the two mixed blocks and the degree block:
+\begin{align}
+ B_W(f,g)={}&B_W(f_0,g_0)
+ +\sum_j\overline{m_j(g)}\ell_j(f_0)
+ +\sum_i m_i(f)\overline{\ell_i(g_0)}\notag\\
+ &+\sum_{i,j}m_i(f)\overline{m_j(g)}B_{ij}.
+ \label{eq:full-block}
+\end{align}
+Even if the primitive block is known, the mixed entries and
+degree matrix require arithmetic comparison. The pole part of
+the degree matrix is exactly
+$\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)$ by
+\eqref{eq:mixed-poles}; the archimedean and prime terms modify
+the complete matrix. Replacing it by two positive moment
+squares would change the form.
+
+A stronger geometric extension of Conjecture~\ref{conj:primitive}
+would supply a degree-completed space $\widetilde P_{S,a}$,
+a test map $\widetilde{\mathcal G}_{S,a}:\T_a\to\widetilde P_{S,a}$,
+and a Hermitian pairing $\widetilde I_{S,a}$ with
+\begin{align}
+ \widetilde I_{S,a}(\widetilde{\mathcal G}_{S,a}f,
+                   \widetilde{\mathcal G}_{S,a}g)
+ &=A(f*g^*)+\sum_{p\in S_f}W_p(f*g^*)-P(f*g^*)\notag\\
+ &=-B_W(f,g).
+ \label{eq:alltest-comparison}
+\end{align}
+Its primitive restriction must agree with the conjectured
+pairing, and its remaining blocks must be derived from degree
+and boundary classes. Equation \eqref{eq:full-block} states
+exactly which comparisons are left after the primitive part.
+If the stronger formulation also asks for a nonpositive sign on
+all test images, that is an additional geometric sign assertion.
+
+The analytic criterion \eqref{eq:T0-criterion} avoids confusing
+these obligations. Once primitive positivity for this particular
+Weil form is proved on the entire moment kernel, RH follows by
+the cited theorem, and the full Weil sign follows analytically.
+That consequence does not construct the degree geometry or its
+mixed pairings. An arbitrary Hermitian form has no analogous
+codimension-two sign principle: on $\T_{0,a}\oplus\C^2$, one
+can keep any nonnegative first block and choose a negative value
+on a complementary vector.
+
+\section{Topological realization and limits}
+
+A topology for the cone must be chosen from its actual coefficient
+spaces and maps. The Schwartz coefficients have their usual
+Fr\'echet topology at the real place and Bruhat test-function
+topology at the finite places. The group sums are algebraic
+direct sums. The target $\mathscr E_S$ is much larger and has
+not been assigned a trace topology in the construction above.
+A choice based on derivative bounds on compact sets need not
+control Fourier transforms or an arithmetic trace. Stronger
+growth or support conditions may change the relative homology.
+
+Completing a complex requires more than completing its terms.
+After specifying locally convex tensor products, the boundary
+must extend continuously and its square must remain zero.
+The image of the boundary may fail to be closed; Hausdorff
+homology then uses its closure, which can remove classes that
+were nonzero algebraically. The prime maps preserve closed
+boundaries if continuous, but preservation of a primitive
+projection and a trace still needs proof. A pairing descends
+only if it annihilates the boundaries and the chosen additional
+quotient. These are concrete compatibility equations for a
+proposed topology.
+
+There is one distributional limit that is already established.
+For fixed $f,g\in\T_a$, every prime sum containing the relevant
+primes gives the same value. The net is eventually constant,
+not merely convergent. On each stage the local forms satisfy
+\eqref{eq:finite-local-bound}, and the full distribution has the
+smooth continuity described after it. This yields a well-defined
+test-space form without constructing $P_{S,a}$ or identifying
+the Hilbert norms $q_S$ with it.
+
+The Hilbert estimates have a different quantifier. For a finite
+set $E$ of new primes,
+\begin{equation}
+ \prod_{p\in E}(1-p^{-1/2})^2q_S(F,F)
+ \le q_{S\cup E}(F,F)
+ \le\prod_{p\in E}(1+p^{-1/2})^2q_S(F,F).
+ \label{eq:product-bounds}
+\end{equation}
+Nothing in these finite inequalities supplies constants
+independent of $E$. An all-prime completion would require an
+additional estimate for its chosen topology. Exact stabilization
+of the arithmetic matrix coefficients does not supply that
+estimate for the raw norms.
+
+The distinction between strong and norm convergence is also
+unavoidable in cutoff models. If $P_n$ is a proper orthogonal
+projection, $T_n=P_nA_nP_n$, and $T$ is bounded below by
+$c>0$, then
+\begin{equation}
+ \|T-T_n\|\ge c.
+ \label{eq:norm-obstruction}
+\end{equation}
+A unit vector in $\ker P_n$ is killed by $T_n$ and has image
+of norm at least $c$ under $T$. Thus zero extension of proper
+cutoffs cannot converge in norm to such a $T$.
+
+Uniform boundedness and convergence on a dense linear core can
+instead prove strong convergence. If $\|T_n\|\le M$ and
+$T_ny$ converges for every $y$ in a dense core, approximate
+an arbitrary $x$ by $y$ and use
+\begin{equation}
+ \|T_nx-T_mx\|\le2M\|x-y\|+\|T_ny-T_my\|.
+ \label{eq:strong-limit}
+\end{equation}
+The images are Cauchy, so completeness defines a bounded
+strong limit. Both hypotheses must be established for the
+actual adelic operators. The argument does not turn the
+finite bounds \eqref{eq:product-bounds} into uniform ones.
+
+\section{Scaling and the zero divisor}
+
+The scaling problem involves the real local variable before the
+logarithmic transform. With $(D_bv)(x)=b^{1/2}v(bx)$, $b>0$,
+the spatial and Fourier gaps of a Sonin function transform as
+\begin{equation}
+ (\lambda,\lambda)\longmapsto(\lambda/b,b\lambda).
+ \label{eq:gaps}
+\end{equation}
+The second relation follows from
+$\mathscr F(D_bv)(\xi)=b^{-1/2}\mathscr Fv(\xi/b)$.
+For $b\ne1$ one of these guaranteed gaps is smaller than
+$\lambda$. Therefore the defining gap conditions do not
+provide an invariant dilation representation on a fixed
+Sonin space. Restriction of an ambient generator needs an
+invariant domain or a different realization, for example a
+system that tracks both varying gaps.
+
+An arithmetic weight-one relation would give a precise spectral
+consequence if proved with domains. Suppose a densely defined
+operator $\Theta$ on a Hilbert space satisfies
+\begin{equation}
+ \Dom\Theta^*=\Dom\Theta,\qquad \Theta^*=I-\Theta.
+ \label{eq:adjoint}
+\end{equation}
+Then $D=(\Theta-\tfrac12I)/i$ is self-adjoint: the bounded
+shift preserves adjoint domains, and
+$D^*=i(\Theta^*-\tfrac12I)=-i(\Theta-\tfrac12I)=D$.
+An identity on a smaller test core does not establish the
+displayed domain equality or identify a self-adjoint extension.
+
+If $\Theta x=\rho x$ with $x\ne0$ in its domain, the
+self-adjointness of $D$ forces $(\rho-1/2)/i$ to be real.
+Thus every realized eigenvalue lies on the critical line.
+To deduce a statement about all zeta zeros by this argument,
+one must realize every zero, not a selected family. Multiplicity
+also matters for a determinant or trace formula, where matching
+sets of spectral points is insufficient.
+
+The prior adelic trace construction already demonstrates why
+these distinctions are needed. Equation (4.44) in \cite{CCMar}
+includes all zeros, including any possible off-line zeros,
+with their natural multiplicities. Its Theorem 6.1 gives a
+trace formula, and Proposition 6.2 states a separate positivity
+criterion. The existence of an all-zero trace realization does
+not make its form positive. An alternating or regularized trace
+cannot be treated as the ordinary trace of a positive operator
+without a theorem identifying the two operations.
+
+Deninger's arithmetic cohomological program expresses a related
+weight identity through a positive Hodge-star pairing
+\cite[Section 3]{D05}. The corresponding foliated theorem has
+explicit geometric hypotheses \cite[Theorem 4.1]{D05}; it does
+not construct the arithmetic space required here. For the
+restriction-cone candidate, the requested primitive pairing
+and its domain-compatible scaling action remain separate
+construction tasks. Conjecture~\ref{conj:primitive} is already
+RH-sufficient through finite tests, and does not silently claim
+those additional spectral identifications.
+
+\section{Formal arithmetic scope}
+
+The companion Lean library \cite{APCcode} proves 46 explicit
+theorems in five modules. It uses Lean \texttt{v4.30.0-rc2}
+and mathlib revision
+\nolinkurl{0f9072dd907c6e2e4264ab241a049cab50137f7c}.
+Its source inventory and complete axiom lists are supplied
+alongside the code. All declarations use only the standard
+foundational axioms \texttt{propext}, \texttt{Classical.choice}
+and \texttt{Quot.sound}; no project arithmetic axiom or admitted
+proof is used. This concerns the explicit formal statements
+described below, not every argument in this paper.
+
+The module \nolinkurl{lean/APC/LocalFactor.lean} defines the
+actual Euler multiplier, squared weight and raw defect.
+It proves the sharp scalar bounds and their attained opposite
+defect signs. The theorem
+\nolinkurl{APC.primePowerCoefficient_vonMangoldt}
+identifies the local coefficient with the von Mangoldt value
+at a positive prime power. The finite local distribution has
+positive powers only, and
+\nolinkurl{APC.localPrimePowerSum_eq_zero_of_support}
+proves its support vanishing. Bounded translation operators,
+operator logarithms and Fourier inversion remain manuscript
+arguments.
+
+The real finite coefficient sum in
+\nolinkurl{lean/APC/LocalSigns.lean} has the exact prime-11
+values proved by \nolinkurl{APC.minus_exact} and
+\nolinkurl{APC.plus_exact}. The strict signs and all four
+polynomial moment identities are proved from the explicit
+coefficient vectors. In
+\nolinkurl{lean/APC/LatticeDistribution.lean}, theorems
+\nolinkurl{APC.translated_minus_exact} and
+\nolinkurl{APC.translated_plus_exact} identify the actual finite
+prime-power sums of translated profiles, under an explicit
+base-profile sampling condition. The cutoff-stability results
+show that increasing the cutoff beyond the vector length does
+not change those sums.
+
+For the smooth application, that base profile is
+$\psi*\psi^*$ and its central value is $\|\psi\|_2^2>0$.
+Lean does not construct the smooth bump, its convolution
+integral or its Laplace moments. The passage from the proved
+coefficient values to smooth pole-killing tests is the proof
+of \eqref{eq:Q} and the moment calculation in this manuscript
+and Part II. The all-prime packet formula is also a paper
+proof. Thus the finite formal calculation has a precise
+analytic application without being described as a formal
+proof of that entire application.
+
+The module \nolinkurl{lean/APC/EntireObstruction.lean}
+defines the actual entire $\Delta_p$, proves its derivative
+and simple zero at zero, and proves
+\nolinkurl{APC.eulerDenominator_no_entire_square}.
+The theorem rules out $\Delta_pG^2=F^2$ for nonzero entire
+functions; finite order is deduced, not assumed as an
+arithmetic premise. The almost-everywhere critical-line
+continuation in Theorem~\ref{thm:entire} remains a paper
+argument, as do all weighted Hilbert and polar constructions.
+
+The module \nolinkurl{lean/APC/SoninShell.lean} proves the
+complex shell-coefficient obstruction. The theorem
+\nolinkurl{APC.soninShell_no_nonzero_scalar_idempotent}
+excludes a scaled idempotent. The related theorem
+\nolinkurl{APC.soninShell_tensor_not_multiplicative}
+excludes the scalar tensor algebra map.
+It does not define $p$-adic functions or their Fourier
+transform. The local Sonin uniqueness proof, crossed products,
+Hochschild maps, cone differential and relative-homology
+arguments have not been formalized. No theorem in the library
+constructs a primitive arithmetic polarization or proves
+global Weil positivity.
+
+\section{Further arithmetic construction}
+
+The restriction cone gives a finite-prime algebraic system with
+an explicit degree shift, boundary and nonzero origin classes.
+The next question is whether a useful primitive class survives
+the prime maps and a trace-compatible completion.
+Proposition~\ref{prop:cone-exact} separates a cokernel from the
+commutator kernel detected by Proposition~\ref{prop:origin-class}.
+Determining those spaces beyond the origin class would test the
+candidate before asserting a comparison with the Sonin carrier.
+
+A degree-zero coefficient match is insufficient for the test
+map in Conjecture~\ref{conj:primitive}. A construction must
+assign a relative cycle to a compact test, prove the cycle
+equation \eqref{eq:relative-cycle}, and show that changing its
+representative changes the result by a boundary. The two
+moment conditions must then correspond to geometric degree
+conditions. Without such a map, even a nonzero homology class
+does not identify which vector belongs in
+\eqref{eq:primitive-comparison}.
+
+The duality problem has an explicit local failure to repair.
+The signed shell tensor in positive degree has the Fourier
+value \eqref{eq:Fourier-defect}; no componentwise operation
+can erase it while leaving that tensor unchanged. A dual
+complex using convolution, a noncomponentwise duality, or
+additional local chains could alter the equation. Each choice
+must be checked against the boundary and restriction maps.
+The same construction must calculate a trace defect equal to
+the logarithmic local form \eqref{eq:K-Weil}, including all
+prime powers rather than just the raw metric variation.
+
+The central problem is to construct a primitive duality whose
+geometric sign establishes nonpositivity at every support-complete
+stage and whose test pairing equals the complete signed
+distribution. The restriction cone supplies explicit arithmetic
+input for that problem. Its growth conditions, primitive sector
+and duality are the next objects to determine.
+
+\begin{thebibliography}{9}
+\small
+\bibitem{C26}
+Alain Connes.
+\emph{The Riemann Hypothesis: Past, Present and a Letter Through Time}.
+arXiv:2602.04022v1, 2026.
+\url{https://arxiv.org/html/2602.04022v1}.
+
+\bibitem{CC20}
+Alain Connes and Caterina Consani.
+\emph{Weil positivity and Trace formula, the archimedean place}.
+arXiv:2006.13771v1, 2020.
+\url{https://arxiv.org/html/2006.13771v1}.
+
+\bibitem{CCMar}
+Alain Connes, Caterina Consani and Matilde Marcolli.
+\emph{The Weil proof and the geometry of the adeles class space}.
+arXiv:math/0703392v1, 2007.
+\url{https://arxiv.org/html/math/0703392v1}.
+
+\bibitem{CCM}
+Alain Connes, Caterina Consani and Henri Moscovici.
+\emph{Zeta zeros and prolate wave operators: Semilocal adelic operators}.
+arXiv:2310.18423v2, 2024.
+\url{https://arxiv.org/html/2310.18423v2}.
+
+\bibitem{D05}
+Christopher Deninger.
+\emph{Arithmetic Geometry and Analysis on Foliated Spaces}.
+arXiv:math/0505354v1, 2005.
+\url{https://arxiv.org/html/math/0505354v1}.
+
+\bibitem{PartI}
+Matthew Long and The YonedaAI Collaboration.
+\emph{Prime-Adjoining Correspondences}.
+Part I of \emph{Adelic Polarization Conjecture}, companion manuscript,
+September 2026.
+
+\bibitem{PartII}
+Matthew Long and The YonedaAI Collaboration.
+\emph{Obstructions to Adelic Polarization}.
+Part II of \emph{Adelic Polarization Conjecture}, companion manuscript,
+September 2026.
+
+\bibitem{APCcode}
+Matthew Long and The YonedaAI Collaboration.
+\emph{Adelic Polarization Conjecture: companion source archive}.
+September 2026. Lean sources, toolchain and pinned dependency manifest.
+\url{https://github.com/YonedaAI/adelic-polarization-conjecture}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,277 @@
+{
+  "verified_at_utc": "2026-09-09T04:34:50.820Z",
+  "manuscript": "Adelic Polarization Conjecture",
+  "source": "papers/latex/synthesis.tex",
+  "source_sha256": "042b9e0e2ccd6e916cd707858bd8cd1e02cda3afd778afeb926b61754aa12f41",
+  "source_lines": 1707,
+  "auxiliary": "papers/latex/synthesis.aux",
+  "auxiliary_sha256": "b75829cf1bf8647550ccf6e476044a5db18c77a216949724826ed378f510b5b8",
+  "compile_log": "papers/latex/synthesis.log",
+  "compile_log_sha256": "5be971d33bada57db85ad7b6857ae9071459f6a98b035264dbafc5302ea7d2aa",
+  "pdf": "papers/pdf/synthesis.pdf",
+  "pdf_sha256": "6f0820549262ece9f032fa82b79eca9b1fc8c94dd1c3798f831122d2075eedd1",
+  "pages": 21,
+  "page_size_points": [
+    612,
+    792
+  ],
+  "font_size_points": 11,
+  "margin_inches": 1,
+  "abstract_words": 233,
+  "cover": "images/synthesis.png",
+  "cover_sha256": "1a49ab36fb1a04c1f11cb6dea8287f6efd7b864e0d4ad0279a9269774c11f0e8",
+  "cover_dpi": 300,
+  "cover_size_pixels": [
+    2550,
+    3300
+  ],
+  "agy_review": {
+    "rounds": 2,
+    "verdict": "ACCEPT",
+    "all_findings_addressed": true,
+    "canonical": "reviews/synthesis-review.md",
+    "sha256": "4117132030a7b78822a7744df8b79ad99ed3d89ee03d7fd1407aa1f12c6779c1",
+    "receipt": {
+      "path": "reviews/synthesis-review.receipt.json",
+      "sha256": "207d736a302acf14c4cbdc26e5fb7a880cb46e5878d5486fb55d9a424fea110d"
+    },
+    "reviewed_source_sha256": "042b9e0e2ccd6e916cd707858bd8cd1e02cda3afd778afeb926b61754aa12f41",
+    "reviewed_source_matches_final": true,
+    "incidental_reviewer_parity_slip": "AGY item 4 calls X even; X is odd. The correct manuscript uses commutativity of coefficient elements with H, not parity of X. Recorded in the fix ledger; no source change."
+  },
+  "codex_format_review": {
+    "actual_invocations": 3,
+    "format_fix_passes": 1,
+    "verdict": "PASS",
+    "all_findings_addressed": true,
+    "canonical": "reviews/synthesis-codex-review.md",
+    "sha256": "f794773b745b7b1ae9bf919f514fa90016e64d17ea68d418c684cebdf7321501",
+    "receipt": {
+      "path": "reviews/synthesis-codex-review.receipt.json",
+      "sha256": "635dad7d4fe538d1487396398ae46969559450b8dd3089d595d6cea699288abc"
+    },
+    "reviewed_source_sha256": "042b9e0e2ccd6e916cd707858bd8cd1e02cda3afd778afeb926b61754aa12f41",
+    "reviewed_source_matches_final": true,
+    "actual_image_outputs": 8,
+    "image_provenance": {
+      "path": "team/synthesis/reviewer-image-evidence.json",
+      "sha256": "14b93b01a22820cbab73ac911a77b1b432f6ab44687baa87bb4482fb6955743c"
+    }
+  },
+  "verification": {
+    "compiles_after_last_source_change": 2,
+    "post_review_source_changes": 0,
+    "post_review_pdf_changes": 0,
+    "final_pdf_is_exact_reviewed_pdf": true,
+    "latex_pdf_and_publication_pdf_identical": true,
+    "overfull_boxes": 0,
+    "underfull_boxes": 0,
+    "undefined_references_or_citations": 0,
+    "duplicate_labels": 0,
+    "rerun_requests": 0,
+    "pdf_metadata_present": true,
+    "all_pages_rendered_and_contact_sheet_inspected": true,
+    "final_individual_pages_inspected": [
+      1,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15,
+      16,
+      17,
+      19,
+      20,
+      21
+    ],
+    "cover_inspected": true,
+    "layout_or_glyph_failures_found": false,
+    "auxiliary_preserved_for_html": true,
+    "paper_style_checker": "PASS",
+    "lean_reference_checker": "PASS: 16 references match actual declarations",
+    "new_lean_code_created": false
+  },
+  "renders": {
+    "author_record": {
+      "path": "team/synthesis/render-review.md",
+      "sha256": "beba920d2be0773e7d316db07b114da8d1755e4a2165588ba3ceb55d60a3d569"
+    },
+    "contact_sheet": {
+      "path": "tmp/pdfs/synthesis-round-2/contact.png",
+      "sha256": "ea8484a645e19945ebf5843dc5814aaedb09799a5ef5f0dbab2524444267eb2e"
+    },
+    "all_pages_85dpi": [
+      {
+        "path": "tmp/pdfs/synthesis-round-2/page-01.png",
+        "sha256": "e47a85b7403aee0e57ea5b20998503d8c6d864f47c07ae7e3d290f9f2fc4abfe"
+      },
+      {
+        "path": "tmp/pdfs/synthesis-round-2/page-02.png",
+        "sha256": "9c2c720c149aefd9e5d7885ffe291dc85b21455ea1c1d6fdb836864ebeac6129"
+      },
+      {
+        "path": "tmp/pdfs/synthesis-round-2/page-03.png",
+        "sha256": "43524f172e56c927792c3268eb3ffd3b84f6abff20d167786076127b3079137b"
+      },
+      {
+        "path": "tmp/pdfs/synthesis-round-2/page-04.png",
+        "sha256": "45e291b712b7d7b4a03b06c6d793ef5682bdd0f25dff2c42568e7e57f4c5a567"
+      },
+      {
+        "path": "tmp/pdfs/synthesis-round-2/page-05.png",
+        "sha256": "eb468051a353904b479f89ec4f92e3466c786d197c4c82291d270829845508f9"
+      },
+      {
+        "path": "tmp/pdfs/synthesis-round-2/page-06.png",
+        "sha256": "48cf5284f80db1fb5150878a28b474488b7101e676cdf8cf04818c0cfc27f114"
+      },
+      {
+        "path": "tmp/pdfs/synthesis-round-2/page-07.png",
+        "sha256": "4ab0c03b49d1c64942ecf36b248508aeb9657d5bbffd8ac9f55782e16bda6006"
+      },
+      {
+        "path": "tmp/pdfs/synthesis-round-2/page-08.png",
+        "sha256": "98cfd318b366e890a606ead190dbb8735a5a42f2d5fca940f69a89d40853e0f9"
+      },
+      {
+        "path": "tmp/pdfs/synthesis-round-2/page-09.png",
+        "sha256": "ab108db4b0d24a63647d185257d17be552c43e2442d0f6ac8ca13c2ed9f440b1"
+      },
+      {
+        "path": "tmp/pdfs/synthesis-round-2/page-10.png",
+        "sha256": "f8f653f2c21b026cec6f7acb7c539eda8c00a9e7260941250112ce51908d89bd"
+      },
+      {
+        "path": "tmp/pdfs/synthesis-round-2/page-11.png",
+        "sha256": "2a02f14b37aa67c176e761de73fb3c3b02978eb0169aa6c80c1646ee0d526498"
+      },
+      {
+        "path": "tmp/pdfs/synthesis-round-2/page-12.png",
+        "sha256": "b4dda20da006a9f45414411fd9ba8e9b3a65b2c3b20d0040f2bab6ba1b0f462f"
+      },
+      {
+        "path": "tmp/pdfs/synthesis-round-2/page-13.png",
+        "sha256": "19318e746856c71a5f410e54ecc830f81a3ab93e382bc297cd275cbb2308152f"
+      },
+      {
+        "path": "tmp/pdfs/synthesis-round-2/page-14.png",
+        "sha256": "e18f3737d8f9b74aeffd944d9fefacbc42024c86e850c40a660186b20cd321a2"
+      },
+      {
+        "path": "tmp/pdfs/synthesis-round-2/page-15.png",
+        "sha256": "039de5f1341a2481a3ca84800016a4b6668decf8062f3982252a6494d9d02bec"
+      },
+      {
+        "path": "tmp/pdfs/synthesis-round-2/page-16.png",
+        "sha256": "def9de429a236db1302281f12b6f017d3a3e46259d89e78a21b38eaf11a67e1c"
+      },
+      {
+        "path": "tmp/pdfs/synthesis-round-2/page-17.png",
+        "sha256": "977febb3b3ab2a8100d1f0cea0c62647c4a2c8d485ac4147c490bd771ff9fec0"
+      },
+      {
+        "path": "tmp/pdfs/synthesis-round-2/page-18.png",
+        "sha256": "855d188d6749398e2e5c33d5de75ba6aec8b757160afee4c9f675528b7e03980"
+      },
+      {
+        "path": "tmp/pdfs/synthesis-round-2/page-19.png",
+        "sha256": "e4e3929be911e087ddd2defe1252befb2196f40d22287c8b9c191bc129fb95a0"
+      },
+      {
+        "path": "tmp/pdfs/synthesis-round-2/page-20.png",
+        "sha256": "2605e067b7ecbd4b3a6f1d3664e1f9cb336d883da6a0a99bf3c123fcf65b43a9"
+      },
+      {
+        "path": "tmp/pdfs/synthesis-round-2/page-21.png",
+        "sha256": "fffe529b6dd281d2a294fd2f4016fcb0cdfe784cc5ed79f6d6b62086af348fb5"
+      }
+    ],
+    "individual_pages_150dpi": [
+      {
+        "page": 1,
+        "path": "tmp/pdfs/synthesis-codex-3/detail-01.png",
+        "sha256": "483f4a961f20d833e6fb2af8c14978d8a9a98ad9daa43d0f5b8db4a261b0f967"
+      },
+      {
+        "page": 8,
+        "path": "tmp/pdfs/synthesis-codex-3/detail-08.png",
+        "sha256": "27b0d39bd1a85c6c0192791c7f912e1e3b19299bc6eb00cd7f7d12aea9239ef5"
+      },
+      {
+        "page": 9,
+        "path": "tmp/pdfs/synthesis-codex-3/detail-09.png",
+        "sha256": "74679f1ae508129ae3f94ecc3a513bea2a098be99abc6384ec60dc29e66d12be"
+      },
+      {
+        "page": 10,
+        "path": "tmp/pdfs/synthesis-round-2/detail-10.png",
+        "sha256": "635d694f789470e43d2c808a29ef8d64fa60cd2011babe40872ae267b4f2d618"
+      },
+      {
+        "page": 11,
+        "path": "tmp/pdfs/synthesis-round-2/detail-11.png",
+        "sha256": "70f2ee082ed4f5b63e6aca16efefd7bc4ab34a86480f16a856f874247806d8ba"
+      },
+      {
+        "page": 12,
+        "path": "tmp/pdfs/synthesis-round-2/detail-12.png",
+        "sha256": "07646ba96b107a12eace449c05a9f5d7e4026595a63348cd8913f04086a54bce"
+      },
+      {
+        "page": 14,
+        "path": "tmp/pdfs/synthesis-codex-3/detail-14.png",
+        "sha256": "22da9b64487b1c22c304adb8dadda24afc7b8ebfde818e6e2ba64221d737f181"
+      },
+      {
+        "page": 15,
+        "path": "tmp/pdfs/synthesis-codex-3/detail-15.png",
+        "sha256": "3696b8dc7f4055240115815704c5964aef437cee9552b8c109d34766dd5e116a"
+      },
+      {
+        "page": 16,
+        "path": "tmp/pdfs/synthesis-codex-3/detail-16.png",
+        "sha256": "650455a79162096a5dfcf20470ad57550f51d417b4029af906f1facd74588a6c"
+      },
+      {
+        "page": 17,
+        "path": "tmp/pdfs/synthesis-codex-3/detail-17.png",
+        "sha256": "e1c0aa83b6191960a52245fae0ddc09e279b1e9d51c69451881766b66e0b6723"
+      },
+      {
+        "page": 19,
+        "path": "tmp/pdfs/synthesis-codex-3/detail-19.png",
+        "sha256": "75917bac98b4bee42858b7ef70c015a1c6361b239cabfea19277127caa2c5ca2"
+      },
+      {
+        "page": 20,
+        "path": "tmp/pdfs/synthesis-codex-3/detail-20.png",
+        "sha256": "31c137e08fe71678eeb19db9090f6144d13be8007bcfffa30b6e5038bf016529"
+      },
+      {
+        "page": 21,
+        "path": "tmp/pdfs/synthesis-codex-3/detail-21.png",
+        "sha256": "9a96ca3da0b1145dd8894884245f415d6c52722310b16196304d20930d52659f"
+      }
+    ]
+  },
+  "review_fixes": {
+    "path": "reviews/synthesis-review-fixes.md",
+    "sha256": "ea740f69aba5c5612f04cddcf483b44e595db3a96eb348ba455743467d62bf90"
+  },
+  "research_record": {
+    "path": "research/synthesis.md",
+    "sha256": "b77ffc2c0518e86ef6830ff33b85fe46f2fb2cddda9621bd2816c014a0b8f48a"
+  },
+  "bibliography_receipt": {
+    "path": "team/synthesis/bib-check.md",
+    "sha256": "254dfb84c47d5a6e24f94020321248e5976c5f8ee2f2a38d1f8d87ad8889f37c"
+  },
+  "pre_transition_reviewed_snapshot": "team/synthesis/pre-transition/",
+  "final_snapshot": "team/synthesis/final/",
+  "nonblocking_warning": "The required everypage house-template package reports legacy status.",
+  "haskell_enabled": false,
+  "scope": "Explicit algebraic restriction cone and commuting signed chain maps, relative exact sequence and nonzero finite-stage origin classes. Proposition 8.3 proves each shell image of the compact-bump origin class is a cone boundary. Other relative classes and the full direct limit remain undetermined. Primitive realization, geometric degrees, test correspondence and independent geometric duality remain unconstructed; the full moment-kernel Weil criterion is already known. No RH proof; no new Lean formalization of the cone or boundary theorem.",
+  "publication_checks": "Source archive availability, website generation/review, deployment and final pipeline validation are coordinator-owned separate gates."
+}

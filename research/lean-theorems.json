@@ -1,0 +1,192 @@
+{
+  "theorem_count": 46,
+  "namespace": "APC",
+  "toolchain": "leanprover/lean4:v4.30.0-rc2",
+  "mathlib_revision": "0f9072dd907c6e2e4264ab241a049cab50137f7c",
+  "theorems": [
+    {
+      "module": "lean/APC/LocalSigns.lean",
+      "name": "APC.eleven_prime"
+    },
+    {
+      "module": "lean/APC/LocalSigns.lean",
+      "name": "APC.sqrt_eleven_sq"
+    },
+    {
+      "module": "lean/APC/LocalSigns.lean",
+      "name": "APC.minus_exact"
+    },
+    {
+      "module": "lean/APC/LocalSigns.lean",
+      "name": "APC.plus_exact"
+    },
+    {
+      "module": "lean/APC/LocalSigns.lean",
+      "name": "APC.minus_negative"
+    },
+    {
+      "module": "lean/APC/LocalSigns.lean",
+      "name": "APC.plus_positive"
+    },
+    {
+      "module": "lean/APC/LocalSigns.lean",
+      "name": "APC.minus_moment_radius"
+    },
+    {
+      "module": "lean/APC/LocalSigns.lean",
+      "name": "APC.minus_moment_inverse"
+    },
+    {
+      "module": "lean/APC/LocalSigns.lean",
+      "name": "APC.plus_moment_radius"
+    },
+    {
+      "module": "lean/APC/LocalSigns.lean",
+      "name": "APC.plus_moment_inverse"
+    },
+    {
+      "module": "lean/APC/LocalFactor.lean",
+      "name": "APC.primeRadius_pos"
+    },
+    {
+      "module": "lean/APC/LocalFactor.lean",
+      "name": "APC.primeRadius_lt_one"
+    },
+    {
+      "module": "lean/APC/LocalFactor.lean",
+      "name": "APC.primeRadius_sq"
+    },
+    {
+      "module": "lean/APC/LocalFactor.lean",
+      "name": "APC.localMultiplier_exp"
+    },
+    {
+      "module": "lean/APC/LocalFactor.lean",
+      "name": "APC.localWeight_formula"
+    },
+    {
+      "module": "lean/APC/LocalFactor.lean",
+      "name": "APC.localWeight_defect"
+    },
+    {
+      "module": "lean/APC/LocalFactor.lean",
+      "name": "APC.localWeight_lower"
+    },
+    {
+      "module": "lean/APC/LocalFactor.lean",
+      "name": "APC.localWeight_upper"
+    },
+    {
+      "module": "lean/APC/LocalFactor.lean",
+      "name": "APC.localWeight_at_zero"
+    },
+    {
+      "module": "lean/APC/LocalFactor.lean",
+      "name": "APC.localWeight_at_pi_div_log"
+    },
+    {
+      "module": "lean/APC/LocalFactor.lean",
+      "name": "APC.localWeight_defect_negative"
+    },
+    {
+      "module": "lean/APC/LocalFactor.lean",
+      "name": "APC.localWeight_defect_positive"
+    },
+    {
+      "module": "lean/APC/LocalFactor.lean",
+      "name": "APC.primePowerCoefficient_pos"
+    },
+    {
+      "module": "lean/APC/LocalFactor.lean",
+      "name": "APC.primePowerCoefficient_vonMangoldt"
+    },
+    {
+      "module": "lean/APC/LocalFactor.lean",
+      "name": "APC.localPrimePowerSum_add"
+    },
+    {
+      "module": "lean/APC/LocalFactor.lean",
+      "name": "APC.localPrimePowerSum_eq_zero_of_support"
+    },
+    {
+      "module": "lean/APC/LatticeDistribution.lean",
+      "name": "APC.discreteCorrelation_eq_zero_of_ge"
+    },
+    {
+      "module": "lean/APC/LatticeDistribution.lean",
+      "name": "APC.localLatticeSum_stable"
+    },
+    {
+      "module": "lean/APC/LatticeDistribution.lean",
+      "name": "APC.lattice_profile_of_support"
+    },
+    {
+      "module": "lean/APC/LatticeDistribution.lean",
+      "name": "APC.translatedCorrelation_sample"
+    },
+    {
+      "module": "lean/APC/LatticeDistribution.lean",
+      "name": "APC.localPrimePowerSum_translated"
+    },
+    {
+      "module": "lean/APC/LatticeDistribution.lean",
+      "name": "APC.localLatticeSum_three"
+    },
+    {
+      "module": "lean/APC/LatticeDistribution.lean",
+      "name": "APC.localLatticeSum_four"
+    },
+    {
+      "module": "lean/APC/LatticeDistribution.lean",
+      "name": "APC.translated_minus_exact"
+    },
+    {
+      "module": "lean/APC/LatticeDistribution.lean",
+      "name": "APC.translated_plus_exact"
+    },
+    {
+      "module": "lean/APC/SoninShell.lean",
+      "name": "APC.soninShell_at_zero"
+    },
+    {
+      "module": "lean/APC/SoninShell.lean",
+      "name": "APC.soninShell_at_one"
+    },
+    {
+      "module": "lean/APC/SoninShell.lean",
+      "name": "APC.soninShell_no_nonzero_scalar_idempotent"
+    },
+    {
+      "module": "lean/APC/SoninShell.lean",
+      "name": "APC.soninShell_tensor_not_multiplicative"
+    },
+    {
+      "module": "lean/APC/EntireObstruction.lean",
+      "name": "APC.eulerDenominator_analytic"
+    },
+    {
+      "module": "lean/APC/EntireObstruction.lean",
+      "name": "APC.eulerDenominator_zero"
+    },
+    {
+      "module": "lean/APC/EntireObstruction.lean",
+      "name": "APC.eulerDenominator_hasDerivAt_zero"
+    },
+    {
+      "module": "lean/APC/EntireObstruction.lean",
+      "name": "APC.eulerDenominator_deriv_ne_zero"
+    },
+    {
+      "module": "lean/APC/EntireObstruction.lean",
+      "name": "APC.eulerDenominator_order_one"
+    },
+    {
+      "module": "lean/APC/EntireObstruction.lean",
+      "name": "APC.eulerDenominator_no_local_square"
+    },
+    {
+      "module": "lean/APC/EntireObstruction.lean",
+      "name": "APC.eulerDenominator_no_entire_square"
+    }
+  ]
+}

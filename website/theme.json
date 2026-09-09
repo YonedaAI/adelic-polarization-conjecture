@@ -1,0 +1,9 @@
+{
+  "name": "Adelic reading room",
+  "domain": "Arithmetic geometry",
+  "colors": { "bg": "#201B32", "surface": "#2C2543", "accent": "#E7CB91", "accent-secondary": "#B6B4F1", "text": "#F1EDF8", "text-muted": "#BCB3CD" },
+  "font": "Georgia and system sans-serif",
+  "heroGradient": "none",
+  "cardEffect": "underline and border",
+  "bgPattern": "Prime-adjoining square"
+}

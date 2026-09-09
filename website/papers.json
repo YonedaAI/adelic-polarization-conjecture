@@ -1,0 +1,5 @@
+[
+  { "slug": "local-correspondence", "part": "Part I", "title": "Prime-Adjoining Correspondences", "description": "Arithmetic shell maps and the local distributions produced by logarithmic variation.", "category": "math.NT" },
+  { "slug": "polarization-obstructions", "part": "Part II", "title": "Obstructions to Adelic Polarization", "description": "Entire-function normalization and local signs on tests with vanishing pole moments.", "category": "math.NT" },
+  { "slug": "synthesis", "part": "Synthesis", "title": "Adelic Polarization Conjecture", "description": "A support-indexed formulation with explicit arithmetic comparisons and remaining construction problems.", "category": "math.NT" }
+]

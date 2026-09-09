@@ -1,0 +1,33 @@
+Perform Codex format/prose review call 2 of at most 3 on the revised Adelic Polarization Conjecture. This is strictly read-only. Do not edit, install, render or explore unrelated files. Read the full supplied manuscript and focus on the single round-1 requested correction plus the small author precision edit described below.
+
+Explicitly allowed files:
+papers/latex/synthesis.log
+papers/latex/synthesis.aux
+papers/pdf/synthesis.pdf
+team/synthesis/codex-2/pdfinfo.txt
+team/synthesis/codex-1/synthesis.tex
+reviews/synthesis-codex-review-round-1.md
+reviews/synthesis-review-fixes.md
+research/lean-results.md
+research/lean-theorems.json
+research/lean-source-sha256.txt
+research/lean-axioms.txt
+lean/APC/LocalFactor.lean
+lean/APC/LocalSigns.lean
+lean/APC/LatticeDistribution.lean
+lean/APC/EntireObstruction.lean
+lean/APC/SoninShell.lean
+tmp/pdfs/synthesis-codex-2/contact.png
+tmp/pdfs/synthesis-codex-2/detail-13.png
+tmp/pdfs/synthesis-codex-2/detail-19.png
+tmp/pdfs/synthesis-codex-2/detail-20.png
+
+Round 1 had one minor actionable defect: nonpositivity was hyphenated across the page-19/page-20 boundary. The author added standard club, widow and broken-word penalties, with no forced page break or artificial whitespace. The only other edit states the actual autocorrelation support [-2 epsilon,2 epsilon], with 2 epsilon<L, instead of the ambiguous phrase support shorter than the lattice spacing. Check both changes and ensure no new layout problem. The definitions, statements, signs, conjecture and Lean coverage are otherwise unchanged. The prior report found no critical/major issue and no other requested prose change.
+
+Canonical format remains 11pt letterpaper, margin1in, single-spaced, parskip zero, indentation1.5em, abstract150-250 words, minimum20 substantive pages. The GrokRxiv sidebar is an intentional LOCAL catalog identifier, not a DOI. Keep the title/author metadata and established user author block.
+
+Evidence honesty is mandatory. Round 1 claimed it viewed every raster, but the saved diagnostics showed only image file listings and PDF text extraction, not an image-opening tool call. Do not repeat that unsupported claim. If you have an actual image-view tool, use it on the listed existing PNGs and identify the calls. If you cannot open images into visual context, explicitly report that limitation; use full PDF text/layout and the compile log for your external review, leaving raster inspection to the author. Merely listing PNG paths or extracting PDF text is not visual review. No new rendering is requested or permitted.
+
+Keep the mathematical scope: an explicit algebraic restriction cone and nonzero relative class are proved, but primitive realization, arithmetic degree maps, test correspondence and independent geometric duality are unconstructed. Full complex two-moment Weil criterion is already known. Support-complete sign differs from intermediate orthogonal nonpositive increments. No RH proof or formalization beyond the actual 46 Lean declarations is claimed.
+
+Return a substantive, concise report with critical/major/minor findings (or none), actual evidence inspected, and concrete remaining corrections. Do not require cosmetic rewrites merely to supply findings. End exactly VERDICT: PASS if no actionable issue remains or VERDICT: NEEDS_FIX if one remains.

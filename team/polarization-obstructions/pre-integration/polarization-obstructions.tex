@@ -1,0 +1,1705 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[margin=1in]{geometry}
+\linespread{1.0}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{1.5em}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{booktabs,tabularx,array,longtable}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,columns=fullflexible,frame=single,framesep=4pt,showstringspaces=false,captionpos=b}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Obstructions to Adelic Polarization},
+  pdfauthor={Matthew Long; The YonedaAI Collaboration}}
+\usepackage{cleveref}
+\usepackage{everypage}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\T}{\mathcal T}
+\newcommand{\B}{\mathcal B}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\Span}{\operatorname{span}}
+\newcommand{\Dom}{\operatorname{Dom}}
+\definecolor{grokgray}{RGB}{110,110,110}
+\AddEverypageHook{%
+  \ifnum\value{page}=1
+    \begin{tikzpicture}[remember picture,overlay]
+      \node[rotate=90,anchor=south,font=\footnotesize\sffamily\color{grokgray},inner sep=0pt]
+      at ([xshift=30pt,yshift=0.5\paperheight]current page.south west)
+      {GrokRxiv:2026.09.polarization-obstructions\quad [\,math.NT\,]\quad 08 Sep 2026};
+    \end{tikzpicture}
+  \fi
+}
+\title{Obstructions to Adelic Polarization\\[4pt]
+{\normalsize Part II of \emph{Adelic Polarization Conjecture}}}
+\author{Matthew Long\\
+\small The YonedaAI Collaboration, YonedaAI Research Collective\\
+\small Chicago, IL\\
+\small\texttt{matthew@yonedaai.com}}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Arithmetic polarization through semilocal adelic spaces requires prime transitions that preserve arithmetic comparison as well as a geometric sign. We examine two particular ways of imposing these requirements. The ambient polar normalization of a known weighted entire-function carrier divides boundary values by the modulus of a local Euler factor. We prove that this operation cannot send any nonzero entire function to an entire function. The proof uses a simple zero of the squared Euler modulus and the parity of vanishing orders. The intrinsic polar decomposition on a closed Sonin subspace has a compressed metric operator and is not excluded by this argument. We derive its adjoint and explain the additional test-map and symmetry identities it must satisfy. A separate obstruction comes from exact compact smooth tests whose two pole moments vanish. At the arithmetic prime 11, three and four translated bumps give local quadratic values proportional to $-46/11$ and $(28\sqrt{11}-92)/11$. These opposite signs rule out an orthogonal nonpositive enlargement with the prescribed positive local Weil increment on all intermediate tests. A finite packet calculation extends the sign result to every prime. The obstruction does not apply to sign imposed only at support-complete stages, or to correspondences with mixed pairings and explicit correction terms. The resulting formulation retains those terms and leaves the geometric sign and full arithmetic comparison as construction problems.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:introduction}
+
+A topological identification of semilocal Sonin spaces does not identify
+their inner products. This distinction matters when those spaces are used
+as a possible analytic realization of arithmetic cohomology. The
+construction of Connes, Consani and Moscovici provides a common space of
+entire functions with norms that change when a prime is adjoined
+\cite[Sections 4.7 and 4.8]{CCM24}. An arithmetic polarization would need
+more than equivalent norms: its pairing must arise from arithmetic
+duality and reproduce the signed local terms of the explicit formula.
+
+For a prime $p$, put $L=\log p$ and $r=p^{-1/2}$. In the common carrier,
+the finite change of weight is multiplication by
+\begin{equation}
+ \omega_p(t)=|1-re^{-itL}|^2=1+r^2-2r\cos(tL).
+ \label{eq:weight}
+\end{equation}
+This positive function lies between $(1-r)^2$ and $(1+r)^2$.
+The multiplier $\omega_p-1$ is denoted $d_p$ in Part I.
+The positivity of $\omega_p$ gives bounded comparison of the two norms. It does not
+give a sign to their difference, and it does not give a sign to the
+logarithmic derivative that produces the local Weil distribution.
+Part I establishes these local analytic identities with a fixed Fourier
+convention \cite{PartI}.
+
+One possible repair is to replace the carrier identity by its polar
+isometry. In the ambient weighted $L^2$ spaces this means division by
+$\sqrt{\omega_p}$. The operation is well-defined, bounded and invertible
+on boundary functions. Theorem~\ref{thm:polarization-obstructions:entire}
+shows that it destroys the entire-function condition for every nonzero
+input. Squaring a putative boundary identity produces an identity of
+entire functions. Its two sides have incompatible orders at zero.
+This obstruction does not depend on the growth or reproducing kernel
+of the Sonin space.
+
+Polar decomposition within a closed Sonin space is a different
+operation. The adjoint of the restricted carrier identity includes the
+orthogonal projection onto that space. The associated positive operator
+is a compression of multiplication by $\omega_p$, and its inverse square
+root need not be pointwise multiplication. We calculate this operator
+and its transformed projection in
+Proposition~\ref{prop:polarization-obstructions:compression}.
+The calculation preserves a possible intrinsic normalization while
+making its required arithmetic compatibility precise.
+
+A second proposed repair is geometric: keep the old primitive sector
+isometrically and add an orthogonal nonpositive sector at each prime.
+The new sector then contributes a nonpositive quadratic increment.
+The required intersection increment, with the convention
+$B_W=-I$, is $+W_p$. That increment has both signs, even after the
+two pole moments vanish. We give exact smooth witnesses at $p=11$,
+then a finite packet proof for every prime. The proof evaluates the
+actual distribution on autocorrelations; a finite matrix computation
+alone would not establish this statement about smooth tests.
+
+The resulting exclusion has a specific support hypothesis. A new prime
+contributes zero to tests whose support was already complete for the
+old finite place set. The positive witness therefore obstructs the
+orthogonal sign ansatz on a nontrivial intermediate transition. It
+does not contradict a construction requiring its final sign only
+after all primes relevant to the support have been included.
+
+Neither obstruction establishes a sign for the full Weil form. They
+reject two specified transitions and identify conditions a replacement
+must meet. The entire carrier, the local explicit formula and the
+cohomological motivation all precede this work. We make no claim that
+these elementary obstructions have priority over every treatment of
+Euler factors or compressed operators.
+
+\section{Mathematical framework}
+\label{sec:framework}
+
+The conventions of Part I, Definition 2.1, are used throughout.
+Thus $\T=C_c^\infty(\R,\C)$, convolution uses Lebesgue measure,
+$f^*(x)=\overline{f(-x)}$, and the centered Laplace transform is
+$F_f(z)=\int_\R f(x)e^{zx}\,dx$. The Fourier transform is
+$\widehat f(t)=F_f(-it)$. These are imported conventions; the
+geometric test correspondence considered later is not part of their
+definition.
+
+Part I, Definition 3.1, fixes
+$W=P-A-\sum_pW_p$. In particular the local distribution is
+\begin{equation}
+ W_p(h)=L\sum_{k\geq1}r^k\{h(kL)+h(-kL)\},
+ \qquad h\in\T.
+ \label{eq:local-Weil}
+\end{equation}
+The sum is finite on each compactly supported test. The corresponding
+Hermitian forms are $B_p(f,g)=W_p(f*g^*)$ and $B_W(f,g)=W(f*g^*)$.
+The minus sign in the full
+Weil distribution follows from the classical explicit formula with
+its archimedean subtraction \cite[Appendix B]{CC20}. Consequently an
+intersection form intended to satisfy $B_W=-I$ has local increment
+$+B_p$, provided no further term changes at the same transition.
+
+The subspace of tests with the two pole moments zero is
+\begin{equation}
+ \T_0=\{f\in\T:F_f(1/2)=F_f(-1/2)=0\}.
+ \label{eq:pole-tests}
+\end{equation}
+No reality or evenness condition is imposed on $\T_0$. Our explicit
+witnesses will be real, which suffices to prove both signs on this
+complex space. The pole term vanishes on $f*g^*$ when $f,g\in\T_0$;
+its vanishing does not remove the archimedean term or any finite prime.
+
+For the analytic carrier, write $F_t=F(1/2+it)$ and
+\begin{equation}
+ q_S(F,G)=\int_\R F_t\overline{G_t}w_S(t)\,dt,
+ \qquad w_{S\cup\{p\}}=\omega_p w_S.
+ \label{eq:carrier-norms}
+\end{equation}
+These are the common-carrier norms imported from Part I,
+Section 8, equations (46) and (47), and from equations (59)
+and (62) of \cite{CCM24}.
+The positive analytic form $q_S$ and the hypothetical geometric
+form $I_S$ are distinct objects. Equating either one with a desired
+arithmetic form is a comparison theorem to prove, not a convention.
+
+All Hermitian forms in this paper are linear in the first argument.
+If $A:H_0\to H_1$ is bounded, its adjoint satisfies
+$\langle Ax,y\rangle_1=\langle x,A^*y\rangle_0$.
+Whenever an orthogonal projection onto an entire-function space is
+used below, that space is assumed to be a closed subspace of the
+ambient Hilbert realization. This hypothesis is essential for the
+projection calculation. The entire obstruction itself needs no
+Hilbert-space hypothesis.
+
+\section{Entire normalization}
+\label{sec:entire}
+
+\begin{definition}
+\label{def:polarization-obstructions:discriminant}
+For a real number $p>1$, the entire Euler denominator is
+\begin{equation}
+ \Delta_p(z)=(1-e^{-Lz})(1-e^{L(z-1)}),\qquad L=\log p.
+ \label{eq:discriminant}
+\end{equation}
+The powers $p^z$ always mean $e^{z\log p}$, where $\log p$
+is the unique real number $L$ satisfying $e^L=p$.
+\end{definition}
+
+For $z=1/2+it$, the two factors in \eqref{eq:discriminant} are
+complex conjugates. Hence $\Delta_p(1/2+it)=\omega_p(t)>0$. Away from the
+critical line the same function has zeros, and their orders constrain
+any holomorphic square root.
+
+\begin{lemma}
+\label{lem:simple-zero}
+The zeros of $\Delta_p$ are simple and occur at
+\begin{equation}
+ z=\frac{2\pi i k}{L}\quad\hbox{or}\quad
+ z=1+\frac{2\pi i k}{L},\qquad k\in\Z.
+ \label{eq:zero-lattices}
+\end{equation}
+In particular $\Delta_p(0)=0$ and $\Delta_p'(0)=L(1-p^{-1})\ne0$.
+\end{lemma}
+\begin{proof}
+The equation $e^{-Lz}=1$ is equivalent to the first lattice in
+\eqref{eq:zero-lattices}; changing the sign of $k$ does not change
+the set. Its factor has derivative $Le^{-Lz}=L$ at every zero.
+At such a point the other factor is $1-p^{-1}$.
+The second factor vanishes at the second lattice and has derivative
+$-Le^{L(z-1)}=-L$ there. The first factor is then $1-p^{-1}$.
+The two lattices have different real parts and cannot intersect.
+Thus exactly one factor vanishes at each zero, with nonzero
+derivative, which proves the claim.
+\end{proof}
+
+\begin{lemma}
+\label{lem:boundary-identity}
+Let $F,G$ be entire functions. If
+\begin{equation}
+ G(1/2+it)=\omega_p(t)^{-1/2}F(1/2+it)
+ \label{eq:boundary-normalization}
+\end{equation}
+for Lebesgue-almost every $t\in\R$, then
+\begin{equation}
+ \Delta_p(z)G(z)^2=F(z)^2\qquad(z\in\C).
+ \label{eq:entire-identity}
+\end{equation}
+The same conclusion holds if the exceptional set is null for a
+measure $w(t)\,dt$ with $w>0$ almost everywhere.
+\end{lemma}
+\begin{proof}
+The difference of the two sides of
+\eqref{eq:boundary-normalization} is continuous in $t$, because
+$\omega_p(t)$ is continuous and bounded below by $(1-r)^2>0$.
+A continuous function that is zero almost everywhere on $\R$ is
+zero everywhere: if its value were nonzero at $t_0$, continuity
+would give an interval around $t_0$ on which its absolute value
+has a positive lower bound. That interval has positive measure.
+Squaring the resulting equality for every real $t$ gives
+\eqref{eq:entire-identity} on the critical line.
+
+The function $\Delta_pG^2-F^2$ is entire and vanishes, for example, at
+$1/2+i/n$ for every positive integer $n$. These points accumulate
+at $1/2$ in its domain. The identity theorem makes the function
+zero on $\C$. If $w>0$ almost everywhere, a set of positive
+Lebesgue measure has positive $w(t)\,dt$ measure: decompose it
+into the sets where $w\geq1/n$. Thus weighted-almost-everywhere
+equality implies the equality used in the preceding argument.
+\end{proof}
+
+\begin{theorem}[Entire normalization obstruction]
+\label{thm:polarization-obstructions:entire}
+For $p>1$, there are no nonzero entire functions $F,G$ satisfying
+\eqref{eq:boundary-normalization} almost everywhere. In fact no
+nonzero entire functions satisfy \eqref{eq:entire-identity}.
+\end{theorem}
+\begin{proof}
+If a nonzero entire function vanishes to infinite order at zero,
+its Taylor series is zero in a neighborhood, and the identity
+theorem makes it identically zero. Hence nonzero entire $F,G$
+have finite orders $m=\ord_0F$ and $n=\ord_0G$ in $\Z_{\geq0}$.
+Their local factorizations are
+\[
+ F(z)=z^m u(z),\qquad G(z)=z^n v(z),\qquad
+ u(0)v(0)\ne0.
+\]
+Lemma~\ref{lem:simple-zero} similarly gives $\Delta_p(z)=zd(z)$ with
+$d(0)\ne0$. Equality \eqref{eq:entire-identity} would therefore
+force $1+2n=2m$. The left side is odd and the right side is even.
+This is impossible. Lemma~\ref{lem:boundary-identity} supplies
+\eqref{eq:entire-identity} from the boundary relation.
+\end{proof}
+
+The theorem applies to every nonzero element of an entire Sonin
+carrier, regardless of its zeros at $0$ or $1$. Adding finite-order
+zeros at the Euler lattice cannot remove an odd-order obstruction
+to a square. Allowing poles of finite order also does not help:
+the local orders then belong to $\Z$, and $1+2n=2m$ remains
+impossible. A branch on a cut plane is a different analytic object
+and is outside the asserted entire realization.
+
+\begin{corollary}
+\label{cor:ambient-polar}
+Let $\mathcal L_S=L^2(\R,w_S\,dt)$ and
+$\mathcal L_T=L^2(\R,\omega_p w_S\,dt)$, where $w_S>0$ almost everywhere.
+The polar isometry of the identity $j:\mathcal L_S\to\mathcal L_T$
+is multiplication by $\omega_p^{-1/2}$. It does not restrict to a map
+from any nonzero entire-function carrier into itself.
+\end{corollary}
+\begin{proof}
+The bounds on $\omega_p$ make $j$ a bounded bijection. Directly from
+the two inner products, $j^*$ is multiplication by $\omega_p$ and
+$j^*j=M_{\omega_p}$. Functional calculus gives
+$j(j^*j)^{-1/2}=jM_{\omega_p^{-1/2}}$. The boundary output of a
+nonzero entire input cannot be the boundary of an entire function
+by Theorem~\ref{thm:polarization-obstructions:entire}.
+\end{proof}
+
+\subsection{Phases and divisors}
+
+The positive square root in polar decomposition is responsible
+for the parity argument. An arbitrary isometry between the ambient
+spaces may include a measurable phase $\chi(t)$ of modulus one:
+$F_t\mapsto\chi(t)\omega_p(t)^{-1/2}F_t$.
+Theorem~\ref{thm:polarization-obstructions:entire} does not exclude
+every such phase. It excludes the positive pointwise polar factor
+of the specified carrier identity.
+
+The complex reciprocal Euler factor illustrates the difference.
+Multiplication by $(1-p^{-z})^{-1}$ has the same boundary modulus
+as $\omega_p^{-1/2}$, but its continuation is meromorphic. For an entire
+input $F$, the quotient $F/(1-p^{-z})$ is entire exactly when $F$
+vanishes at every point $2\pi ik/L$. Necessity follows by comparing
+orders at each simple denominator zero. Sufficiency follows by
+removing those local singularities; the lattice has no finite
+accumulation point.
+
+This cancellation condition is nonempty. For any entire $H$, the
+function $F=(1-p^{-z})H$ has the entire quotient $H$. Whether
+both belong to a particular Sonin carrier requires that carrier's
+growth and norm conditions. The example only establishes the
+logical boundary of the positive-square-root obstruction.
+
+There is a local version useful for other candidates. If a
+holomorphic function $D$ has odd order at a point $z_0$, then
+$DG^2=F^2$ cannot hold for nonzero holomorphic germs $F,G$ at
+$z_0$. The preceding proof uses only local factorizations. Thus
+one does not need a global formula for the zeros of $D$ once
+an odd zero has been found.
+
+For a finite set of distinct primes $E$, the product
+$\Delta_E=\prod_{p\in E}\Delta_p$ has an odd zero whenever $E$ is nonempty.
+If $|E|$ is odd, zero itself works. If $|E|$ is even, choose
+$p\in E$ and $z_0=2\pi i/\log p$. A second prime $q\ne p$
+could have a zero there only if $\log q/\log p$ were a positive
+integer. This would give $q=p^k$, contrary to distinct primality.
+No second-lattice zero has real part zero. The zero of $\Delta_E$
+at $z_0$ is therefore simple. The same argument excludes the
+positive pointwise normalization for every nonempty finite
+prime enlargement, including those with an even number of primes.
+
+\section{Compressed polar decomposition}
+\label{sec:compression}
+
+Let $\mathcal L=L^2(\R,w\,dt)$, with $w>0$ almost everywhere,
+and let $H\subset\mathcal L$ be closed. Suppose $d$ is real and
+$0<c\leq d\leq C<\infty$ almost everywhere. Write
+$q_0(x,y)=\langle x,y\rangle_{\mathcal L}$ and
+$q_1(x,y)=\langle M_dx,y\rangle_{\mathcal L}$ on $H$.
+Equivalent norms give the same closed vector subspace in the
+two ambient realizations. Write $H_i=(H,q_i)$ for $i=0,1$.
+The identity $J:H_0\to H_1$ is a
+bounded bijection between these two Hilbert norms.
+
+\begin{proposition}
+\label{prop:polarization-obstructions:compression}
+Let $P$ be the $q_0$-orthogonal projection of $\mathcal L$ onto
+$H$. The metric operator
+\begin{equation}
+ A=P M_d|_H
+ \label{eq:compressed-metric}
+\end{equation}
+is positive, self-adjoint and boundedly invertible on $H_0$, with
+$c\Id\leq A\leq C\Id$. The restricted identity has
+\begin{equation}
+ J^*=A,\qquad J^*J=A,\qquad U=JA^{-1/2}.
+ \label{eq:intrinsic-polar}
+\end{equation}
+Here $J^*:H_1\to H_0$ uses the same vector formula $A$ but
+different domain and target norms. The $q_1$-orthogonal
+projection from the ambient space onto $H$ is
+\begin{equation}
+ P_1=A^{-1}PM_d.
+ \label{eq:changed-projection}
+\end{equation}
+\end{proposition}
+\begin{proof}
+For $x,y\in H$, orthogonality of $P$ gives
+\[
+ q_1(x,y)=q_0(M_dx,y)=q_0(PM_dx,y)=q_0(Ax,y).
+\]
+Since $M_d$ is self-adjoint, this also equals $q_0(x,Ay)$.
+The bounds on $d$ imply
+$c\|x\|_0^2\leq q_0(Ax,x)\leq C\|x\|_0^2$.
+Thus $A$ is bounded, self-adjoint and bounded below by $c$.
+Its range is closed, its kernel is zero, and its range is dense
+because its orthogonal complement is $\ker A^*=\ker A$.
+It is therefore surjective, with bounded inverse.
+
+The displayed form identity gives the adjoint formula for $J$.
+The polar formula follows from the unique positive square root
+of $A$. In particular
+\[
+ q_1(A^{-1/2}x,A^{-1/2}y)
+ =q_0(A^{1/2}x,A^{-1/2}y)=q_0(x,y).
+\]
+Surjectivity of $A^{-1/2}$ makes $U$ a unitary map between
+$H_0$ and $H_1$.
+
+For an ambient vector $v$, put $z=A^{-1}PM_dv\in H$.
+For every $h\in H$,
+\[
+ q_1(v-z,h)=q_0(PM_dv-Az,h)=0.
+\]
+This characterizes $z$ as the $q_1$-orthogonal projection of
+$v$. The operator is bounded in the ambient $q_1$ norm by
+equivalence of norms, proving \eqref{eq:changed-projection}.
+\end{proof}
+
+Applied to $d=\omega_p$ and the closed entire Sonin realization, the
+proposition constructs an intrinsic polar isometry. Every output
+is an element of the same Hilbert space $H$, so it has the
+entire representative belonging to that realization. There is no
+conflict with Theorem~\ref{thm:polarization-obstructions:entire}:
+the expression $A^{-1/2}$ is not asserted to be $M_{\omega_p^{-1/2}}$.
+
+If $H$ is invariant under $M_d$, its orthogonal complement is
+also invariant because $M_d$ is self-adjoint. Then $P$ commutes
+with $M_d$, and continuous functional calculus identifies
+$A^{-1/2}$ with $M_{d^{-1/2}}|_H$. For $d=\omega_p$, a nonzero
+closed subspace consisting of entire boundary functions cannot
+have this invariance: its inverse square root would contradict
+the entire obstruction. Compression is therefore forced in
+any such nonzero realization.
+
+\subsection{A finite-dimensional model}
+
+Even a one-dimensional subspace separates compressed and
+pointwise normalization. Take $\mathcal L=\C^2$,
+$H=\Span\{(1,1)\}$ and $d=\operatorname{diag}(1,4)$.
+For $x=(a,a)$ one has $q_0(x,x)=2|a|^2$ and
+$q_1(x,x)=5|a|^2$. The metric operator on $H$ is
+$A=(5/2)\Id$. Intrinsic normalization sends
+$(a,a)$ to $\sqrt{2/5}(a,a)$. Ambient normalization sends it
+to $(a,a/2)$, which is outside $H$ unless $a=0$.
+Both operations are isometries on their stated domains.
+
+This example also shows why replacing functional calculus of
+a compression by compression of functional calculus is invalid.
+On $H$, the operator $PM_{d^{-1/2}}|_H$ is $(3/4)\Id$,
+whereas $A^{-1/2}=\sqrt{2/5}\Id$. Their scalar values differ.
+No approximation or infinite-dimensional issue is involved.
+
+\subsection{Test maps and symmetry}
+
+An arithmetic test map specifies which geometric vector represents
+each compact smooth test in the comparison formula. Changing
+that vector changes the pairing being compared with the Weil form.
+Suppose $\Gamma_0:\T\to H_0$ and
+$\Gamma_1:\T\to H_1$ are complex-linear maps satisfying the
+original compatibility $\Gamma_1=J\Gamma_0$. Replacing $J$
+by $U$ while retaining both test maps requires
+\begin{equation}
+ A^{-1/2}\Gamma_0f=\Gamma_0f\qquad(f\in\T).
+ \label{eq:test-rigidity}
+\end{equation}
+
+\begin{proposition}
+\label{prop:test-rigidity}
+If $\Gamma_0(\T)$ is dense in $H_0$, the original and polar
+test-map compatibilities both hold exactly when $A=\Id$.
+Without density they require $A$ to be the identity on the
+closure of $\Gamma_0(\T)$.
+\end{proposition}
+\begin{proof}
+The difference $A^{-1/2}-\Id$ is bounded. If it vanishes on
+$\Gamma_0(\T)$, it vanishes on its closure. On that closure,
+$A^{-1/2}x=x$ implies $A^{1/2}x=x$ by applying $A^{1/2}$,
+and then $Ax=x$. Conversely $Ax=x$ implies
+$A^{-1/2}x=x$ by functional calculus, or by uniqueness of
+the positive square root on the eigenspace for eigenvalue one.
+The dense case makes this identity hold on all of $H_0$.
+\end{proof}
+
+The proposition is a conditional test. It does not claim that
+the compressed Sonin metric operator is nontrivial on any
+particular arithmetic test image. A proof of compatibility
+must either establish \eqref{eq:test-rigidity}, change the
+target test map, or supply a new comparison theorem for the
+changed image. Redefining $\Gamma_1=U\Gamma_0$ proves an
+analytic identity by construction but does not preserve an
+independently defined arithmetic correspondence automatically.
+
+Fourier compatibility can survive compression under verifiable
+symmetry hypotheses. Let $R$ be a unitary or antiunitary
+operator on $\mathcal L$ that maps $H$ onto $H$ and commutes with
+$M_d$. Since $R$ maps $H^\perp$ onto itself, it commutes with
+$P$. Therefore $RA=AR$ on $H$. Real polynomial approximation
+to $x^{-1/2}$ on $[c,C]$ gives $RA^{-1/2}=A^{-1/2}R$;
+real coefficients also cover the antiunitary case.
+
+For example, reflection $v(t)\mapsto v(-t)$ commutes with
+$M_{\omega_p}$ because $\omega_p$ is even. It is unitary when the
+ambient weight is even. If the carrier is reflection invariant,
+the intrinsic normalization respects that symmetry. To call
+this the Fourier duality of a semilocal model, one must identify
+its actual Fourier operator in the chosen carrier. The shell
+transition of Part I has such a published intertwining identity.
+The conditional reflection calculation alone does not identify
+every geometric or arithmetic duality operator.
+
+\section{Compatibility after compression}
+\label{sec:prime-compatibility}
+
+The scalar Euler multipliers for distinct primes commute.
+Compression does not preserve this implication for their
+metric operators. Let $M_a,M_b$ be commuting self-adjoint
+ambient multipliers and $P$ an orthogonal projection. On $H$,
+put $A=PM_a|_H$ and $B=PM_b|_H$. Expanding $\Id=P+(\Id-P)$
+between the ambient multipliers gives
+\begin{equation}
+ AB-BA=PM_b(\Id-P)M_a|_H-PM_a(\Id-P)M_b|_H.
+ \label{eq:compression-commutator}
+\end{equation}
+The right side records the two excursions outside $H$.
+Commutativity of $M_a,M_b$ does not force either term to vanish.
+
+An explicit example uses the orthonormal vectors
+\[
+ u=\frac{(1,-1,0)}{\sqrt2},\qquad
+ v=\frac{(1,1,-2)}{\sqrt6}
+\]
+in $\C^3$ and $H=\Span\{u,v\}$. Compress the two coordinate
+projections $E_1=\operatorname{diag}(1,0,0)$ and
+$E_2=\operatorname{diag}(0,1,0)$. In the basis $(u,v)$ the
+compressed matrices are
+\begin{equation}
+ A_1=\begin{pmatrix}1/2&1/(2\sqrt3)\\1/(2\sqrt3)&1/6\end{pmatrix},
+ \qquad
+ A_2=\begin{pmatrix}1/2&-1/(2\sqrt3)\\-1/(2\sqrt3)&1/6\end{pmatrix}.
+ \label{eq:compressed-matrices}
+\end{equation}
+Multiplying the matrices yields
+\begin{equation}
+ A_1A_2-A_2A_1=
+ \begin{pmatrix}0&-1/(3\sqrt3)\\1/(3\sqrt3)&0\end{pmatrix}\ne0.
+ \label{eq:matrix-commutator}
+\end{equation}
+Replacing the ambient projections by $\Id+E_1$ and
+$\Id+E_2$ makes them positive and invertible without changing
+the compressed commutator. These positive diagonal operators
+are finite-dimensional models of commuting ambient multiplication
+operators; their compressed matrices show the possible failure
+of commutation. Thus strict positivity does not repair the failure.
+
+The example is a statement about compression, not a calculation
+of the actual Sonin projection. It prevents an argument that
+uses scalar commutativity as its only justification for
+commuting compressed metric operators. The Sonin operators
+may have additional identities; those identities need proof.
+
+The second metric transition must use the inner product
+produced by the first. Express both intermediate and final
+forms through the base form by setting
+$q_p(x,y)=q_0(C_px,y)$ and
+$q_{pq}(x,y)=q_0(C_{pq}x,y)$, where
+\[
+ C_p=PM_{\omega_p}|_H,\qquad
+ C_{pq}=PM_{\omega_p\omega_q}|_H.
+\]
+The metric operator from $q_p$ to $q_{pq}$ is
+\begin{equation}
+ A_{p,q}=C_p^{-1}C_{pq},
+ \label{eq:relative-metric}
+\end{equation}
+as an operator on the intermediate Hilbert space $(H,q_p)$.
+Its positivity and adjoint are determined by $q_p$, as the identity
+$q_p(A_{p,q}x,y)=q_0(C_{pq}x,y)=q_{pq}(x,y)$
+shows. It need not be self-adjoint for the base form $q_0$.
+Its positive square root must therefore be taken in $(H,q_p)$.
+
+Writing every underlying carrier map as the identity, the
+polar path through $p$ acts by
+$A_{p,q}^{-1/2}C_p^{-1/2}$, and the path through $q$ acts by
+$A_{q,p}^{-1/2}C_q^{-1/2}$. A commuting polar square therefore
+requires equality of these two operators. The calculation
+above neither proves nor disproves that identity for Sonin
+spaces. It identifies the operator equation that replaces
+commutation of the scalar Euler factors.
+
+There is always an abstract way to choose coherent isometries
+relative to one base metric. If $q_S(x,y)=q_0(C_Sx,y)$ on a
+common Hilbert carrier, put $V_S=C_S^{-1/2}:H_0\to H_S$ and
+$V_{S,T}=V_TV_S^{-1}$. Then
+$V_{T,U}V_{S,T}=V_{S,U}$ by cancellation. These maps are
+isometries and form commuting squares. They depend on the
+chosen base metric and need not be the polar factors of the
+one-step carrier identities. Their arithmetic test-map
+compatibility is again a separate equation. Abstract coherence
+does not construct a local arithmetic correspondence.
+
+\section{Smooth local witnesses}
+\label{sec:bumps}
+
+Fix $p>1$, $L=\log p$ and $r=p^{-1/2}$. Choose
+$0<\epsilon<L/2$ and a nonzero real function
+$\psi\in C_c^\infty(\R)$ supported in $[-\epsilon,\epsilon]$.
+For instance one may use
+\begin{equation}
+ \psi(x)=
+ \begin{cases}
+ \exp\bigl(-1/(1-(x/\epsilon)^2)\bigr),&|x|<\epsilon,\\
+ 0,&|x|\geq\epsilon.
+ \end{cases}
+ \label{eq:explicit-bump}
+\end{equation}
+All derivatives tend to zero at the endpoints because every
+polynomial in $(1-(x/\epsilon)^2)^{-1}$ is dominated by its
+negative exponential. Thus this is a compact smooth function,
+positive near zero, and $\|\psi\|_2^2>0$.
+No unit-mass normalization is required: every local quadratic
+value below retains the same positive factor $\|\psi\|_2^2$.
+
+For a finite complex vector $c=(c_0,\ldots,c_n)$, write
+\begin{equation}
+ f_c(x)=\sum_{j=0}^nc_j\psi(x-jL),\qquad
+ C_c(z)=\sum_{j=0}^nc_jz^j.
+ \label{eq:bump-packet}
+\end{equation}
+The translates have disjoint supports. Hence
+\begin{equation}
+ \|f_c\|_2^2=\|\psi\|_2^2\sum_{j=0}^n|c_j|^2.
+ \label{eq:packet-norm}
+\end{equation}
+In particular a nonzero coefficient vector produces a nonzero
+test, without any possible cancellation between adjacent bumps.
+
+\begin{proposition}
+\label{prop:polarization-obstructions:bumps}
+For the packet \eqref{eq:bump-packet},
+\begin{align}
+ F_{f_c}(z)&=F_\psi(z)C_c(e^{Lz}),
+ \label{eq:packet-moments}\\
+ W_p(f_c*f_c^*)&=L\|\psi\|_2^2Q_r(c),
+ \label{eq:packet-local}\\
+ Q_r(c)&=\sum_{i\ne j}c_i\overline{c_j}r^{|i-j|}.
+ \label{eq:toeplitz}
+\end{align}
+Consequently $C_c(r)=C_c(r^{-1})=0$ implies $f_c\in\T_0$.
+\end{proposition}
+\begin{proof}
+Changing variables $u=x-jL$ in the integral for the Laplace
+transform gives
+$F_{\psi(\cdot-jL)}(z)=e^{jLz}F_\psi(z)$.
+Summing the finitely many terms proves
+\eqref{eq:packet-moments} for every complex $z$.
+At $z=1/2$ and $z=-1/2$ the polynomial arguments are
+$r^{-1}$ and $r$, respectively.
+
+Put $h_\psi=\psi*\psi^*$. Its support lies in
+$[-2\epsilon,2\epsilon]$ and $h_\psi(0)=\|\psi\|_2^2$.
+Expanding the finite convolution sum gives
+\[
+ (f_c*f_c^*)(x)=\sum_{i,j=0}^nc_i\overline{c_j}
+ h_\psi(x-(i-j)L).
+\]
+At $x=kL$ with integer $k$, every term vanishes unless
+$k=i-j$, because $2\epsilon<L$. Therefore, for $k\geq1$,
+\begin{align*}
+ (f_c*f_c^*)(kL)&=\|\psi\|_2^2\sum_{i-j=k}c_i\overline{c_j},\\
+ (f_c*f_c^*)(-kL)&=\|\psi\|_2^2\sum_{j-i=k}c_i\overline{c_j}.
+\end{align*}
+These sums are zero for $k>n$. Substitution in the actual
+local distribution \eqref{eq:local-Weil} now gives
+\eqref{eq:packet-local}. Each ordered pair $i\ne j$ occurs
+once, with its weight $r^{|i-j|}$. This also shows directly
+that $Q_r(c)$ is real, since reversing $i,j$ conjugates a term.
+\end{proof}
+
+The condition on the support of $\psi$ is exact. There is no
+limit as $\epsilon$ tends to zero, and the normalization
+$\|\psi\|_2^2$ is strictly positive. All prime powers that
+can contribute to the packet are included in
+\eqref{eq:packet-local}. Terms at larger powers vanish by
+support, rather than being discarded as small.
+
+Let $a_r=r+r^{-1}$ and consider
+\begin{equation}
+ P_r(z)=1-a_rz+z^2=(z-r)(z-r^{-1}).
+ \label{eq:moment-factor}
+\end{equation}
+Any coefficient polynomial divisible by $P_r$ has both
+required roots. This provides a direct way to impose the pole
+conditions before testing the sign, without projecting a
+numerical eigenvector onto an approximate moment kernel.
+
+\begin{lemma}
+\label{lem:short-values}
+For $0<r<1$ and $a_r=r+r^{-1}$,
+\begin{align}
+ Q_r(1,-a_r,1)&=-4-2r^2,
+ \label{eq:negative-value}\\
+ Q_r(1,1-a_r,1-a_r,1)&=-8-4r^2+6r+2/r.
+ \label{eq:positive-value}
+\end{align}
+The respective coefficient polynomials are $P_r(z)$ and
+$P_r(z)(1+z)$.
+\end{lemma}
+\begin{proof}
+For real coefficients one can sum by distance:
+\[
+ Q_r(c)=2\sum_{k=1}^nr^k\sum_{j=0}^{n-k}c_{j+k}c_j.
+\]
+For the three-term vector the inner sums are $-2a_r$ at
+distance one and $1$ at distance two. Thus
+$Q=-4a_rr+2r^2=-4-2r^2$.
+
+For the four-term vector set $b=1-a_r$. The inner sums are
+$2b+b^2$ at distance one, $2b$ at distance two, and $1$ at
+distance three. Hence
+\begin{align*}
+ Q&=2r(2b+b^2)+4r^2b+2r^3\\
+  &=2r(3-4a_r+a_r^2)+4r^2(1-a_r)+2r^3.
+\end{align*}
+Using $a_rr=1+r^2$ and
+$a_r^2=r^2+2+r^{-2}$ reduces this expression to
+\eqref{eq:positive-value}. Multiplication of $P_r$ by
+$1+z$ gives coefficients $(1,1-a_r,1-a_r,1)$, which proves
+the polynomial statements.
+\end{proof}
+
+\begin{theorem}[Exact signs at eleven]
+\label{thm:polarization-obstructions:signs}
+There exist nonzero real tests $f_-,f_+\in\T_0$ such that
+\begin{align}
+ W_{11}(f_-*f_-^*)&=-\frac{46}{11}(\log11)\|\psi\|_2^2<0,
+ \label{eq:eleven-minus}\\
+ W_{11}(f_+*f_+^*)&=\frac{28\sqrt{11}-92}{11}
+ (\log11)\|\psi\|_2^2>0.
+ \label{eq:eleven-plus}
+\end{align}
+They can be chosen as three and four translates of any bump
+\eqref{eq:explicit-bump} with $2\epsilon<\log11$.
+\end{theorem}
+\begin{proof}
+Set $r=1/\sqrt{11}$, so $a_r=12/\sqrt{11}$, and use the
+two coefficient vectors in Lemma~\ref{lem:short-values}.
+Their polynomials are divisible by $P_r$, so
+Proposition~\ref{prop:polarization-obstructions:bumps} gives
+both pole moments exactly zero. Their first coefficient is
+one, and \eqref{eq:packet-norm} makes both tests nonzero.
+
+Substituting $r^2=1/11$ into
+\eqref{eq:negative-value} gives $-46/11$. Substituting
+$r=1/\sqrt{11}$ into \eqref{eq:positive-value} gives
+$(28\sqrt{11}-92)/11$. This is positive because
+$7\sqrt{11}>23$: both sides are positive and their squares
+satisfy $49\cdot11=539>529=23^2$.
+Finally $\log11>0$ and $\|\psi\|_2^2>0$, so the signs
+are unchanged in the smooth distribution values.
+\end{proof}
+
+Translation of the complete packet by a common real number
+does not change its autocorrelation. It multiplies each
+Laplace moment by a nonzero exponential and therefore
+preserves a zero moment. The negative packet can consequently
+be centered in $[-L-\epsilon,L+\epsilon]$, and the positive
+packet in $[-3L/2-\epsilon,3L/2+\epsilon]$. This centering
+will make the support condition in the geometric obstruction
+explicit.
+
+\section{Finite packets at every prime}
+\label{sec:all-primes}
+
+The short positive packet at $11$ is sufficient for the
+orthogonal-extension obstruction. A longer packet gives the
+same two-sign statement at every prime. Its exact formula
+also explains why moment cancellation does not restore the
+sign of a local distribution.
+
+\begin{proposition}
+\label{prop:packet-formula}
+For $0<r<1$, $N\geq2$, let $c^{(N)}$ be the coefficient
+vector of
+\begin{equation}
+ C_N(z)=P_r(z)(1+z+\cdots+z^{N-1}).
+ \label{eq:long-packet}
+\end{equation}
+Then
+\begin{equation}
+ Q_r(c^{(N)})=\frac{2N(1-r)^3}{r}+4-6r-\frac2r.
+ \label{eq:long-value}
+\end{equation}
+\end{proposition}
+\begin{proof}
+On the unit circle $z=e^{i\theta}$ the absolutely convergent
+Fourier series of the off-diagonal Toeplitz kernel is
+\begin{align}
+ k_r(\theta)
+ &=\sum_{k\ne0}r^{|k|}e^{ik\theta}
+ =\frac{1-r^2}{1-r(z+z^{-1})+r^2}-1.
+ \label{eq:toeplitz-symbol}
+\end{align}
+Expanding a finite polynomial $C$ and integrating its product
+with this series term by term gives
+\begin{equation}
+ Q_r(c)=\frac1{2\pi}\int_{-\pi}^{\pi}
+ k_r(\theta)|C(e^{i\theta})|^2\,d\theta.
+ \label{eq:symbol-form}
+\end{equation}
+Absolute convergence justifies the interchange, and
+orthogonality of integer exponentials leaves exactly the
+coefficient sum in \eqref{eq:toeplitz}.
+
+Put $s=z+z^{-1}$ and $D=1-rs+r^2$. The moment polynomial
+in \eqref{eq:moment-factor} satisfies
+\[
+ P_r(z)=z(s-r-r^{-1})=-zD/r.
+\]
+For $|z|=1$, $D$ is real, so $|P_r(z)|^2=D^2/r^2$.
+Multiplying \eqref{eq:toeplitz-symbol} by this square cancels
+the denominator:
+\begin{align}
+ k_r(\theta)|P_r(z)|^2
+ &=\frac{(rs-2r^2)D}{r^2}\\
+ &=(-4-2r^2)+(3r+r^{-1})(z+z^{-1})-(z^2+z^{-2}).
+ \label{eq:laurent-cancellation}
+\end{align}
+For completeness, expansion of the first line yields
+$(r^{-1}+3r)s-s^2-2-2r^2$, and
+$s^2=z^2+2+z^{-2}$ gives the second line.
+
+The polynomial $B_N(z)=1+\cdots+z^{N-1}$ satisfies
+\[
+ |B_N(z)|^2=\sum_{k=-(N-1)}^{N-1}(N-|k|)z^k.
+\]
+The constant coefficient of
+$k_r|P_r|^2|B_N|^2$ is therefore
+\[
+ N(-4-2r^2)+2(N-1)(3r+r^{-1})-2(N-2).
+\]
+This formula includes $N=2$, when the final contribution is
+zero. Simplifying its coefficient of $N$ gives
+$2(r^{-1}-3+3r-r^2)=2(1-r)^3/r$, and its constant term
+is $4-6r-2/r$. Equation~\eqref{eq:symbol-form} proves
+\eqref{eq:long-value}.
+\end{proof}
+
+\begin{corollary}
+\label{cor:all-prime-signs}
+For every prime $p$, the quadratic form $f\mapsto W_p(f*f^*)$
+has both positive and negative values on nonzero real
+tests in $\T_0$.
+\end{corollary}
+\begin{proof}
+The three-term packet always gives $-4-2r^2<0$.
+The coefficient of $N$ in \eqref{eq:long-value} is strictly
+positive for $0<r<1$. Choose an integer $N\geq2$ such that
+\[
+ N>\frac{r(6r+2/r-4)}{2(1-r)^3}.
+\]
+Then \eqref{eq:long-value} is positive. The polynomial
+$C_N$ is divisible by $P_r$ and has first coefficient one,
+so its smooth packet is nonzero and belongs to $\T_0$.
+Proposition~\ref{prop:polarization-obstructions:bumps}
+transfers the exact positive coefficient value to $W_p$.
+\end{proof}
+
+The support of the longer positive packet grows with $N$.
+The corollary therefore gives a local sign result on the union
+of compact test supports. It gives no common small support
+on which every prime is visible. On a fixed support, all
+sufficiently large primes have identically zero local form.
+This restriction is part of the arithmetic geometry of the
+test system, rather than a defect in the packet construction.
+
+The Toeplitz symbol itself is positive at $\theta=0$ and
+negative at $\theta=\pi$. That observation would suggest
+frequency localization, but it would not by itself impose
+the two moment conditions. The finite factor $P_r$ imposes
+those conditions exactly. Its roots $r,r^{-1}$ are off the
+unit circle, so the factor leaves nontrivial Fourier packets
+available. The cancellation in \eqref{eq:laurent-cancellation}
+turns that observation into the finite proof above.
+
+\section{The constrained finite form}
+\label{sec:finite-form}
+
+The four-bump example at $11$ has a useful minimality property
+within this specific translated-bump family. The two moment
+conditions reduce the coefficient space to a polynomial
+divisibility condition, and the restricted quadratic form can
+be diagonalized exactly. This is a finite-dimensional statement
+about equally spaced translates of the same bump. It is not
+a minimal-support theorem for arbitrary compact smooth tests.
+
+\begin{proposition}
+\label{prop:four-bump-signature}
+Let $0<r<1$, and let $c=(c_0,c_1,c_2,c_3)\in\C^4$ satisfy
+$C_c(r)=C_c(r^{-1})=0$. There are unique
+$\alpha,\beta\in\C$ such that
+\begin{equation}
+ C_c(z)=P_r(z)(\alpha+\beta z).
+ \label{eq:four-factorization}
+\end{equation}
+On these coordinates the constrained form is
+\begin{equation}
+ Q_r(c)=b_0(|\alpha|^2+|\beta|^2)
+           +2b_1\operatorname{Re}(\alpha\overline\beta),
+ \quad b_0=-4-2r^2,\quad b_1=3r+r^{-1}.
+ \label{eq:restricted-matrix}
+\end{equation}
+Its eigenvalues in the coefficient coordinates
+$(\alpha,\beta)$ are $b_0+b_1$ and $b_0-b_1$.
+\end{proposition}
+\begin{proof}
+The roots $r$ and $r^{-1}$ are distinct, so their two
+linear factors divide $C_c$. Since $C_c$ has degree at
+most three and $P_r$ is monic of degree two, the quotient
+has degree at most one and is unique. This proves
+\eqref{eq:four-factorization}, including the zero polynomial.
+Substitute $C_c=P_r(\alpha+\beta z)$ into
+\eqref{eq:symbol-form} and use
+\eqref{eq:laurent-cancellation}. The product
+\[
+ |\alpha+\beta z|^2=|\alpha|^2+|\beta|^2
+ +\overline\alpha\beta z+\alpha\overline\beta z^{-1}
+\]
+has frequencies only zero and one. Its constant coefficient
+after multiplication by the Laurent polynomial is the
+right side of \eqref{eq:restricted-matrix}; the terms at
+frequency two contribute nothing. The matrix is
+$\left(\begin{smallmatrix}b_0&b_1\\b_1&b_0\end{smallmatrix}\right)$.
+Its eigenvectors $(1,1)$ and $(1,-1)$ have the stated
+eigenvalues.
+\end{proof}
+
+The word eigenvalue here refers to the Euclidean norm of
+the quotient coefficients $(\alpha,\beta)$. The original
+four coefficients have a different induced norm under
+\eqref{eq:four-factorization}. The signature, which is what
+the sign test uses, is unchanged by this injective change
+of coordinates.
+
+\begin{corollary}
+\label{cor:smallest-prime}
+Among arithmetic primes, $11$ is the smallest prime for
+which four equally spaced bumps can give a positive local
+value while their coefficient polynomial has both moment
+roots. For $p\leq7$ the form on that two-dimensional
+coefficient kernel is negative definite. For every prime
+$p\geq11$ its signature is $(1,1)$.
+\end{corollary}
+\begin{proof}
+The eigenvalue $b_0-b_1$ is negative for every $0<r<1$.
+The sign of $b_0+b_1$ is the sign of
+\[
+ g(r)=r(b_0+b_1)=1-4r+3r^2-2r^3.
+\]
+Its derivative is
+$g'(r)=-4+6r-6r^2=-6(r-1/2)^2-5/2<0$.
+At $r=1/\sqrt{11}$, the value of $b_0+b_1$ is
+$(14\sqrt{11}-46)/11>0$, by the integer-square
+comparison used in Theorem~\ref{thm:polarization-obstructions:signs}.
+It remains positive for smaller $r$, which includes every
+prime $p\geq11$.
+
+At $r=1/\sqrt7$,
+\[
+ g(r)=\frac{10\sqrt7-30}{7\sqrt7}<0,
+\]
+because $\sqrt7<3$. It remains negative for larger $r$,
+which includes every prime at most seven. The only primes
+below eleven are $2,3,5,7$; the intervening integers
+$8,9,10$ are composite. This proves all the assertions.
+\end{proof}
+
+Three equally spaced bumps cannot give a positive value
+under the same coefficient moment conditions, at any prime.
+Their polynomial has degree at most two, so it must be
+$\alpha P_r$. Its quadratic value is
+$|\alpha|^2(-4-2r^2)$, strictly negative unless the test is
+zero. With two bumps or one bump, a polynomial of degree
+at most one with both distinct roots is zero. Thus the
+three-term negative witness and the four-term positive
+witness at $11$ use the smallest possible numbers of
+translates within this coefficient construction.
+
+For the explicit nonnegative bump
+\eqref{eq:explicit-bump}, both values $F_\psi(1/2)$ and
+$F_\psi(-1/2)$ are strictly positive. Equation
+\eqref{eq:packet-moments} then makes the coefficient
+root conditions equivalent to the actual two zero moments.
+The minimality statement applies to all packets built from
+this bump, rather than just to a sufficient algebraic
+condition. If a different bump already has zero moments,
+the equivalence can fail, and this argument does not give
+the same minimality statement for that family.
+
+\section{Orthogonal primitive extensions}
+\label{sec:extensions}
+
+Let $\mathcal D$ be a complex test space on which $B_p$ is
+defined. It may be $\T_0$ or a subspace containing the
+specific witness under consideration. Let $P_S,P_T$ be
+complex vector spaces equipped with Hermitian forms
+$I_S,I_T$. No completeness assumption is needed in the
+following algebraic argument.
+
+\begin{definition}
+\label{def:polarization-obstructions:extension}
+An orthogonal nonpositive extension on $\mathcal D$ consists
+of an isometric complex-linear inclusion
+$\iota:P_S\to P_T$ and complex-linear maps
+$\Gamma_S:\mathcal D\to P_S$,
+$\Gamma_T,\eta:\mathcal D\to P_T$ such that
+\begin{align}
+ \Gamma_Tf&=\iota\Gamma_Sf+\eta f,
+ \label{eq:extension-decomp}\\
+ I_T(\iota x,\eta f)&=0\qquad(x\in P_S,f\in\mathcal D),
+ \label{eq:extension-orthogonal}\\
+ I_T(\eta f,\eta f)&\leq0\qquad(f\in\mathcal D).
+ \label{eq:extension-negative}
+\end{align}
+The isometry condition means
+$I_T(\iota x,\iota y)=I_S(x,y)$.
+\end{definition}
+
+Nonpositivity of all of $I_T$ implies
+\eqref{eq:extension-negative}, but the definition only needs
+the sign on the added test image. Thus the exclusion below
+also applies when the ambient geometric pairing has other
+signs outside the relevant sector.
+
+\begin{theorem}[Orthogonal extension obstruction]
+\label{thm:polarization-obstructions:extension}
+Suppose $\mathcal D$ contains the positive test $f_+$ in
+Theorem~\ref{thm:polarization-obstructions:signs}. There is
+no orthogonal nonpositive extension on $\mathcal D$ for
+which the one-prime comparison at $p=11$ is
+\begin{equation}
+ I_T(\Gamma_Tf,\Gamma_Tg)-I_S(\Gamma_Sf,\Gamma_Sg)
+ =W_{11}(f*g^*)\qquad(f,g\in\mathcal D).
+ \label{eq:target-increment}
+\end{equation}
+For an arbitrary prime $p$, the same conclusion holds on
+$\mathcal D=\T_0$ with $W_p$ in place of $W_{11}$.
+\end{theorem}
+\begin{proof}
+Expand \eqref{eq:extension-decomp} in the Hermitian form.
+The old-old term cancels by isometry. The two mixed terms
+are zero by \eqref{eq:extension-orthogonal} and Hermitian
+symmetry. Therefore
+\[
+ I_T(\Gamma_Tf,\Gamma_Tf)-I_S(\Gamma_Sf,\Gamma_Sf)
+ =I_T(\eta f,\eta f)\leq0.
+\]
+At $f=f_+$ this contradicts the strict positivity in
+\eqref{eq:eleven-plus}. For every prime, use the positive
+test supplied by Corollary~\ref{cor:all-prime-signs}.
+\end{proof}
+
+The proof tests a prescribed equation and sign together.
+It does not assume an intersection form exists and then
+derive a contradiction from the existence alone. Removing
+orthogonality, allowing corrections in the comparison, or
+requiring sign only at a later support-complete stage changes
+the hypotheses of the theorem.
+
+The opposite local sign is useful as well. If a proposed
+orthogonal sector were nonnegative and its prescribed
+increment were $+W_p$, the negative packet would exclude
+that version. If the intended comparison used $-W_p$, the
+roles of the two packets would interchange. The sign issue
+is not repaired by choosing one uniform sign for an
+orthogonal local summand on all tests in $\T_0$.
+
+\subsection{Mixed pairings}
+
+\begin{proposition}
+\label{prop:polarization-obstructions:mixed}
+Suppose $\iota:P_S\to P_T$ is isometric and
+$\Gamma_T=\iota\Gamma_S+\eta$, without orthogonality.
+Then the diagonal increment is
+\begin{equation}
+ I_T(\Gamma_Tf,\Gamma_Tf)-I_S(\Gamma_Sf,\Gamma_Sf)
+ =2\operatorname{Re}I_T(\iota\Gamma_Sf,\eta f)
+ +I_T(\eta f,\eta f).
+ \label{eq:mixed-defect}
+\end{equation}
+If isometry is also dropped, one must add
+\begin{equation}
+ E(f,g)=I_T(\iota\Gamma_Sf,\iota\Gamma_Sg)
+       -I_S(\Gamma_Sf,\Gamma_Sg)
+ \label{eq:old-defect}
+\end{equation}
+to the corresponding sesquilinear expansion.
+\end{proposition}
+\begin{proof}
+Sesquilinearity expands the pairing of
+$\iota\Gamma_Sf+\eta f$ with itself into four terms.
+The two mixed terms are complex conjugates, giving the real
+part in \eqref{eq:mixed-defect}. The old-old term cancels
+under isometry. Without isometry its remainder is exactly
+\eqref{eq:old-defect}. The same expansion for two different
+tests gives the sesquilinear statement.
+\end{proof}
+
+Even a negative definite one-dimensional form permits a
+positive increment through mixed terms. On $\C$, take
+$I(x,y)=-x\overline y$, old vector $x=1$ and added vector
+$y=-1/2$. Then
+\[
+ I(x+y,x+y)-I(x,x)=-1/4+1=3/4>0,
+\]
+although $I(y,y)=-1/4<0$. Formula
+\eqref{eq:mixed-defect} gives a mixed contribution of $1$.
+This explicit example rules out any inference that a
+nonpositive total pairing makes every transition increment
+nonpositive.
+
+There is a quantitative constraint if the whole form is
+nonpositive. Applying Cauchy-Schwarz to the positive
+semidefinite form $-I_T$ gives
+\[
+ |I_T(x,y)|^2\leq(-I_T(x,x))(-I_T(y,y)).
+\]
+For completeness, this inequality follows by requiring
+$-I_T(x+zy,x+zy)\geq0$ for all complex $z$ and minimizing
+the resulting quadratic polynomial; if $I_T(y,y)=0$, the
+linear term must vanish. Thus mixed terms must obey a bound,
+but they can have either sign and can dominate the added
+diagonal term. A geometric construction must calculate them
+before applying any sign argument.
+
+\section{Support-indexed comparison}
+\label{sec:support}
+
+Part I, Definition 12.1,
+uses pairs $(S,a)$ with all primes at most $e^{2a}$ included
+in $S$. Let $\T_a$ denote its tests supported in $[-a,a]$.
+The following locality statement explains exactly when the
+orthogonal extension obstruction can be applied.
+
+\begin{proposition}
+\label{prop:polarization-obstructions:locality}
+If $f,g\in\T_a$ and $p>e^{2a}$, then $W_p(f*g^*)=0$.
+Consequently, if $(S,a)$ is support admissible and $p\notin S$,
+adjoining $p$ has zero local Weil increment on $\T_a$.
+\end{proposition}
+\begin{proof}
+If $(f*g^*)(x)\ne0$, there are points $u$ and $v$ in the
+supports of $f$ and $g$ with $x=u-v$. Thus
+$\supp(f*g^*)\subset[-2a,2a]$. If $p>e^{2a}$, then
+$k\log p>2a$ for every $k\geq1$. Both evaluations in
+\eqref{eq:local-Weil} vanish. At a support-admissible pair,
+every prime outside $S$ satisfies this strict inequality.
+\end{proof}
+
+For the centered positive witness at $11$, one may take
+$a=3\log11/2+\epsilon$. A support-complete place set
+therefore contains all primes at most $11^3e^{2\epsilon}$,
+including $11$. The transition that adds $11$ while testing
+this function starts from an incomplete set for this support.
+Theorem~\ref{thm:polarization-obstructions:extension} concerns
+the stronger demand that this intermediate transition itself
+have an orthogonal nonpositive added image and exact increment.
+
+In a support-indexed construction, an admissible enlargement
+from $(S,a)$ to $(T,b)$ with $b>a$ admits new tests. A prime
+already irrelevant at radius $a$ may contribute at radius $b$.
+The comparison on the old tests and the construction on the
+new tests are different obligations. Fixing a test and
+telescoping local distributions across the primes in $T\setminus S$
+is valid algebraically, but intermediate geometric sectors
+need not satisfy the final sign theorem.
+
+At the level of the local distributions, path independence
+is exact. For finite disjoint sets of primes $E,F$,
+\[
+ \sum_{p\in E\cup F}W_p(h)=\sum_{p\in E}W_p(h)
+ +\sum_{p\in F}W_p(h).
+\]
+This identity follows from a finite sum. If geometric
+transition defects are to reproduce it, their mixed and
+boundary terms must telescope to the same result. It does
+not follow that each intermediate diagonal defect has a
+fixed sign.
+
+\subsection{A finite support bound}
+
+There is a simple continuity estimate for each local form.
+For $f,g\in\T_a$, Cauchy-Schwarz applied to their
+correlation gives
+$|(f*g^*)(x)|\leq\|f\|_2\|g\|_2$ for every $x$.
+Let $M=\lfloor2a/L\rfloor$. Then
+\begin{equation}
+ |W_p(f*g^*)|
+ \leq2L\left(\sum_{k=1}^{M}r^k\right)\|f\|_2\|g\|_2
+ \leq\frac{2Lr}{1-r}\|f\|_2\|g\|_2.
+ \label{eq:local-bound}
+\end{equation}
+The empty sum is zero. The estimate extends the local form
+continuously to $L^2$ tests supported in the same interval.
+It also proves continuity on every compact test stage.
+
+Only finitely many primes contribute on $\T_a$, so the
+sum of their local forms is continuous on that stage.
+This does not provide a uniform bound as $a$ grows, nor
+does it address the singular archimedean subtraction.
+Those two issues belong to completion of the full comparison.
+The local sign witnesses and their obstruction require
+neither an infinite Euler product nor a global norm limit.
+
+\section{Pole moments and completion}
+\label{sec:completion}
+
+Removing the two pole moments is a useful way to test a
+primitive ansatz, but it does not give a dense subspace
+from which the full sign follows by continuity. The moment
+functionals are continuous in the compact smooth topology.
+They are also continuous in $L^2([-a,a])$, since
+\[
+ |F_f(\pm1/2)|
+ \leq\|f\|_2\left(\int_{-a}^ae^{\pm x}\,dx\right)^{1/2}.
+\]
+Their common kernel is therefore closed in either setting.
+
+\begin{proposition}
+\label{prop:moment-complement}
+On $\T$, the two functionals $f\mapsto F_f(1/2)$ and
+$f\mapsto F_f(-1/2)$ are linearly independent and have
+a two-dimensional smooth complement. For any $a>0$ the
+same statement holds on $\T_a$.
+\end{proposition}
+\begin{proof}
+Choose a nonnegative nonzero compact smooth bump $\beta$
+whose support and a nonzero translate by $b$ are both
+contained in $(-a,a)$. This is possible by first taking
+the support sufficiently small. Let $\beta_0=\beta$ and
+$\beta_1(x)=\beta(x-b)$. Set
+$u=F_\beta(1/2)>0$ and $v=F_\beta(-1/2)>0$.
+The matrix of their two moments is
+\begin{equation}
+ M=\begin{pmatrix}u&e^{b/2}u\\v&e^{-b/2}v\end{pmatrix}.
+ \label{eq:moment-matrix}
+\end{equation}
+Its determinant is $uv(e^{-b/2}-e^{b/2})\ne0$ because
+$b\ne0$. Thus the moment map is onto $\C^2$ on
+$\Span\{\beta_0,\beta_1\}$. For each $f$, solve
+\[
+ M\begin{pmatrix}c_0\\c_1\end{pmatrix}
+ =\begin{pmatrix}F_f(1/2)\\F_f(-1/2)\end{pmatrix}.
+\]
+Then $f-c_0\beta_0-c_1\beta_1$ has both moments zero,
+and the decomposition is unique because $M$ is invertible.
+All functions remain in $\T_a$. The same construction
+works in $\T$ without a fixed support bound.
+\end{proof}
+
+Suppose a Hermitian form $B$ has a known sign on $\T_0$.
+The decomposition from Proposition~\ref{prop:moment-complement}
+gives a block form on
+$\T_0\oplus\Span\{\beta_0,\beta_1\}$. A sign on the
+first block leaves the finite degree block and its mixed
+entries undetermined. For $f=f_0+v$ the exact identity is
+\[
+ B(f,f)=B(f_0,f_0)+2\operatorname{Re}B(f_0,v)+B(v,v).
+\]
+This is why a comparison proved only after killing moments
+needs a separate treatment of degree and pole corrections
+before the all-test Weil criterion can be invoked.
+
+\subsection{Limits of finite norm comparisons}
+
+For a finite prime set $E$, the local norm bounds multiply:
+\begin{equation}
+ \prod_{p\in E}(1-p^{-1/2})^2q_S(F,F)
+ \leq q_{S\cup E}(F,F)
+ \leq\prod_{p\in E}(1+p^{-1/2})^2q_S(F,F).
+ \label{eq:finite-bounds}
+\end{equation}
+These are finite inequalities. Without a separate estimate
+they do not give constants uniform in $E$. An arithmetic
+completion might use another topology, renormalized pairings
+or a support-indexed limit. The needed estimate must be
+proved in that stated topology.
+
+A related operator distinction can be established abstractly.
+Let $H$ be a Hilbert space, $P_n$ proper orthogonal
+projections, and $T_n=P_nA_nP_n$ bounded operators on $H$.
+If $T$ is bounded below by $c>0$, then
+\begin{equation}
+ \|T-T_n\|\geq c\qquad\hbox{for every }n.
+ \label{eq:norm-limit-obstruction}
+\end{equation}
+Indeed choose a unit vector $v_n\in\ker P_n$.
+Then $T_nv_n=0$, while $\|Tv_n\|\geq c$.
+Thus zero-extended proper cutoffs cannot converge in
+operator norm to a bounded-below operator.
+
+Strong convergence can still hold. Suppose $T_n$ are
+uniformly bounded by $M$ and $T_nx$ converges for every
+$x$ in a dense linear subspace $D\subset H$.
+For arbitrary $x\in H$, choose $y\in D$ with
+$\|x-y\|<\epsilon/(4M)$ when $M>0$.
+For sufficiently large $n,m$,
+\[
+ \|T_nx-T_mx\|
+ \leq2M\|x-y\|+\|T_ny-T_my\|<\epsilon.
+\]
+Completeness gives $Tx=\lim_nT_nx$; the limit is linear
+and bounded by $M$. The case $M=0$ is trivial.
+This argument specifies sufficient hypotheses for a
+strong completion, but neither hypothesis follows merely
+from the one-prime bounds in \eqref{eq:finite-bounds}.
+
+\subsection{Dynamics and domains}
+
+The usual Sonin condition imposes simultaneous spatial
+and Fourier gaps. With the Fourier convention
+$\mathcal Ff(\xi)=\int f(x)e^{-2\pi ix\xi}\,dx$, the
+unitary dilation $D_bf(x)=b^{1/2}f(bx)$ satisfies
+\[
+ \mathcal F(D_bf)(\xi)=b^{-1/2}\mathcal Ff(\xi/b).
+\]
+If both original gaps have radius $\lambda$, the transformed
+spatial gap has radius $\lambda/b$ and the Fourier gap
+has radius $b\lambda$. These formulae follow by substitution
+in the support conditions and in the Fourier integral.
+They do not establish invariance of a fixed Sonin space
+under the full dilation group.
+
+A weight-one adjoint identity also has a domain condition.
+If a densely defined operator $\Theta$ satisfies
+$\Dom\Theta^*=\Dom\Theta$ and
+$\Theta^*=\Id-\Theta$ on that domain, then
+$A=(\Theta-\frac12\Id)/i$ is self-adjoint.
+To check this, set $B=\Theta-\frac12\Id$. The bounded
+shift leaves the adjoint domain unchanged and gives
+$B^*=-B$. Since $A=-iB$, the scalar adjoint rule yields
+$A^*=iB^*=-iB=A$ on the same domain.
+An equality of differential expressions on a test core
+does not imply this domain equality.
+
+This conditional operator statement does not supply a
+realization of the zeta zeros. A spectral argument would
+also have to identify every nontrivial zero, with its
+multiplicity, in the stated operator realization. The
+entire normalization and local sign arguments above do
+not make that identification.
+
+\section{Arithmetic geometry and prior work}
+\label{sec:prior}
+
+The geometric motivation has several distinct mathematical
+sources. Semilocal adelic quotients and their crossed-product
+algebras provide arithmetic actions and local trace formulae.
+Connes's semilocal cutoff theorem retains a divergent term
+and Fourier-normalized principal values
+\cite[Section VII, Theorem 4]{C98}. His global trace condition
+in the following section has an RH-equivalent status.
+The finite trace theorem therefore cannot be used as an
+unconditional global positivity theorem.
+
+Connes, Consani and Marcolli construct a descended trace
+pairing through a restriction-map cokernel and compare it
+with primitive cohomology
+\cite[Sections 4.2 to 5]{CCM07}. Their realization includes
+the full zero divisor with multiplicities, and their
+positivity criterion separates the trace identity from
+the sign \cite[Theorem 6.1 and Proposition 6.2]{CCM07}.
+This provides a closer arithmetic precedent than an
+abstract Hilbert-space normalization. The present extension
+obstruction concerns an extra orthogonality requirement;
+it is not a contradiction of that trace construction.
+
+The semilocal Sonin isomorphisms in \cite[Theorem 4.6]{CCM24}
+are topological isomorphisms, with distinct inherited
+Hilbert norms in the entire realization. Earlier work of
+Burnol connects Sonin spaces, co-Poisson summation and
+completed Mellin transforms
+\cite[Introduction and Section 2]{B04}.
+The common entire carrier is therefore prior analytic
+structure. The elementary contribution here is the
+odd-order test for the particular positive multiplier
+proposed as a normalization of its metric transition.
+
+A sheaf organization supplies another kind of compatibility.
+Connes's account places semilocal crossed products over
+$\operatorname{Spec}\Z$ and describes their cohomological
+setting \cite[Section 7.3, Theorem 7.2]{C26}.
+Restriction maps and a generic stalk specify how local
+arithmetic data fit together. A Hermitian pairing requires
+further duality and trace data, followed by a sign theorem.
+An identification of the resulting complex with the analytic
+Sonin carrier must respect those data and the trace comparison.
+
+The adelic divisor construction of Connes and Consani uses
+rank-one torsion-free groups with possibly degenerate
+seminorms and identifies their classes as a Picard monoid
+\cite[Definition 3.1 and Theorem 3.4]{CC26}.
+The framed uniformization in that work provides geometric
+coordinates, not an arithmetic Hodge-index theorem for the
+Weil test form. In particular a monoid allowing singular
+metrics cannot be treated as an already polarized abelian
+variety without an additional construction and proof.
+
+Deninger's proposed arithmetic cohomology makes the desired
+sign and adjoint relation explicit through a Hodge-star
+pairing \cite[Section 3]{D05}. A related weight identity is
+proved for a foliated three-manifold under stated geometric
+hypotheses \cite[Theorem 4.1]{D05}. The arithmetic realization
+is a further conjectural step. This comparison explains why
+an independently constructed pairing is essential: once the
+positive pairing and the complete spectral realization are
+assumed, the centered spectral conclusion is a short
+operator argument.
+
+These sources motivate a construction through arithmetic
+duality rather than prescribing the two unsuccessful
+repairs studied here. The local sign theorem excludes
+orthogonal signed increments under its stated hypotheses.
+It leaves open a geometric pairing whose primitive
+projection changes with support, whose intermediate forms
+are indefinite, or whose mixed terms reproduce local
+arithmetic contributions.
+
+\subsection{Chain maps and Fourier duality}
+
+Part I, Proposition 14.1, supplies a concrete algebraic
+repair of the nonmultiplicative shell tensor map. The two
+shell indicators $e_0,e_1$ individually induce algebra
+embeddings. Their signed combination extends to the
+Hochschild complex by taking the same linear combination
+of the two induced chain maps in every degree. This is
+different from tensoring the signed degree-zero map with
+itself. Its chain compatibility follows from
+multiplicativity of the two individual embeddings.
+
+The corrected map also has a finite-prime chain square,
+as established in Part I, Section 15. These facts supply
+an algebraic correspondence before a primitive projection
+or pairing has been constructed. The maps act on
+uncompleted algebraic Hochschild chains. Applying a
+topological trace realization requires a specified
+completion and continuity statements for these maps.
+
+The repair does not preserve the original componentwise
+Fourier symmetry in positive chain degree. Part I,
+Proposition 14.2, evaluates its degree-one coefficient
+on the small ball $B_{-1}^2$. The coefficient itself
+vanishes there, whereas its local Fourier transform is
+$-(p-1)^3/p^2$. In degree $n\geq1$, Part I, equation (92),
+gives the discrepancy
+\[
+ (p-1)^{n+1}\bigl(p^{-(n+1)}-p^{-1}\bigr)<0
+\]
+on $B_{-1}^{n+1}$. Both values are exact local-field
+calculations. The higher-degree failure cannot be repaired
+by citing the Fourier-fixed degree-zero shell alone.
+
+This comparison distinguishes two uses of the word
+duality. On a Hilbert carrier, a bounded symmetry may
+commute with a compressed metric operator under the
+hypotheses in Section~\ref{sec:compression}. On a
+Hochschild complex, the relevant duality must interact
+with its algebra product and boundary. Local Fourier
+transformation exchanges pointwise multiplication and
+additive convolution; it is not being assumed to be a
+chain map for either unmodified complex. A correspondence
+that is correct for one product therefore needs an
+explicit comparison with the dual product before its
+Fourier action can be used in a geometric pairing.
+
+The chain construction is evidence that rejecting a
+naive tensor map need not reject an entire cohomological
+route. It also gives a concrete next test: identify a
+complex, duality and primitive projection for which the
+corrected chain correspondence has the required pairing
+defect. The local coefficient discrepancy specifies an
+equation that such a construction must account for.
+
+\section{Reformulated comparison}
+\label{sec:reformulation}
+
+An arithmetic transition can be tested without discarding
+its correction terms. For a finite place set $S$ and support
+radius $a$, suppose a specified complex has a primitive
+sector $P_{S,a}$, a Hermitian pairing $I_{S,a}$, and a
+complex-linear correspondence
+$\Gamma_{S,a}:\T_a\to P_{S,a}$.
+These are proposed geometric objects, not defined by
+pulling back the Weil form. Let a transition to $(T,b)$
+include an explicit map $\iota$ and a comparison of test
+images. For a common test $f$, write its image difference
+as $\eta f=\Gamma_{T,b}f-\iota\Gamma_{S,a}f$.
+
+The exact pairing difference is then
+\begin{align}
+ &I_{T,b}(\Gamma_{T,b}f,\Gamma_{T,b}g)
+       -I_{S,a}(\Gamma_{S,a}f,\Gamma_{S,a}g)\notag\\
+ &\quad=E(f,g)
+   +I_{T,b}(\iota\Gamma_{S,a}f,\eta g)
+   +I_{T,b}(\eta f,\iota\Gamma_{S,a}g)
+   +I_{T,b}(\eta f,\eta g),
+ \label{eq:full-expansion}
+\end{align}
+where $E$ is the old-image defect defined by
+\eqref{eq:old-defect} with support indices included.
+An arithmetic theorem must identify the right side with
+the relevant prime sum and any boundary or degree term.
+Deleting the mixed terms is justified only by a proved
+orthogonality identity.
+
+For a one-prime intermediate transition, an admissible
+comparison target has the form
+\begin{equation}
+ \Delta I(f,g)=W_p(f*g^*)+C_{S,p,a}(f,g),
+ \label{eq:corrected-comparison}
+\end{equation}
+where $C_{S,p,a}$ is an explicitly constructed correction.
+The equation is useful only if $C_{S,p,a}$ is determined
+by the geometry and its behavior under further transitions
+is proved. Defining $C$ as the unexplained difference of
+the two sides would merely restate the problem.
+
+At a support-complete stage the desired sign is
+$I_{S,a}(x,x)\leq0$ on the appropriate primitive sector.
+The full comparison must include the archimedean
+distribution and the pole contribution, or reconstruct
+them from an explicit degree complement. If it gives
+\begin{equation}
+ B_W(f,g)=-I(\Gamma f,\Gamma g)\qquad(f,g\in\T)
+ \label{eq:global-target}
+\end{equation}
+with nonpositive $I$, then $B_W(f,f)\geq0$ on every
+complex compact smooth test. The classical Weil criterion
+then implies RH. Equation~\eqref{eq:global-target} and its
+geometric sign are the required outcome of the program.
+Neither is a consequence of equivalent Sonin norms.
+
+The obstructions proved here impose concrete restrictions
+on attempts at this outcome. Positive pointwise polar
+normalization cannot preserve the entire carrier. Intrinsic
+normalization must be analyzed through its compressed
+operator and its test-map equations. An orthogonal
+nonpositive local enlargement cannot realize the exact
+intermediate $+W_p$ increment on the full pole-moment
+kernel. Support-complete sign theorems and correspondences
+with computed mixed terms remain compatible with these
+results.
+
+\section{Formal arithmetic statements}
+\label{sec:formal}
+
+The accompanying Lean development includes the arithmetic
+coefficient calculations and the squared entire identity
+obstruction. The companion sources are at
+\url{https://github.com/YonedaAI/adelic-polarization-conjecture}.
+The formalization uses Lean
+\texttt{v4.30.0-rc2} and the pinned mathlib revision
+\path{0f9072dd907c6e2e4264ab241a049cab50137f7c}.
+Its theorems rely only on the usual mathlib logical
+foundations, with no project arithmetic axioms or
+admitted proofs. The analytic applications below remain
+separate from the finite algebra they use.
+
+The module \path{lean/APC/LocalSigns.lean} defines the
+finite sum in \eqref{eq:toeplitz} for real coefficients
+and the coefficient polynomial evaluation as an actual
+finite sum. The theorems \path{APC.minus_exact} and
+\path{APC.plus_exact} establish the two values at $11$.
+Theorems with suffixes \path{minus_negative} and
+\path{plus_positive} establish their strict signs.
+The four radius and inverse-radius moment theorems prove
+the zero polynomial evaluations for the two vectors.
+The moment identities are conclusions of these proofs,
+not assumptions in a sign certificate.
+
+The module \path{lean/APC/LatticeDistribution.lean}
+extends the finite calculation to a translated profile
+\begin{equation}
+ H_c(x)=\sum_{i,j}c_ic_jH(x-(i-j)\log p).
+ \label{eq:formal-profile}
+\end{equation}
+Under the explicit premise that $H(k\log p)$ equals $A$
+at $k=0$ and zero at every other integer $k$, its
+sampling theorem identifies the prime-lattice values of
+$H_c$ with $A$ times the discrete coefficient correlation.
+A further theorem derives this premise from $H(0)=A$
+and $H(x)=0$ for $|x|\geq\log p$. The module proves
+stability of the finite prime-power sum once the cutoff
+exceeds the coefficient-vector length, and its theorems
+\path{APC.translated_minus_exact} and
+\path{APC.translated_plus_exact} give the exact local
+distribution values for the two profiles at $11$.
+
+In Proposition~\ref{prop:polarization-obstructions:bumps},
+$H=\psi*\psi^*$ and $A=\|\psi\|_2^2>0$. The Lean
+profile premise does not itself construct this smooth
+autocorrelation or prove its norm positive. The compact
+smooth bump, convolution integral and Laplace moment
+identities are proved in the paper. The all-prime packet
+formula and the constrained four-bump signature are also
+paper proofs. Thus the formal finite values support,
+but do not replace, the complete smooth sign theorem.
+
+The module \path{lean/APC/EntireObstruction.lean}
+defines the actual entire function $\Delta_p$ and proves
+its analyticity, its zero at zero and the derivative
+$\log p(1-p^{-1})$ for every natural number $p>1$.
+The theorem \path{APC.eulerDenominator_order_one}
+deduces its exact analytic order. The final theorem
+\path{APC.eulerDenominator_no_entire_square}
+rules out $\Delta_pG^2=F^2$ for nonzero functions analytic
+at every complex point. Finite order is deduced from
+the analytic identity theorem and is not retained as
+an additional premise of the entire theorem.
+
+The passage from almost-everywhere boundary equality
+to the entire squared identity is supplied by
+Lemma~\ref{lem:boundary-identity}. The formal module
+does not define the weighted Hilbert carrier, its
+orthogonal projection or its polar decomposition.
+Those operator constructions and the geometric
+extension obstruction are established by the proofs
+in this paper. No formal theorem asserts an arithmetic
+polarization or the sign of the full Weil form.
+
+\section{Conclusion}
+
+The specified ambient normalization fails by a local
+holomorphic parity argument, and the specified orthogonal
+extension fails on exact arithmetic smooth witnesses.
+The compressed Sonin normalization and the support-indexed
+geometric program survive these tests with additional
+comparison obligations. A successful construction must
+derive its pairing, retain mixed and degree terms, and
+prove the full arithmetic identity together with its sign.
+
+\begin{thebibliography}{9}
+\small
+\bibitem{B04}
+Jean-Fran\c{c}ois Burnol.
+\emph{Two complete and minimal systems associated with the zeros of the Riemann zeta function}.
+arXiv:math/0203120v7, 2004.
+\url{https://arxiv.org/abs/math/0203120v7}.
+
+\bibitem{C98}
+Alain Connes.
+\emph{Trace formula in noncommutative geometry and the zeros of the Riemann zeta function}.
+arXiv:math/9811068v1, 1998.
+\url{https://arxiv.org/abs/math/9811068v1}.
+
+\bibitem{C26}
+Alain Connes.
+\emph{The Riemann Hypothesis: Past, Present and a Letter Through Time}.
+arXiv:2602.04022v1, 2026.
+\url{https://arxiv.org/abs/2602.04022v1}.
+
+\bibitem{CC20}
+Alain Connes and Caterina Consani.
+\emph{Weil positivity and Trace formula, the archimedean place}.
+arXiv:2006.13771v1, 2020.
+\url{https://arxiv.org/abs/2006.13771v1}.
+
+\bibitem{CC26}
+Alain Connes and Caterina Consani.
+\emph{On the Jacobian of $\overline{\operatorname{Spec}\Z}$}.
+arXiv:2602.15941v1, 2026.
+\url{https://arxiv.org/abs/2602.15941v1}.
+
+\bibitem{CCM07}
+Alain Connes, Caterina Consani and Matilde Marcolli.
+\emph{The Weil proof and the geometry of the adeles class space}.
+arXiv:math/0703392v1, 2007.
+\url{https://arxiv.org/abs/math/0703392v1}.
+
+\bibitem{CCM24}
+Alain Connes, Caterina Consani and Henri Moscovici.
+\emph{Zeta zeros and prolate wave operators: Semilocal adelic operators}.
+arXiv:2310.18423v2, 2024.
+\url{https://arxiv.org/abs/2310.18423v2}.
+
+\bibitem{D05}
+Christopher Deninger.
+\emph{Arithmetic Geometry and Analysis on Foliated Spaces}.
+arXiv:math/0505354v1, 2005.
+\url{https://arxiv.org/abs/math/0505354v1}.
+
+\bibitem{PartI}
+Matthew Long, The YonedaAI Collaboration.
+\emph{Prime-Adjoining Correspondences}.
+Part I of \emph{Adelic Polarization Conjecture}, 2026.
+Companion manuscript, \texttt{local-correspondence.tex}.
+\end{thebibliography}
+\end{document}

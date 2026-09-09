@@ -1,0 +1,45 @@
+{
+  "scope": "Every path-formatted theorem identifier in Part II checked against actual Lean declarations",
+  "identifiers": [
+    {
+      "identifier": "APC.minus_exact",
+      "found": true
+    },
+    {
+      "identifier": "APC.plus_exact",
+      "found": true
+    },
+    {
+      "identifier": "minus_negative",
+      "found": true
+    },
+    {
+      "identifier": "plus_positive",
+      "found": true
+    },
+    {
+      "identifier": "APC.translated_minus_exact",
+      "found": true
+    },
+    {
+      "identifier": "APC.translated_plus_exact",
+      "found": true
+    },
+    {
+      "identifier": "APC.eulerDenominator_order_one",
+      "found": true
+    },
+    {
+      "identifier": "APC.eulerDenominator_no_entire_square",
+      "found": true
+    }
+  ],
+  "paths": [
+    "lean/APC/LocalSigns.lean",
+    "lean/APC/LatticeDistribution.lean",
+    "lean/APC/EntireObstruction.lean"
+  ],
+  "mathlib_revision": "0f9072dd907c6e2e4264ab241a049cab50137f7c",
+  "damaged_identifier_restored": "APC.translated_plus_exact",
+  "mathematical_symbols_in_path_arguments": false
+}

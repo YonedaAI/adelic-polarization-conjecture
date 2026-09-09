@@ -1,0 +1,38 @@
+{
+  "inspection_method": "Read exact local Codex reviewer session JSONLs; matched custom_tool_call exec inputs invoking tools.view_image to corresponding custom_tool_call_output arrays containing actual input_image blocks. CLI text logs omit these orchestrated image calls.",
+  "round_1": {
+    "session_id": "01a0844e-2fe1-72c1-9549-6e6b7da56f2a",
+    "session_file": "rollout-2026-09-08T21-55-11-01a0844e-2fe1-72c1-9549-6e6b7da56f2a.jsonl",
+    "source_sha256": "54bb96d4a38400eb9af4adf1301f2eef8988d64265563620f16a72054b0ead51",
+    "preview_directory": "tmp/pdfs/synthesis-codex-1",
+    "calls": [
+      {"call_id": "call_FmXbgfXs2UU7jxpdjM4256t5", "images": ["contact.png"], "input_image_count": 1},
+      {"call_id": "call_vHqoHqnpW7nIit0x6onJDmpA", "images": ["detail-01.png", "detail-08.png", "detail-09.png"], "input_image_count": 3},
+      {"call_id": "call_hN3Qn16wUX5q8Q9R7GBjSB8r", "images": ["detail-10.png", "detail-15.png", "detail-16.png"], "input_image_count": 3},
+      {"call_id": "call_lcd43LHR2QAmxO1F1AXnBmJV", "images": ["detail-19.png", "detail-20.png"], "input_image_count": 2}
+    ],
+    "total_input_images": 9
+  },
+  "round_2": {
+    "session_id": "01a08456-d9f7-78d2-bd23-f3880395662f",
+    "session_file": "rollout-2026-09-08T22-04-39-01a08456-d9f7-78d2-bd23-f3880395662f.jsonl",
+    "source_sha256": "91555b0abcab2e79784ee17ff1b4d8e5eab4797410b872504e3081e9a4052032",
+    "preview_directory": "tmp/pdfs/synthesis-codex-2",
+    "calls": [
+      {"call_id": "call_OLtyeYrE99spzHv0eFQ4Q85l", "images": ["contact.png", "detail-13.png", "detail-19.png", "detail-20.png"], "input_image_count": 4}
+    ],
+    "total_input_images": 4
+  },
+  "round_3": {
+    "session_id": "01a0846a-a687-7262-ab79-bbbad870fb75",
+    "session_file": "rollout-2026-09-08T22-26-17-01a0846a-a687-7262-ab79-bbbad870fb75.jsonl",
+    "source_sha256": "042b9e0e2ccd6e916cd707858bd8cd1e02cda3afd778afeb926b61754aa12f41",
+    "preview_directories": ["tmp/pdfs/synthesis-round-2", "tmp/pdfs/synthesis-codex-3"],
+    "calls": [
+      {"call_id": "call_6PPgIuRdFF9yyWuGKvhXGwit", "images": ["synthesis-round-2/contact.png", "synthesis-round-2/detail-10.png", "synthesis-round-2/detail-11.png", "synthesis-round-2/detail-12.png"], "input_image_count": 4},
+      {"call_id": "call_MqQZkUTjxY3iZqOMQdXlvL4U", "images": ["synthesis-codex-3/detail-01.png", "synthesis-codex-3/detail-16.png", "synthesis-codex-3/detail-20.png", "synthesis-codex-3/detail-21.png"], "input_image_count": 4}
+    ],
+    "total_input_images": 8
+  },
+  "conclusion": "All three reviewers performed raster inspection supported by actual image outputs; the earlier uncertainty concerned the incomplete CLI text log, not missing image calls."
+}

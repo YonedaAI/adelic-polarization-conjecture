@@ -1,0 +1,59 @@
+{
+  "reviewed_at_utc": "2026-09-09T03:25:41Z",
+  "round": 2,
+  "verdict": "INTEGRATED",
+  "source_sha256": {
+    "local-correspondence": "40ac3940ec7ad4a1eb5d37ee0395f542464ccc0cc7da7783e8870f95bbf75f4a",
+    "polarization-obstructions": "6ad7e950fc1c758fb9007e15f8c77e5a2c7456c2b55a7ab26c19cf6458d165ee"
+  },
+  "auxiliary_sha256": {
+    "local-correspondence": "f7b2ca2c04e09073b025b98cbec32dab2dd2bb239ba50a2f623535408e26b08b",
+    "polarization-obstructions": "b31155ecb515920c23c68b7c3dd1219192230bef548e0f61012ddde6aae4f382"
+  },
+  "checks": {
+    "both_sources_read_completely": true,
+    "numbered_cross_part_references_resolve": true,
+    "contract_labels_resolve": true,
+    "local_references_resolve": true,
+    "signs_consistent": true,
+    "support_scope_consistent": true,
+    "lean_scope_matches_sources": true,
+    "lean_source_manifest_matches": true,
+    "lean_build_rerun": false,
+    "notation_consistent": true,
+    "reversing_only_symbol_repairs_restores_round_1_source_hash": true,
+    "compiled_and_publication_pdf_identical": true,
+    "current_pdf_text_contains_corrected_notation": true,
+    "pdf_and_aux_newer_than_current_source": true,
+    "auxiliary_byte_identical_to_round_1": true
+  },
+  "conflicts": [],
+  "resolved_conflicts": [
+    {
+      "slug": "polarization-obstructions",
+      "object": "arithmetic test-map notation",
+      "fix": "All 46 test-map Gamma occurrences changed to mathcal G with indices retained. Contract updated; Part I Gamma_S remains the semilocal unit group."
+    },
+    {
+      "slug": "polarization-obstructions",
+      "object": "restricted Hilbert-carrier notation",
+      "fix": "mathcal H_S=(H,q_S) explicitly introduced in the coherence paragraph and contract. Part I H_S remains the full ambient semilocal Hilbert realization."
+    }
+  ],
+  "publication_prerequisites_carried_forward": [
+    "Verify actual public companion-source contents before release as required by research/bibliography-check.md."
+  ],
+  "part_2_pdf_sha256": "013f6cd880274c8944a043c3e08feec14320ae4ebd84c4321491f56afa9453da",
+  "part_2_pdf_pages": 21,
+  "part_2_pdf_bytes": 419705,
+  "part_2_test_map_substitutions": 46,
+  "part_2_external_reviewed_source_sha256": "950ffcbcac22b206c27a1405017c69ff7e39c17ad7ed36a40943b6ebeb03e7c4",
+  "part_2_administrative_receipt_refresh_complete_at_gate": true,
+  "part_2_actual_source_aux_pdf_cover_hashes_match_final_author_receipt": true,
+  "part_2_author_visual_inspection_pages": [6, 7, 8, 13, 14, 19],
+  "part_2_reviewer_visual_inspection_rerun": false,
+  "part_2_cover_sha256": "0bd517c3183cbb0d579d3bfc7f7f16995e89303de15d360cece201495228ada6",
+  "manuscripts_edited": false,
+  "external_reviewers_invoked": false,
+  "context_repositories_mutated": false
+}

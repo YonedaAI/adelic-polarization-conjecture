@@ -1,0 +1,10 @@
+{
+  "reviewer": "codex",
+  "exit_code": 0,
+  "document": "papers/latex/local-correspondence.tex",
+  "document_sha256": "1998ce67fd2234bbba796f7aeea6b220700be70b3fa879631b7f213271f9a8af",
+  "prompt_sha256": "0d0e0acf3040857bad12e6025708e93c22339d74a48af04b57a6c93bdc66f697",
+  "review_sha256": "294f8b4ec021a130d6261e1838377f5e38867586fa4c521b79f2c85129b3d69e",
+  "characters": 2258,
+  "verdict": "NEEDS_FIX"
+}

@@ -1,0 +1,38 @@
+{
+  "checked_on": "2026-09-08",
+  "scope": "Read-only context inspection and primary-source verification for the adelic polarization project",
+  "primary_sources": [
+    {"key": "CCM24", "arxiv_id": "2310.18423", "version": "v2", "version_date": "2024-05-04", "url": "https://arxiv.org/abs/2310.18423v2", "locations": ["Definitions 4.3, 4.5", "sections 4.5-4.8", "equations 51-62", "Theorem 4.6"], "verification": "primary HTML and metadata opened"},
+    {"key": "C26", "arxiv_id": "2602.04022", "version": "v1", "version_date": "2026-02-03", "title": "The Riemann Hypothesis: Past, Present and a Letter Through Time", "url": "https://arxiv.org/abs/2602.04022v1", "locations": ["sections 7.3-7.4", "Theorem 7.2"], "verification": "primary HTML and metadata opened", "rendering_note": "Equation 25 omitted from extracted HTML text; inspect PDF before reproducing"},
+    {"key": "CC26", "arxiv_id": "2602.15941", "version": "v1", "version_date": "2026-02-17", "url": "https://arxiv.org/abs/2602.15941v1", "locations": ["Definition 3.1", "Theorem 3.4", "Theorems 8.5 and 8.15"], "verification": "primary HTML and metadata opened"},
+    {"key": "CC20", "arxiv_id": "2006.13771", "version": "v1", "version_date": "2020-06-24", "url": "https://arxiv.org/abs/2006.13771v1", "locations": ["Appendix B equations 147-150", "Appendix C Proposition 1 equation 155"], "verification": "primary HTML and metadata opened; pole-moment criterion independently rechecked"},
+    {"key": "CCM07", "arxiv_id": "math/0703392", "version": "v1", "version_date": "2007-03-13", "url": "https://arxiv.org/abs/math/0703392v1", "locations": ["equation 4.44", "Theorem 6.1", "Proposition 6.2", "sections 7.1-7.2"], "verification": "primary HTML and metadata opened"},
+    {"key": "C98", "arxiv_id": "math/9811068", "version": "v1", "version_date": "1998-11-10", "url": "https://arxiv.org/abs/math/9811068v1", "locations": ["section VII Theorem 4", "section VIII Theorem 5"], "verification": "primary HTML opened and arXiv identifier resolved"},
+    {"key": "D05", "arxiv_id": "math/0505354", "version": "v1", "version_date": "2005-05-17", "url": "https://arxiv.org/abs/math/0505354v1", "locations": ["section 3", "Theorem 4.1"], "verification": "primary HTML and metadata opened"},
+    {"key": "B04", "arxiv_id": "math/0203120", "version": "v7", "version_date": "2004-02-25", "url": "https://arxiv.org/abs/math/0203120v7", "locations": ["Introduction", "section 2"], "verification": "primary HTML and metadata opened"}
+  ],
+  "context_repositories": [
+    {"path": "/Users/mlong/Documents/Development/magneton_work/arithmetic-positivity-program", "head": "60b788c202bb598f923ea949d483b3f168a8a4eb", "dirty": true, "note": "Requested perspective file is untracked; no context files edited"},
+    {"path": "/Users/mlong/Documents/Development/magneton_work/riemann-hypothesis-proof", "head": null, "dirty": true, "note": "Git repository has no HEAD commit; artifacts are untracked; no context files edited"}
+  ],
+  "context_file_sha256": [
+    {"path": "../arithmetic-positivity-program/research/arithmetic-polarization-direction.md", "sha256": "689de58836b7faeeee628e2d25bcd1095d3fd980c09ad2e411a52aa8aac3b1f8"},
+    {"path": "../arithmetic-positivity-program/research/weil-conventions.md", "sha256": "4a7f2973ca2b0c963f7c0341efc868983f1deecc6aedfd853e7212b02918be8a"},
+    {"path": "../arithmetic-positivity-program/research/geometry-bridges.md", "sha256": "4b498884a52e16b333c9470303e54a1f0eca0aa15b6dfc019f4c24c9032b1bfa"},
+    {"path": "../arithmetic-positivity-program/research/obstruction-map.md", "sha256": "68016f56a70b5b8bf8f9afebfe4c3628ea6037f101df7cf2145f052dcc2db08d"},
+    {"path": "../riemann-hypothesis-proof/research/polarization-routes.md", "sha256": "7068ed08c1a474a707ee60169be630fac25b6a74bd073575391c3cd959a1b695"},
+    {"path": "../riemann-hypothesis-proof/research/analytic-results.md", "sha256": "55a61f7797f59b8a08b8fc25b6f1c966b29ddd4e366f04e9257ab60f30ec380e"},
+    {"path": "context/construct-rh-polarization/01-towards-rh-construct-a-polarization-compatible-with-adjoining-primes-in-semilocal-adelic.md", "sha256": "19123afd5764f94c5fff6a0b63bd5def8e2e969e04ec8108d812fe944aff7575"},
+    {"path": "context/construct-rh-polarization/02-make-this-facebook-post-readable.md", "sha256": "a7472357cfc39a29e72bc90e749826c6f1b7f79257bca1571f3d5695417ee196"},
+    {"path": "context/explain-mathematical-gaps/01-when-is-says-gap-what-does-that-mean.md", "sha256": "3a193e5f5f1697a120ecefef757c90023352336f7368c55cf3fa8096f4eeb957"},
+    {"path": "context/explain-mathematical-gaps/02-what-is-a-more-promising-direction-towards-rh.md", "sha256": "6f81df57989bcc53809409bf9d52a90355d65d18bacbfa5c36d7cb39ff461897"},
+    {"path": "context/explain-mathematical-gaps/03-so-for-a-research-perspective-define-the-direction.md", "sha256": "3ad52e1e48519c31ee2151770b76eab269a43fee731fd356133834568d575812"},
+    {"path": "context/explain-mathematical-gaps/04-does-that-align-with-my-previous-research.md", "sha256": "7eac60770a355163fd3495ddb09135fd7f46b6cf594c8925106f6d0d80ab0636"},
+    {"path": "context/why-rh-is-hard/01-why-is-rh-so-hard.md", "sha256": "a751a83bf82eea4f0fbfbb992c82f32dd7b430bc0b1a41c26700754f4d7d3242"},
+    {"path": "context/why-rh-is-hard/02-so-we-need-to-identify-the-structure-of-the-zeta-function.md", "sha256": "50f2f9dffd54de908549bb320b66b3d6733abe8aaacc2880711f8e43562a0869"},
+    {"path": "context/why-rh-is-hard/03-so-if-we-understand-the-higher-category-of-zeta-rh-is-solved.md", "sha256": "37f151db53dcdc416da0b5420160ec69daf792d10ef0087821194b2b7ef888c5"},
+    {"path": "context/why-rh-is-hard/04-ai-is-going-to-solve-rh-by-abstracting-the-structure-of-the.md", "sha256": "eea1fd44acaf49ab2ea38f64c546f6ffcd11365d1089846922c8c916801080b0"}
+  ],
+  "context_math_status": "Working definitions and research directions; historical verification reports not rerun in this task",
+  "own_results_status": "Two worker papers received substantive AGY minor-revision verdicts with corrections and final Codex formatting PASS. Independent cross-paper integration passed after two notation corrections; synthesis is in progress. Lean build and all 46 theorem axiom entries passed; the primitive pairing, geometric sign and RH remain open. Final manuscript receipts identify exact reviewed and corrected source hashes."
+}

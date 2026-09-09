@@ -1,0 +1,31 @@
+[
+  {
+    "route": "/",
+    "localLinks": "pass",
+    "metadata": "pass"
+  },
+  {
+    "route": "/papers/local-correspondence/",
+    "math": 591,
+    "theorems": 19,
+    "words": 7009,
+    "localLinks": "pass",
+    "sourceInventory": "pass"
+  },
+  {
+    "route": "/papers/polarization-obstructions/",
+    "math": 658,
+    "theorems": 19,
+    "words": 7727,
+    "localLinks": "pass",
+    "sourceInventory": "pass"
+  },
+  {
+    "route": "/papers/synthesis/",
+    "math": 597,
+    "theorems": 10,
+    "words": 8251,
+    "localLinks": "pass",
+    "sourceInventory": "pass"
+  }
+]

@@ -1,0 +1,1617 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[margin=1in]{geometry}
+\linespread{1.0}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{1.5em}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{booktabs,tabularx,array,longtable}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,columns=fullflexible,frame=single,framesep=4pt,showstringspaces=false,captionpos=b}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+\hypersetup{
+ pdftitle={Prime-Adjoining Correspondences},
+ pdfauthor={Matthew Long; The YonedaAI Collaboration},
+ pdfsubject={Part I of Adelic Polarization Conjecture},
+ pdfkeywords={semilocal adeles, Sonin spaces, Hochschild homology, Weil explicit formula}
+}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\T}{\mathcal T}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\Rea}{\operatorname{Re}}
+\newcommand{\Ima}{\operatorname{Im}}
+\newcommand{\ind}{\mathbf1}
+\newcommand{\Sch}{\mathcal S}
+\newcommand{\Son}{\mathbf S}
+\newcommand{\Bcal}{\mathcal B}
+\usepackage{everypage}
+\definecolor{grokgray}{RGB}{110,110,110}
+\AddEverypageHook{%
+  \ifnum\value{page}=1
+    \begin{tikzpicture}[remember picture,overlay]
+      \node[rotate=90,anchor=south,font=\footnotesize\sffamily\color{grokgray},inner sep=0pt]
+        at ([xshift=30pt,yshift=0.5\paperheight]current page.south west)
+        {GrokRxiv:2026.09.local-correspondence\quad [\,math.NT\,]\quad 08 Sep 2026};
+    \end{tikzpicture}
+  \fi
+}
+\title{Prime-Adjoining Correspondences\\[4pt]
+  {\normalsize Part I of \emph{Adelic Polarization Conjecture}}}
+\author{Matthew Long\\
+  \small The YonedaAI Collaboration, YonedaAI Research Collective\\
+  \small Chicago, IL\\
+  \small \texttt{matthew@yonedaai.com}}
+\date{September 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A prime-adjoining map between semilocal Sonin spaces preserves Fourier duality but changes the inherited norm. We examine whether its local construction supplies a correspondence compatible with the arithmetic terms in Weil's explicit formula. Starting from the unit-invariant local Sonin vector, we derive the transition on logarithmic coordinates, its bounded inverse, its mixed pairing with the unit-ball map, and the two-prime compatibility square. The derivative of the logarithm of the positive metric operator has an absolutely convergent translation expansion whose distribution kernel contains every prime power with the required coefficient. This operator gives the local Weil term, whereas the raw norm defect has only three translation components. A separate algebraic obstruction concerns the direct tensor construction: no nonzero unit-invariant local Sonin vector defines a multiplicative coefficient map into the larger crossed-product algebra. The proof uses the incompatibility between the two shell values and idempotence. A weighted sum of shell embeddings instead gives Hochschild chain maps with commuting prime transitions, but its higher local tensor factors fail componentwise Fourier symmetry. Exact support indexing identifies when a finite-place formula equals the full Weil distribution. These results distinguish the analytic transition and corrected algebraic chain map from a still unconstructed primitive geometric pairing. The obstruction excludes a specified algebra-homomorphism ansatz; it does not exclude correspondences implemented by bimodules or corrected complexes, and it establishes no global positivity statement.
+\end{abstract}
+
+\section{Introduction}
+
+Adjoining a finite prime to a semilocal adelic space changes a local Euler
+factor and a Hilbert norm at the same time. The relation is explicit in the
+Sonin-space construction of Connes, Consani and Moscovici
+\cite{CCM}. For a prime $p$, the transition becomes multiplication by
+$1-p^{-1/2-it}$ after passage to logarithmic coordinates and Fourier
+transformation. Its modulus is bounded above and below by positive
+constants. The resulting isomorphism therefore preserves the topology,
+but it does not preserve the inherited inner product.
+
+The arithmetic contribution of $p$ has a different form. Weil's explicit
+formula involves every positive power of $p$ meeting the test support,
+with coefficient $(\log p)p^{-k/2}$. A norm defect contains only the
+constant coefficient and the first positive and negative translations.
+The distinction determines which analytic construction could enter an
+arithmetic comparison. The logarithm of the metric operator, followed by
+differentiation with respect to the real parameter $\sigma$, produces the required infinite
+translation series. The raw metric operator does not.
+
+A further distinction appears before any question about positivity.
+The local Sonin vector is a function supported on two $p$-adic shells.
+Tensoring with that vector is a useful linear map, but it is not
+multiplicative for pointwise multiplication. This obstruction survives
+every nonzero scalar normalization of the unit-invariant local Sonin
+vector. It prevents a direct interpretation of this tensor operation
+as an algebra homomorphism between the natural semilocal crossed products.
+It leaves other notions of correspondence available.
+
+The geometric setting is substantial. Connes describes the semilocal
+crossed products as a sheaf over $\operatorname{Spec}\Z$ and relates the
+function spaces in the trace formula to Hochschild homology
+\cite[Section 7.3, Theorem 7.2]{Connes2026}. Earlier work constructs
+restriction-map cokernels and a descended trace pairing on the adele
+class space \cite[Sections 4 and 5]{CCMar}. These results motivate a
+primitive pairing, but they do not establish the required nonpositivity
+of that geometric pairing $I$. The desired Weil form $B_W=-I$ would
+be nonnegative. A passage from an analytic
+map to a geometric correspondence must specify its action on the
+relevant complex and its interaction with duality.
+
+Our central algebraic result is
+\cref{thm:local-correspondence:tensor-obstruction}. It rejects the direct
+tensor algebra-homomorphism ansatz using only local fields and the actual
+Sonin generator. A weighted sum of the two shell embeddings gives
+an algebraic Hochschild chain map extending the degree-zero tensor
+map, with commuting prime transitions. Its local factors fail
+componentwise Fourier symmetry in every positive degree. The analytic
+results surrounding these constructions give the exact maps
+and distributions that a replacement would have to recover. Their proofs
+also establish the signs and support conventions needed for comparisons
+with a proposed intersection pairing. The standard local Fourier
+calculation and the established Sonin stability theorem are attributed
+to their sources; no novelty claim is made for them or for the elementary
+Euler-factor expansion.
+
+Part II develops different obstructions, concerning normalization on an
+entire carrier and the sign of orthogonal primitive extensions
+\cite{PartII}. The present argument takes place before those choices:
+it tests multiplication on the proposed coefficient map itself. A
+primitive polarization, a complete arithmetic comparison, and a global
+spectral realization remain open construction problems.
+
+\section{The complex test algebra}
+
+\begin{definition}\label{def:local-correspondence:test-algebra}
+Let $\T=C_c^\infty(\R,\C)$. For $f,g\in\T$, define
+\begin{align}
+ (f*g)(x)&=\int_\R f(u)g(x-u)\,du, &
+ f^*(x)&=\overline{f(-x)},\label{eq:test-operations}\\
+ F_f(z)&=\int_\R f(x)e^{zx}\,dx, &
+ \widehat f(t)&=F_f(-it).\label{eq:test-transforms}
+\end{align}
+The Fourier inverse has the normalization
+\begin{equation}\label{eq:fourier-inverse}
+ f(x)=\frac1{2\pi}\int_\R\widehat f(t)e^{itx}\,dt.
+\end{equation}
+Operator-norm calculations use the unitary normalization
+$(2\pi)^{-1/2}\widehat f$ on $L^2(\R)$; the transform
+$\widehat f$ in the explicit formula retains
+\eqref{eq:fourier-inverse}. All Hermitian forms in this paper
+are linear in the first variable.
+\end{definition}
+
+The use of complex tests is necessary for the sesquilinear comparisons.
+No evenness or reality condition is imposed on $f$. Even functions on
+the real local field will occur in the Sonin realization, but their
+logarithmic-coordinate functions need not be even. These are different
+uses of the real variable, and identifying them would unnecessarily
+restrict the test algebra.
+
+\begin{lemma}\label{lem:test-identities}
+For $f,g\in\T$, the function $F_f$ is entire and
+\begin{align}
+ F_{f*g}(z)&=F_f(z)F_g(z),\label{eq:laplace-convolution}\\
+ F_{f^*}(z)&=\overline{F_f(-\overline z)},\label{eq:laplace-star}\\
+ \widehat{f*g^*}(t)&=\widehat f(t)\overline{\widehat g(t)}.
+ \label{eq:fourier-correlation}
+\end{align}
+If $\supp f\subset[-a,a]$, then for every $N\ge0$ and every $b>0$
+there is a constant $C_{f,N,b}$ such that
+\begin{equation}\label{eq:strip-decay}
+ |F_f(\sigma+it)|\le C_{f,N,b}(1+|t|)^{-N}
+ \qquad (|\sigma|\le b).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Differentiation under the integral is valid on every compact subset of
+$\C$, because $x$ lies in a fixed compact interval. The change of
+variables $x=u+v$ proves \eqref{eq:laplace-convolution} by Fubini's
+theorem. Replacing $x$ by $-x$ in the involution integral proves
+\eqref{eq:laplace-star}. On the imaginary axis the latter identity is
+complex conjugation, which gives \eqref{eq:fourier-correlation}.
+
+For the decay estimate, integrate the Fourier transform of
+$e^{\sigma x}f(x)$ by parts $N$ times. Its $N$th derivative has a
+uniform $L^1$ bound for $|\sigma|\le b$, since the derivative is a finite
+sum of terms $\sigma^j e^{\sigma x}f^{(N-j)}(x)$. The boundary terms
+vanish. This proves the stated bound for $|t|\ge1$; a direct integral
+bound handles the remaining compact interval.
+\end{proof}
+
+For $h=f*g^*$ the real-space formula is
+\begin{equation}\label{eq:correlation}
+ h(x)=\int_\R f(u)\overline{g(u-x)}\,du.
+\end{equation}
+Consequently $h(0)=\langle f,g\rangle_{L^2}$, and $h=h^*$ when $g=f$.
+The Fourier transform of an autocorrelation is nonnegative. Its values
+at nonzero real translations can nevertheless have either sign, even
+for real tests. This is the elementary source of sign changes in local
+prime contributions.
+
+The multiplicative test corresponding to $h$ is
+\begin{equation}\label{eq:multiplicative-test}
+ \varphi_h(y)=y^{-1/2}h(\log y),\qquad y>0.
+\end{equation}
+With Mellin transform $\widetilde\varphi(s)=\int_0^\infty
+\varphi(y)y^{s-1}\,dy$, substitution $y=e^x$ gives
+\begin{equation}\label{eq:mellin-shift}
+ \widetilde\varphi_h(s)=F_h(s-1/2).
+\end{equation}
+The shift is responsible for both $p^{-k/2}$ in the local terms and the
+reflection $z\mapsto-\overline z$ in \eqref{eq:laplace-star}.
+The conventions agree with Appendix B of Connes and Consani
+\cite{CC2020} after this change of variables.
+
+\section{The complete arithmetic distribution}
+
+\begin{definition}\label{def:local-correspondence:weil}
+For $h\in\T$, put
+\begin{align}
+ P(h)&=F_h(1/2)+F_h(-1/2),\label{eq:poles}\\
+ W_p(h)&=(\log p)\sum_{k\ge1}p^{-k/2}
+          \bigl(h(k\log p)+h(-k\log p)\bigr),\label{eq:local-weil}\\
+ A(h)&=(\log(4\pi)+\gamma)h(0)\nonumber\\
+ &\quad+\int_0^\infty
+ \frac{e^{-u/2}(h(u)+h(-u))-2e^{-u}h(0)}{1-e^{-2u}}\,du.
+ \label{eq:archimedean}
+\end{align}
+Here $\gamma$ is Euler's constant. The completed Weil distribution is
+\begin{equation}\label{eq:weil-complete}
+ W(h)=P(h)-A(h)-\sum_pW_p(h),\qquad
+ B_W(f,g)=W(f*g^*).
+\end{equation}
+\end{definition}
+
+Every finite-place sum in \eqref{eq:weil-complete} is finite on a fixed
+compactly supported test. The apparently singular archimedean integral
+also converges. Near zero,
+$h(u)+h(-u)=2h(0)+O(u^2)$, so its numerator is $u h(0)+O(u^2)$.
+The denominator is $2u+O(u^2)$. Beyond the support of $h$, only the
+exponentially decaying subtraction term remains. Removing that term
+before integration would destroy the cancellation at zero.
+
+\begin{proposition}\label{prop:explicit-formula}
+Let $\rho$ run over the nontrivial zeros of $\zeta$, with multiplicity.
+Then
+\begin{equation}\label{eq:zero-sum}
+ W(h)=\sum_\rho F_h(\rho-1/2),\qquad h\in\T.
+\end{equation}
+The series converges absolutely. In particular,
+\begin{equation}\label{eq:mixed-zero-sum}
+ B_W(f,g)=\sum_\rho F_f(\rho-1/2)
+      \overline{F_g(1/2-\overline\rho)}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Apply the explicit formula in \cite[Appendix B, equations (147) to
+(150)]{CC2020} to \eqref{eq:multiplicative-test}. The two pole integrals
+are $F_h(1/2)$ and $F_h(-1/2)$. The two values at $p^k$ become
+$p^{-k/2}h(k\log p)$ and $p^{-k/2}h(-k\log p)$.
+In the archimedean integral, $y=e^u$ changes
+$dy/(y-y^{-1})$ into $du/(1-e^{-2u})$. This gives
+\eqref{eq:archimedean} with the displayed signs.
+
+The nontrivial zeros lie in $0<\Rea\rho<1$. The classical zero-count
+bound is $O(T\log(T+2))$ up to height $T$; the standard counting formula
+is recalled in \cite[Section 2]{Connes2026}. Taking $N>2$ in
+\eqref{eq:strip-decay} and grouping zeros by dyadic height proves
+absolute convergence. Finally, apply
+\eqref{eq:laplace-convolution} and \eqref{eq:laplace-star} to $f*g^*$.
+\end{proof}
+
+The quadratic summand in \eqref{eq:mixed-zero-sum} is an absolute square
+when $\Rea\rho=1/2$. Without that condition, its two factors are values
+at different points. Absolute convergence therefore supplies no sign.
+The reflection symmetry of the zero set does give a Hermitian form;
+it does not make every summand nonnegative.
+
+The pole form also consists of mixed products:
+\begin{equation}\label{eq:pole-mixed}
+ P(f*g^*)=F_f(1/2)\overline{F_g(-1/2)}
+          +F_f(-1/2)\overline{F_g(1/2)}.
+\end{equation}
+The two products vanish if the first test has both pole moments zero.
+This motivates the moment-killing subspace
+\begin{equation}\label{eq:primitive-tests}
+ \T_0=\{f\in\T:F_f(1/2)=F_f(-1/2)=0\}.
+\end{equation}
+On $\T_0$, the pole contribution disappears from the quadratic
+explicit formula. Appendix C, Proposition 1 of \cite{CC2020},
+with its finite exceptional set equal to $\{0,1\}$ in Mellin
+coordinates, states that $B_W(f,f)\ge0$ for all $f\in\T_0$
+is equivalent to RH. This precise version of the Weil criterion
+justifies the two moment conditions. A further restriction to
+even tests or an arbitrary smaller subspace requires its own
+argument.
+
+\section{The local shell vector}
+
+Normalize additive Haar measure on $\Q_p$ by
+$\operatorname{vol}(\Z_p)=1$, and take
+$e_p(x)=\exp(2\pi i\{x\}_p)$, where $\{x\}_p$ is the standard
+rational $p$-adic fractional part in $[0,1)$. This character has
+conductor $\Z_p$. Let $\mathscr F_pu(y)=\int_{\Q_p}u(x)e_p(xy)\,dx$
+on $L^1(\Q_p)\cap L^2(\Q_p)$, extended unitarily to
+$L^2(\Q_p)$. For $n\in\Z$ write
+\begin{equation}\label{eq:balls-shells}
+ B_n=\{x:|x|_p\le p^n\},\qquad
+ \epsilon_n=\ind_{B_n}-\ind_{B_{n-1}}.
+\end{equation}
+Thus $\epsilon_n$ is a shell indicator. Its volume is
+$p^n-p^{n-1}$.
+
+\begin{definition}\label{def:local-correspondence:shell}
+The local Sonin vector is
+\begin{equation}\label{eq:sigma}
+ \sigma_p=\epsilon_0-p^{-1}\epsilon_1
+ =(1+p^{-1})\ind_{B_0}-\ind_{B_{-1}}-p^{-1}\ind_{B_1}.
+\end{equation}
+The radial local Sonin space consists of $\Z_p^\times$-invariant
+$u\in L^2(\Q_p)$ for which both $u$ and $\mathscr F_pu$ vanish almost
+everywhere on $B_{-1}$.
+\end{definition}
+
+The following result is the local statement proved in
+\cite[Section 4.5]{CCM}. A direct proof fixes the shell convention and
+will be used in the algebraic obstruction.
+
+\begin{proposition}\label{prop:local-sonin}
+The radial local Sonin space is $\C\sigma_p$. Its generator satisfies
+\begin{equation}\label{eq:sigma-properties}
+ \mathscr F_p\sigma_p=\sigma_p,\qquad
+ \int_{\Q_p}\sigma_p(x)\,dx=0,\qquad
+ \|\sigma_p\|_2^2=1-p^{-2}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The Fourier transform of a ball is
+\begin{equation}\label{eq:ball-fourier}
+ \mathscr F_p\ind_{B_n}=p^n\ind_{B_{-n}}.
+\end{equation}
+Indeed, the character is trivial on the ball precisely on its
+annihilator, and otherwise translation by an element of the ball forces
+the integral to vanish. Apply \eqref{eq:ball-fourier} to the last
+expression in \eqref{eq:sigma}. The coefficients of the three balls
+remain unchanged. The shell description gives both the integral and
+the squared norm:
+\begin{align}
+ \int\sigma_p&=(1-p^{-1})-p^{-1}(p-1)=0,\nonumber\\
+ \|\sigma_p\|_2^2&=(1-p^{-1})+p^{-2}(p-1)=1-p^{-2}.
+ \label{eq:sigma-norm-derivation}
+\end{align}
+
+For uniqueness, write a radial $u$ as a constant $a_n$ on each shell.
+The spatial gap makes $a_n=0$ for $n<0$. For every integer $k\ge1$,
+the Fourier gap and Plancherel give
+\begin{equation}\label{eq:radial-moment}
+ 0=\langle\mathscr F_pu,\ind_{B_{-k}}\rangle
+   =p^{-k}\int_{B_k}u(x)\,dx.
+\end{equation}
+These finite-ball integrals exist by the Cauchy-Schwarz inequality. Subtract the
+identities for $k$ and $k-1$, when $k\ge2$, to obtain $a_k=0$.
+The remaining identity for $k=1$ reads
+$a_0(1-p^{-1})+a_1(p-1)=0$. It gives $a_1=-a_0/p$, as required.
+\end{proof}
+
+Replacing shells by balls would give a different function.
+For example, $\ind_{B_0}-p^{-1}\ind_{B_1}$ equals $1-p^{-1}$ on
+$B_{-1}$. It does not have the spatial Sonin gap. The subtraction
+$\ind_{B_{-1}}$ in \eqref{eq:sigma} is essential, even though the
+orbit-sum formula later has only two nonzero terms.
+
+For $p=2$, the values of $\sigma_p$ on the shells $|x|_2=1$ and
+$|x|_2=2$ are $1$ and $-1/2$, and its squared norm is $3/4$.
+The negative shell value is compatible with Fourier self-duality.
+It will be incompatible with idempotence for pointwise multiplication.
+The two requirements concern different operations.
+
+\section{Semilocal transitions}
+
+Let $S$ be a finite set of places containing infinity, and put
+$S_f=S\setminus\{\infty\}$. The semilocal objects are
+\begin{equation}\label{eq:semilocal-objects}
+ \mathbb A_S=\R\times\prod_{p\in S_f}\Q_p,
+ \qquad \Gamma_S=\{\pm\prod_{p\in S_f}p^{n_p}:n_p\in\Z\},
+ \qquad Y_S=\mathbb A_S/\Gamma_S.
+\end{equation}
+Let $K_S$ be the maximal compact subgroup of the semilocal idele class
+group. We use the Hilbert realization
+$H_S=L^2(Y_S)^{K_S}$ and its Fourier transform as constructed in
+\cite[Section 4.1]{CCM}. This notation refers to that realization,
+rather than to an unspecified quotient measure on a potentially
+non-Hausdorff orbit space.
+
+At the real place, $H_\infty=L^2(\R)^{\rm ev}$. Its multiplicative
+coordinate map may be normalized as
+\begin{equation}\label{eq:w-infinity}
+ (w_\infty v)(y)=\sqrt2\,y^{1/2}v(y),\qquad y>0.
+\end{equation}
+It is unitary for measure $d^*y=dy/y$. Composing with $y=e^x$ gives
+a unitary $J:H_\infty\to L^2(\R,dx)$,
+$Jv(x)=\sqrt2e^{x/2}v(e^x)$. The factor $\sqrt2$ accounts for the
+two equal halves of an even function. A common harmless Fourier
+normalization factor is included whenever a unitary Fourier transform
+is used.
+
+\begin{definition}\label{def:local-correspondence:theta}
+For $v\in H_\infty$, let
+\begin{equation}\label{eq:theta-eta}
+ \theta_Sv=[(\bigotimes_{p\in S_f}\sigma_p)\otimes v],\qquad
+ \eta_Sv=[(\bigotimes_{p\in S_f}\ind_{\Z_p})\otimes v].
+\end{equation}
+Brackets denote the semilocal class realization of \cite{CCM}, initially
+on its natural dense space and then by bounded extension. For
+$S\subset T$, define the analytic transition
+\begin{equation}\label{eq:relative-theta}
+ \theta_{S,T}=\theta_T\theta_S^{-1}:H_S\longrightarrow H_T.
+\end{equation}
+\end{definition}
+
+The one-prime orbit sum explains the operator without invoking a
+geometric pairing. Evaluate at a representative whose finite coordinate
+is $1$. Only the exponents $0$ and $-1$ of the $p$-orbit meet the two
+shells. Up to the common normalization in \eqref{eq:w-infinity}, the
+result is
+\begin{equation}\label{eq:orbit-sum}
+ y^{1/2}\bigl(v(y)-p^{-1}v(y/p)\bigr)
+ =g(y)-p^{-1/2}g(y/p),\qquad g(y)=y^{1/2}v(y).
+\end{equation}
+This is the calculation in \cite[Section 4.6, equation (57)]{CCM}.
+After $y=e^x$, it is a difference of two translations.
+
+The corresponding unit-ball orbit sum contains all nonnegative
+exponents. It gives
+\begin{equation}\label{eq:eta-orbits}
+ g(y)\longmapsto\sum_{k\ge0}p^{-k/2}g(p^ky).
+\end{equation}
+The two maps therefore translate in opposite directions before
+Fourier transformation. This accounts for the complex conjugate in
+their mixed pairing.
+
+For $\lambda>0$, the real Sonin space is the subspace of even square
+integrable functions whose spatial and real Fourier transforms vanish
+on $(-\lambda,\lambda)$. The semilocal definition uses the corresponding
+norm gap on $Y_S$. Theorem 4.6 of \cite{CCM} states that $\theta_S$
+is a bounded topological isomorphism between these Sonin spaces.
+The theorem includes surjectivity onto the gap-defined space; it is
+stronger than the elementary multiplier bound alone. The Fourier
+intertwining follows from $\mathscr F_p\sigma_p=\sigma_p$ and the
+real factor in the tensor construction.
+
+\section{The bounded translation operator}
+
+Fix $p$, and abbreviate $L=\log p$ and $r=p^{-1/2}$. For real $b$,
+let $(T_bu)(x)=u(x-b)$ on $L^2(\R,dx)$. Then
+$T_b^*=T_{-b}$ and $T_bT_c=T_{b+c}$. Define
+\begin{equation}\label{eq:Ap}
+ A_p=I-rT_L,\qquad m_p(t)=1-re^{-itL}.
+\end{equation}
+Our Fourier transform sends $A_p$ to multiplication by $m_p$.
+
+\begin{theorem}\label{thm:local-correspondence:inverse}
+The operator $A_p$ is bounded and invertible, with
+\begin{align}
+ A_p^{-1}&=\sum_{k\ge0}r^kT_{kL},\label{eq:Ap-inverse}\\
+ (1-r)\|u\|_2&\le\|A_pu\|_2\le(1+r)\|u\|_2,\label{eq:Ap-bounds}\\
+ \|A_p\|&=1+r,\qquad \|A_p^{-1}\|=(1-r)^{-1}.
+ \label{eq:Ap-exact-norms}
+\end{align}
+The series in \eqref{eq:Ap-inverse} converges in operator norm.
+Its remainder after $k=N$ has norm at most $r^{N+1}/(1-r)$.
+\end{theorem}
+
+\begin{proof}
+Since $\|rT_L\|=r<1$, the geometric series is absolutely convergent
+in the Banach algebra of bounded operators. Multiplication of its
+partial sum by $I-rT_L$ leaves $I-r^{N+1}T_{(N+1)L}$. The remainder
+bound proves both inverse identities. The triangle and reverse
+triangle inequalities give \eqref{eq:Ap-bounds}.
+
+Under the unitary transform $(2\pi)^{-1/2}\widehat{\phantom f}$,
+the operator norms are the essential suprema of $|m_p|$ and
+$|m_p|^{-1}$. The continuous periodic function $|m_p|$ takes its
+minimum $1-r$ at $t=0$ and its maximum $1+r$ at $t=\pi/L$.
+Every neighborhood of either point has positive measure. The essential
+extrema therefore equal the stated extrema.
+\end{proof}
+
+The inverse is an ambient Hilbert-space inverse. It usually fails to
+preserve compact support. To see the failure exactly, choose a nonzero
+$u\in\T$ supported in an interval of length less than $L$. The
+translates $T_{kL}u$ have disjoint supports, and on the $k$th translated
+interval the inverse equals $r^kT_{kL}u$. Infinitely many of these
+pieces are nonzero. The inverse remains square integrable because the
+sum of their squared norms is a geometric series.
+
+By contrast, $A_p$ preserves smooth compact support and obeys
+\begin{equation}\label{eq:support-Ap}
+ \supp(A_pu)\subset\supp u\cup(\supp u+L).
+\end{equation}
+It acts continuously on every Sobolev space, with the same bounds,
+because its translation terms commute with weak derivatives.
+These properties are useful for local analytic transitions but do
+not make $A_p$ an automorphism of the fixed compact test algebra.
+
+For a nonzero compactly supported smooth function $u$ and real $b$,
+the commutator with multiplication by $x$ is
+\begin{equation}\label{eq:position-commutator}
+ [x,T_b]u=bT_bu,\qquad [x,A_p]u=-rLT_Lu.
+\end{equation}
+Thus the coefficient $\log p$ can already be read from the displacement
+in the local operator. The logarithmic derivative below recovers it
+with all iterates of that displacement.
+
+\section{Mixed duality and metric variation}
+
+The unit-ball operator in logarithmic coordinates is
+\begin{equation}\label{eq:Bp}
+ B_p=(A_p^*)^{-1}=\sum_{k\ge0}r^kT_{-kL}.
+\end{equation}
+It has Fourier multiplier $1/\overline{m_p(t)}$. The orientation of
+the translation in \eqref{eq:Bp} is fixed by the orbit sum
+\eqref{eq:eta-orbits}; replacing it by $A_p^{-1}$ would change the
+mixed pairing.
+
+\begin{proposition}\label{prop:local-correspondence:mixed}
+For all $u,v\in L^2(\R)$,
+\begin{equation}\label{eq:mixed-pairing}
+ \langle A_pu,B_pv\rangle=\langle u,v\rangle.
+\end{equation}
+For finite $S$, the semilocal maps satisfy
+\begin{equation}\label{eq:semilocal-mixed}
+ \langle\theta_Su,\eta_Sv\rangle_{H_S}
+   =\langle u,v\rangle_{H_\infty}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Since $A_p^*B_p=I$, the adjoint identity proves
+\eqref{eq:mixed-pairing}. Equivalently, its Fourier integrand contains
+$m_p\overline{1/\overline{m_p}}=1$. The finite products over $S_f$
+commute, and their factors cancel in the same way. The unitary
+semilocal realization gives \eqref{eq:semilocal-mixed}, which is the
+mixed duality identity of \cite[Section 4.7]{CCM}.
+\end{proof}
+
+The mixed identity pairs two different embeddings. Its specialization
+to $u=v$ is positive, but it is not a self-pairing of $\theta_Su$.
+The latter is controlled by the positive operator
+\begin{equation}\label{eq:Gp}
+ G_p=A_p^*A_p=(1+r^2)I-r(T_L+T_{-L}).
+\end{equation}
+
+\begin{proposition}\label{prop:local-correspondence:defect}
+The defect $D_p=G_p-I$ satisfies
+\begin{align}
+ D_p&=r^2I-r(T_L+T_{-L}),\label{eq:Dp}\\
+ \langle A_pu,A_pv\rangle-\langle u,v\rangle
+   &=\langle D_pu,v\rangle.\label{eq:metric-defect}
+\end{align}
+Its Fourier multiplier is
+\begin{equation}\label{eq:dp-symbol}
+ d_p(t)=r^2-2r\cos(tL).
+\end{equation}
+The defect has both positive and negative quadratic values on the
+ambient Hilbert space.
+\end{proposition}
+
+\begin{proof}
+Expand $A_p^*A_p$ using $T_{-L}T_L=I$. The adjoint convention gives
+\eqref{eq:metric-defect}. At $t=0$, $d_p=r^2-2r<0$; at
+$t=\pi/L$, $d_p=r^2+2r>0$. Take nonzero Fourier transforms supported
+in sufficiently small neighborhoods of the two points. Plancherel
+then makes the corresponding quadratic integrals strictly negative
+and strictly positive.
+\end{proof}
+
+The localized witnesses establish the ambient signs. Membership in a
+fixed Sonin space requires simultaneous spatial and real Fourier
+gaps, which the logarithmic-frequency localization used in the
+proof does not preserve.
+
+The defect has a simple real-space test. If $u$ is supported in an
+interval of length less than $L$, then
+$\langle T_Lu,u\rangle=\langle T_{-L}u,u\rangle=0$, and
+\begin{equation}\label{eq:short-bump-defect}
+ \langle D_pu,u\rangle=r^2\|u\|_2^2>0.
+\end{equation}
+This is already incompatible with identifying the defect with the
+local Weil autocorrelation term: that arithmetic term is zero for
+the same short bump. A larger support gives a stronger distinction
+by detecting the missing second prime power.
+
+\section{The common entire carrier}
+
+Write the standard local factors as
+\begin{equation}\label{eq:Euler-factors}
+ L_\infty(s)=\pi^{-s/2}\Gamma(s/2),\qquad
+ L_p(s)=(1-p^{-s})^{-1},\qquad
+ E_S(t)=\prod_{v\in S}L_v(1/2+it).
+\end{equation}
+The dual Hardy-Titchmarsh realization of \cite[Section 4.4]{CCM}
+uses the weighted space with density $|E_S(t)|^{-2}$. The Sonin
+spaces map to a common space $\Bcal_\lambda$ of entire functions;
+the boundary value $F(1/2+it)$ carries the norm
+\begin{equation}\label{eq:carrier-norm}
+ q_S(F,G)=\int_\R F(1/2+it)\overline{G(1/2+it)}
+               |E_S(t)|^{-2}\,dt.
+\end{equation}
+The normalization is fixed consistently across $S$. Equations (59)
+to (62) of \cite{CCM} identify $\theta_{S,T}$ with the identity on
+this common entire carrier.
+
+For $p\notin S$ the weight relation is
+\begin{equation}\label{eq:weight-relation}
+ |E_{S\cup\{p\}}(t)|^{-2}=|m_p(t)|^2|E_S(t)|^{-2}.
+\end{equation}
+Consequently, with $w_S(t)=|E_S(t)|^{-2}$,
+\begin{align}
+ q_{S\cup\{p\}}(F,G)-q_S(F,G)
+ &=\int_\R F(1/2+it)\overline{G(1/2+it)}d_p(t)w_S(t)\,dt,
+ \label{eq:carrier-defect}\\
+ (1-r)^2q_S(F,F)&\le q_{S\cup\{p\}}(F,F)
+                  \le(1+r)^2q_S(F,F).
+ \label{eq:carrier-comparison}
+\end{align}
+The identity on the common entire carrier is a topological
+isomorphism. The changing inner products in
+\eqref{eq:carrier-defect} do not make it an isometry.
+
+The weighted ambient spaces have positive, locally finite densities.
+Compactly supported frequency functions therefore prove both signs
+for \eqref{eq:carrier-defect} on those ambient spaces. They do not
+prove both signs on $\Bcal_\lambda$. The possible restriction of a
+multiplier to the entire carrier must be established separately.
+
+There is also a distinction between two polar decompositions. The
+identity between the weighted ambient spaces has a pointwise polar
+normalization by $|m_p|^{-1}$. The identity between the restricted
+Hilbert norms on $\Bcal_\lambda$ has an adjoint computed from the
+restricted forms. That adjoint can involve a compression and need not
+be multiplication by $|m_p|^2$. The entire-carrier obstruction in
+Part II, Theorem 3.4 \cite{PartII}, concerns the first, explicitly pointwise
+normalization. It does not identify the second polar decomposition
+with that multiplier.
+
+\section{The analytic two-prime square}
+
+Let $p\ne q$ be primes. Use subscripts to distinguish
+$L_p=\log p$, $r_p=p^{-1/2}$, and the analogous quantities for $q$.
+Their translation operators commute on $L^2(\R)$.
+
+\begin{proposition}\label{prop:local-correspondence:square}
+The prime-adjoining operators satisfy
+\begin{equation}\label{eq:two-prime-A}
+ A_pA_q=A_qA_p
+ =I-r_pT_{L_p}-r_qT_{L_q}+r_pr_qT_{L_p+L_q}.
+\end{equation}
+The relative semilocal maps obey
+\begin{equation}\label{eq:two-prime-theta}
+ \begin{aligned}
+ &\theta_{S\cup\{p\},S\cup\{p,q\}}\theta_{S,S\cup\{p\}}\\
+ &\qquad=\theta_{S\cup\{q\},S\cup\{p,q\}}\theta_{S,S\cup\{q\}}.
+ \end{aligned}
+\end{equation}
+The metric operator is $G_{pq}=G_pG_q$, and its defect is
+\begin{equation}\label{eq:two-prime-defect}
+ G_{pq}-I=D_p+D_q+D_pD_q.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Expand $(I-r_pT_{L_p})(I-r_qT_{L_q})$ and use the addition law
+for translations. Formula \eqref{eq:two-prime-theta} also follows
+directly from \eqref{eq:relative-theta}; in the local tensor
+description it is the interchange of the $p$ and $q$ factors.
+Every $A_p$ commutes with every $A_q$ and $A_q^*$, so
+$(A_pA_q)^*(A_pA_q)=G_pG_q$. Substituting $G_p=I+D_p$ and
+$G_q=I+D_q$ gives the final identity.
+\end{proof}
+
+The mixed defect in \eqref{eq:two-prime-defect} is explicit:
+\begin{align}
+ D_pD_q={}&r_p^2r_q^2I
+ -r_p^2r_q(T_{L_q}+T_{-L_q})
+ -r_q^2r_p(T_{L_p}+T_{-L_p})\nonumber\\
+ &+r_pr_q\bigl(T_{L_p+L_q}+T_{L_p-L_q}
+            +T_{-L_p+L_q}+T_{-L_p-L_q}\bigr).
+ \label{eq:mixed-translations}
+\end{align}
+It includes translations by $\log(pq)$ and $\log(p/q)$.
+The local prime sum in Weil's formula has no term indexed by $pq$
+when $p\ne q$. Thus additive accumulation of raw metric defects
+cannot reproduce the arithmetic prime decomposition.
+
+The two orders of adjoining primes still agree. In the weighted
+carrier, the defect from adjoining $q$ after $p$ has density
+$d_q(1+d_p)w_S$; the other first step has density $d_pw_S$.
+The sum is $(d_p+d_q+d_pd_q)w_S$. Reversing the order gives the
+same expression. Commutativity controls the analytic square while
+retaining a nonzero mixed correction.
+
+The logarithm behaves differently. Since the positive operators
+$G_p,G_q$ are commuting multiplication operators after Fourier
+transformation,
+\begin{equation}\label{eq:log-additivity}
+ \log(G_pG_q)=\log G_p+\log G_q.
+\end{equation}
+No branch ambiguity occurs for the logarithms of positive invertible
+operators. This exact additivity suggests where to seek an arithmetic
+local term. It remains an identity of analytic operators and does
+not construct a square of geometric primitive correspondences.
+
+\section{Logarithmic variation}
+
+For a real parameter $\sigma>0$, put $r_\sigma=p^{-\sigma}$ and
+\begin{equation}\label{eq:sigma-family}
+ A_{p,\sigma}=I-r_\sigma T_L,\qquad
+ G_{p,\sigma}=A_{p,\sigma}^*A_{p,\sigma}.
+\end{equation}
+These are bounded invertible operators. The spectrum of
+$G_{p,\sigma}$ lies in $[(1-r_\sigma)^2,(1+r_\sigma)^2]$,
+so the self-adjoint logarithm is defined by continuous functional
+calculus.
+
+\begin{theorem}\label{thm:local-correspondence:logarithmic}
+The logarithm and its derivative admit operator-norm convergent series
+\begin{align}
+ \log G_{p,\sigma}
+ &=-\sum_{k\ge1}\frac{r_\sigma^k}{k}
+                (T_{kL}+T_{-kL}),\label{eq:operator-log}\\
+ K_{p,\sigma}:=\frac{d}{d\sigma}\log G_{p,\sigma}
+ &=L\sum_{k\ge1}r_\sigma^k(T_{kL}+T_{-kL}).
+ \label{eq:operator-log-derivative}
+\end{align}
+Differentiation is locally uniform for $\sigma>0$. For $f,g\in\T$,
+\begin{equation}\label{eq:operator-local-Weil}
+ \langle K_{p,1/2}f,g\rangle=W_p(f*g^*).
+\end{equation}
+Equivalently, for every $h\in\T$,
+\begin{equation}\label{eq:scalar-local-Weil}
+ W_p(h)=\frac1{2\pi}\int_\R\widehat h(t)
+ \left.\frac{\partial}{\partial\sigma}
+       \log|1-p^{-\sigma-it}|^2\right|_{\sigma=1/2}\,dt.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+For $|z|<1$, the analytic logarithm has power series
+$\log(1-z)=-\sum_{k\ge1}z^k/k$. Substitute
+$z=r_\sigma e^{-itL}$ and its conjugate, then add. The resulting
+real function is the logarithm of
+$|1-r_\sigma e^{-itL}|^2$. Its series is uniformly absolutely
+convergent in $t$. Fourier multiplication gives
+\eqref{eq:operator-log}, with absolute convergence bounded by
+$2\sum_{k\ge1}r_\sigma^k/k$.
+
+On $\sigma\ge\sigma_0>0$, the series of derivatives is bounded
+in norm by $2L\sum_{k\ge1}p^{-k\sigma_0}$. The differentiated
+series therefore converges uniformly on every compact positive
+parameter interval and equals the derivative of the logarithm.
+Its Fourier multiplier is
+\begin{equation}\label{eq:log-derivative-symbol}
+ k_{p,\sigma}(t)=2L\sum_{k\ge1}p^{-k\sigma}\cos(ktL).
+\end{equation}
+
+For $h=f*g^*$, \eqref{eq:correlation} gives
+$\langle T_{kL}f,g\rangle=h(-kL)$ and
+$\langle T_{-kL}f,g\rangle=h(kL)$. Substitution in
+\eqref{eq:operator-log-derivative} proves
+\eqref{eq:operator-local-Weil}. Alternatively,
+$\widehat h\in L^1$ and the uniformly absolutely convergent
+series \eqref{eq:log-derivative-symbol} permit integration term by
+term. Fourier inversion gives
+\begin{equation}\label{eq:cosine-inversion}
+ \frac1{2\pi}\int_\R\widehat h(t)\cos(ktL)\,dt
+     =\frac12\bigl(h(kL)+h(-kL)\bigr),
+\end{equation}
+which proves \eqref{eq:scalar-local-Weil} for arbitrary $h\in\T$.
+\end{proof}
+
+The finite measure
+\begin{equation}\label{eq:kernel-measure}
+ \mu_{p,\sigma}=L\sum_{k\ge1}p^{-k\sigma}
+                     (\delta_{kL}+\delta_{-kL})
+\end{equation}
+is the convolution kernel of $K_{p,\sigma}$. Its total variation is
+$2Lp^{-\sigma}/(1-p^{-\sigma})$. The measure is positive as a
+measure, yet convolution by it is not a positive operator. Positivity
+of a convolution operator is a condition on its Fourier multiplier;
+positive coefficients in the real-space measure do not establish it.
+
+Indeed, at $t=0$ the multiplier equals
+$2Lr_\sigma/(1-r_\sigma)>0$. At $t=\pi/L$ it equals
+$-2Lr_\sigma/(1+r_\sigma)<0$. Thus the operator derivative has both
+signs on the ambient Hilbert space. Its exact norm is
+\begin{equation}\label{eq:K-norm}
+ \|K_{p,\sigma}\|=\frac{2Lp^{-\sigma}}{1-p^{-\sigma}}.
+\end{equation}
+The upper bound follows from the series, and concentration near
+$t=0$ gives equality.
+
+The resolvent form is also useful:
+\begin{equation}\label{eq:K-resolvent}
+ K_{p,\sigma}=L\left(r_\sigma T_L(I-r_\sigma T_L)^{-1}
+             +r_\sigma T_{-L}(I-r_\sigma T_{-L})^{-1}\right).
+\end{equation}
+All factors commute, so this is also
+$G_{p,\sigma}^{-1}(dG_{p,\sigma}/d\sigma)$. For a noncommuting
+family, that last expression need not be the derivative of the
+operator logarithm. The commuting translation structure is doing
+specific work here.
+
+\section{Prime powers and finite propagation}
+
+The difference between $D_p$ and $K_{p,1/2}$ can be detected with
+compact smooth functions. Choose a nonzero real $\psi$ supported
+in $(-\varepsilon,\varepsilon)$, with $2\varepsilon<L$.
+For $h=\psi*\psi^*$, all values $h(kL)$ with nonzero integer $k$
+vanish. Hence
+\begin{equation}\label{eq:short-bump-comparison}
+ W_p(h)=0,\qquad \langle D_p\psi,\psi\rangle=r^2\|\psi\|_2^2.
+\end{equation}
+Even a scalar multiple of the raw defect cannot equal $W_p$ on all
+autocorrelations, unless that scalar is zero; the latter possibility
+is excluded by the next example.
+
+Let $f=\psi+T_{2L}\psi$. The two pieces have disjoint support, and
+the only nonzero correlations at nonzero multiples of $L$ occur
+at $\pm2L$. Their values are $\|\psi\|_2^2$. Thus
+\begin{equation}\label{eq:second-prime-power}
+ W_p(f*f^*)=2Lr^2\|\psi\|_2^2,
+ \qquad \langle D_pf,f\rangle=2r^2\|\psi\|_2^2.
+\end{equation}
+The arithmetic quantity records $p^2$. A putative formula retaining
+only $h(\pm L)$ would return zero. Combining this example with
+\eqref{eq:short-bump-comparison} rules out a universal proportionality
+between the full local term and the raw norm defect.
+
+More generally, for a finite coefficient sequence $c_0,\ldots,c_n$,
+put $f=\sum_{j=0}^nc_jT_{jL}\psi$. The exact finite formula is
+\begin{equation}\label{eq:finite-toeplitz}
+ W_p(f*f^*)=L\|\psi\|_2^2
+       \sum_{\substack{0\le i,j\le n\\i\ne j}}
+       c_i\overline{c_j}r^{|i-j|}.
+\end{equation}
+For example, $f=\psi+T_L\psi$ gives a positive local value and
+$f=\psi-T_L\psi$ gives a negative one. These two examples do not
+kill the pole moments. The stronger moment-killed examples, including
+the explicit prime $11$ witnesses, are established in Part II,
+Theorem 6.3 \cite{PartII}.
+
+The algebraic structure of \eqref{eq:finite-toeplitz} also explains
+why prime powers cannot be discarded after a support enlargement.
+Every pair of separated bumps at distance $kL$ contributes the
+$k$th coefficient. A truncation retaining only $k=1$ loses all
+interactions between nonadjacent packets. Smoothness does not remove
+them, since their values are exact inner products of translated
+copies of the same function.
+
+At the distribution level, the first omitted coefficient is already
+enough to distinguish a truncation. Choose $h\in\T$ supported near
+$2L$, equal to $1$ at $2L$, with support excluding $0$, $\pm L$ and
+all other integer multiples of $L$. Then $W_p(h)=Lr^2$, while every
+distribution supported on $\{0,L,-L\}$ vanishes on $h$. This test
+compares the distributions directly without factoring $h$ as an
+autocorrelation.
+
+\section{Support-indexed arithmetic}
+
+\begin{definition}\label{def:local-correspondence:support}
+For $a>0$, let $\T_a=\{f\in\T:\supp f\subset[-a,a]\}$.
+A pair $(S,a)$ is support-admissible if $S$ is a finite place set
+containing infinity and every prime $p\le e^{2a}$. Define
+\begin{equation}\label{eq:finite-Weil}
+ W_S=P-A-\sum_{p\in S_f}W_p.
+\end{equation}
+The pairs are ordered by $(S,a)\le(T,b)$ when $S\subset T$ and
+$a\le b$.
+\end{definition}
+
+\begin{proposition}\label{prop:local-correspondence:support}
+For $f,g\in\T_a$, the local contribution $W_p(f*g^*)$ can be
+nonzero only if $p^k\le e^{2a}$ for some $k\ge1$.
+At a support-admissible pair,
+\begin{equation}\label{eq:support-equality}
+ W_S(f*g^*)=W(f*g^*),\qquad f,g\in\T_a.
+\end{equation}
+If $p\notin S$ and $(S,a)$ is support-admissible, then
+\begin{equation}\label{eq:new-prime-zero}
+ W_p(f*g^*)=0\qquad(f,g\in\T_a).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The support of $f*g^*$ is contained in
+$\supp f-\supp g\subset[-2a,2a]$. Hence a value at
+$\pm k\log p$ can be nonzero only if $k\log p\le2a$.
+The stated exponential condition is equivalent. All potentially
+contributing primes are in $S$, which proves
+\eqref{eq:support-equality}. A newly adjoined prime has
+$p>e^{2a}$, proving \eqref{eq:new-prime-zero}.
+\end{proof}
+
+The weak inequality in the support bound is a safe indexing
+convention. Smooth functions supported in a closed interval vanish
+at its endpoints, so some boundary contributions are automatically
+zero. Including the boundary primes makes no error and avoids a
+dependence on the particular support of each test.
+
+For unequal supports $\supp f\subset[-a,a]$ and
+$\supp g\subset[-b,b]$, the sharper sufficient condition is
+$p^k\le e^{a+b}$. For translated intervals, the difference set
+$\supp f-\supp g$ is the exact support constraint. The symmetric
+family $\T_a$ is convenient because it is directed and covers all
+compact smooth tests. It is not the smallest possible place set
+for every individual pair.
+
+As a concrete support window, take $a=\log2$. Then
+$e^{2a}=4$, and the finite places $2$ and $3$ suffice. The indexed
+prime powers are $2$, $3$, and $4$, though the value at the endpoint
+$\log4=2a$ vanishes for these smooth autocorrelations. Taking a
+slightly larger $a$ makes the $p^2=4$ coefficient available in the
+interior. A prime $5$ adjoined before the support reaches
+$\tfrac12\log5$ contributes nothing to the quadratic tests in that
+window.
+
+The support-admissible pairs form a directed set. Given
+$(S,a)$ and $(T,b)$, choose $c=\max(a,b)$ and enlarge $S\cup T$
+by the finitely many primes at most $e^{2c}$. The resulting pair
+dominates both. Since each test pair appears in one such window,
+the finite-place values in \eqref{eq:support-equality} stabilize
+exactly. No infinite Euler product is needed for this distributional
+stabilization.
+
+For an intermediate set $S$ that is not support-admissible,
+\begin{equation}\label{eq:finite-increment}
+ W_{S\cup\{p\}}(f*g^*)-W_S(f*g^*)=-W_p(f*g^*).
+\end{equation}
+The formula is exact, but the intermediate distribution need not
+have the positivity properties desired for a complete arithmetic
+stage. In a proposed comparison $B_W=-I$, the corresponding
+intersection increment would have sign $+W_p$. Boundary and degree
+corrections must be included before asserting such an identity for
+a geometric construction.
+
+\section{The tensor algebra obstruction}
+
+The semilocal crossed product contains a natural coefficient
+algebra. Let $\Sch(\mathbb A_S)$ be the Bruhat-Schwartz functions,
+with pointwise multiplication. For $\gamma\in\Gamma_S$, define
+$\alpha_\gamma f(x)=f(\gamma^{-1}x)$. The algebraic crossed product
+\begin{equation}\label{eq:crossed-product}
+ \mathcal A_S=\Sch(\mathbb A_S)\rtimes_{\rm alg}\Gamma_S
+\end{equation}
+consists of finite sums $\sum_\gamma f_\gamma U_\gamma$, with
+\begin{equation}\label{eq:crossed-product-multiplication}
+ (fU_\gamma)(gU_\delta)
+        =f\alpha_\gamma(g)U_{\gamma\delta}.
+\end{equation}
+This is the smooth groupoid algebra convention used in
+\cite[Section 4, equations (4.3) to (4.6)]{CCMar}.
+
+For $p\notin S$, the inclusion $\Gamma_S\subset\Gamma_{S\cup\{p\}}$
+is fixed. Given a unit-invariant $v\in\Sch(\Q_p)$, define a linear
+coefficient map
+\begin{equation}\label{eq:tensor-map}
+ \Phi_v:\mathcal A_S\longrightarrow\mathcal A_{S\cup\{p\}},
+ \qquad \Phi_v(fU_\gamma)=(v\otimes f)U_\gamma.
+\end{equation}
+This map retains the old group element and tensors the coefficient
+with the proposed local vector. It is the direct algebraic candidate
+associated with the linear tensor operation in $\theta$.
+
+\begin{lemma}\label{lem:tensor-multiplication}
+For all $a,b\in\mathcal A_S$,
+\begin{equation}\label{eq:tensor-defect}
+ \Phi_v(a)\Phi_v(b)=\Phi_{v^2}(ab).
+\end{equation}
+If the coefficient algebra is nonzero, $\Phi_v$ is multiplicative
+if and only if $v^2=v$.
+\end{lemma}
+
+\begin{proof}
+Every $\gamma\in\Gamma_S$ is a $p$-adic unit, since $p\notin S$.
+The function $v$ is unit-invariant, so
+$\alpha_\gamma(v\otimes g)=v\otimes\alpha_\gamma g$.
+Apply \eqref{eq:crossed-product-multiplication} to two elementary
+terms; their local coefficient is $v^2$. Bilinearity gives
+\eqref{eq:tensor-defect}. If $v^2=v$, this proves multiplicativity.
+
+Conversely choose a nonzero real $f\in\Sch(\mathbb A_S)$.
+Its square is nonzero. Multiplicativity on the two identity-group
+elements $fU_1$ would imply
+$(v^2-v)\otimes f^2=0$. Evaluate at a point where $f^2$ is nonzero
+to obtain $v^2-v=0$.
+\end{proof}
+
+\begin{theorem}\label{thm:local-correspondence:tensor-obstruction}
+No nonzero unit-invariant local Sonin vector $v$ makes the map
+$\Phi_v$ in \eqref{eq:tensor-map} multiplicative. In particular,
+the shell tensor construction with $v=\sigma_p$ does not define
+an algebra homomorphism between these crossed products, and no
+nonzero scalar normalization repairs it.
+\end{theorem}
+
+\begin{proof}
+By Proposition~\ref{prop:local-sonin}, every such vector is $v=c\sigma_p$.
+It is therefore a Bruhat-Schwartz function, so
+\eqref{eq:tensor-map} is defined. If $\Phi_v$ were multiplicative,
+Lemma~\ref{lem:tensor-multiplication} would imply $v^2=v$.
+On the shell $|x|_p=1$, that identity is $c^2=c$.
+Since $v\ne0$, it gives $c=1$. On the shell $|x|_p=p$,
+the same identity would then require $p^{-2}=-p^{-1}$,
+which is impossible for a positive prime. This contradiction proves
+both assertions.
+\end{proof}
+
+The multiplicativity defect is supported on just one shell:
+\begin{equation}\label{eq:sigma-square}
+ \sigma_p^2-\sigma_p=(p^{-2}+p^{-1})\epsilon_1.
+\end{equation}
+It is nonzero before taking any completion, quotient, trace, or
+primitive projection. At $p=2$, the tensor map sends a coefficient
+to $-1/2$ times that coefficient on the outer shell; multiplying
+two images gives $1/4$ times their product, while the image of
+their product remains $-1/2$ times it.
+
+The unit-ball vector offers a useful comparison. For
+$v=\ind_{\Z_p}$, one has $v^2=v$, and
+Lemma~\ref{lem:tensor-multiplication} gives a multiplicative map.
+That vector is Fourier fixed, but it does not vanish on $B_{-1}$
+and hence does not lie in the local Sonin space. The two local
+vectors support different features: the ball vector permits the
+coefficient algebra map, while the shell vector supplies the
+Sonin gap and the analytic $\theta$ transition.
+
+The theorem addresses an exact ansatz, not every arithmetic
+correspondence. A bimodule need not arise from an algebra
+homomorphism of the form \eqref{eq:tensor-map}; a chain-level
+construction can contain corrections; a trace pairing can descend
+through a quotient by a different map. The theorem also does not
+assert that $\theta$ was intended in \cite{CCM} as an algebra
+homomorphism. It tests that additional interpretation and rejects it.
+
+The calculation is independent of the Riemann Hypothesis and of
+the zero distribution. Its inputs are the two local gaps,
+unit invariance, and pointwise multiplication in the coefficient
+algebra. It gives a precise place where a proposed geometric
+upgrade of the analytic transition must change its construction.
+
+\section{A corrected Hochschild map}
+
+The complex in this section uses uncompleted algebraic tensor
+products over $\C$. Its boundary uses multiplication alone, so it
+is defined for the nonunital algebra $\mathcal A_S$ without adding
+a unit or using unit-dependent degeneracy maps. All homology
+statements refer to the displayed algebraic complex.
+
+The two shell indicators define algebra maps separately. Write
+$e_0=\epsilon_0$ and $e_1=\epsilon_1$. They satisfy
+\begin{equation}\label{eq:orthogonal-shells}
+ e_0^2=e_0,\qquad e_1^2=e_1,\qquad e_0e_1=0.
+\end{equation}
+Each is invariant under the old group $\Gamma_S$, so
+Lemma~\ref{lem:tensor-multiplication} gives algebra embeddings
+$\Phi_{e_j}:\mathcal A_S\to\mathcal A_{S\cup\{p\}}$.
+Injectivity follows by evaluating the local coefficient at any
+point of the nonempty shell. Their images multiply to zero in
+either order, because the old group elements preserve both
+shells. They lie in the subalgebra with group support in
+$\Gamma_S$.
+
+The ambient target has additional group elements, and those
+elements need not preserve the shells. For example, the new
+generator $p$ changes the $p$-adic norm by $p^{-1}$.
+Thus the shell indicators are not asserted to be central
+in the full target crossed product. The Bruhat-Schwartz
+coefficient algebra is also nonunital at the real place;
+no global identity coefficient is inserted in the argument.
+
+The degree-zero shell map is the weighted difference
+\begin{equation}\label{eq:signed-embeddings}
+ \Phi_{\sigma_p}=\Phi_{e_0}-p^{-1}\Phi_{e_1}.
+\end{equation}
+Although that combination is not multiplicative, it has a
+natural extension as a map of algebraic Hochschild complexes.
+The extension uses the same coefficient at every degree,
+rather than the tensor powers of the combination in
+\eqref{eq:signed-embeddings}.
+
+For a complex algebra $\mathcal A$, set
+$C_n(\mathcal A)=\mathcal A^{\otimes(n+1)}$ for $n\ge0$,
+where tensors are algebraic over $\C$. The Hochschild boundary
+on an elementary tensor is
+\begin{align}
+ b(a_0\otimes\cdots\otimes a_n)
+ ={}&\sum_{j=0}^{n-1}(-1)^j
+ a_0\otimes\cdots\otimes a_ja_{j+1}\otimes\cdots\otimes a_n
+ \nonumber\\
+ &+(-1)^n a_na_0\otimes a_1\otimes\cdots\otimes a_{n-1}.
+ \label{eq:Hochschild-boundary}
+\end{align}
+The boundary from degree zero is zero. Associativity implies
+$b^2=0$ by cancellation of adjacent multiplication terms.
+These definitions do not require a unit.
+
+\begin{proposition}\label{prop:corrected-chain-map}
+For each $n\ge0$, define
+\begin{equation}\label{eq:corrected-chain-map}
+ \Psi_n=\Phi_{e_0}^{\otimes(n+1)}
+                -p^{-1}\Phi_{e_1}^{\otimes(n+1)}.
+\end{equation}
+Then $b\Psi_n=\Psi_{n-1}b$ for $n\ge1$, and
+$\Psi_0=\Phi_{\sigma_p}$. Consequently $\Psi$ induces a
+linear map on algebraic Hochschild homology.
+\end{proposition}
+
+\begin{proof}
+Let $\phi:\mathcal A\to\mathcal B$ be either shell
+embedding. Apply $\phi^{\otimes n}$ to each term of
+\eqref{eq:Hochschild-boundary}. Since
+$\phi(a_ja_{j+1})=\phi(a_j)\phi(a_{j+1})$, the resulting
+term is exactly the corresponding term of
+$b\phi^{\otimes(n+1)}$. The cyclic last term obeys the
+same identity. Thus both shell embeddings induce chain
+maps, and their fixed linear combination does also.
+Equation \eqref{eq:signed-embeddings} gives degree zero.
+Chain maps send cycles to cycles and boundaries to
+boundaries, so the homology map is well defined.
+\end{proof}
+
+Whether the induced map is nonzero on a primitive quotient
+depends on that quotient. A comparison with the topological
+or completed complex used in a trace formula is also needed
+before this algebraic map can enter the arithmetic comparison.
+
+The correction matters already in degree one. Restrict
+to elementary chains whose group components are the identity,
+and suppress the unchanged $\mathbb A_S$ coefficients.
+The local factor of $\Psi_1$ is
+\begin{equation}\label{eq:degree-one-factor}
+ H_p=e_0\otimes e_0-p^{-1}e_1\otimes e_1.
+\end{equation}
+In contrast, tensoring the degree-zero shell map with
+itself gives local factor
+\begin{equation}\label{eq:naive-degree-one}
+ \sigma_p\otimes\sigma_p
+ =e_0\otimes e_0-p^{-1}(e_0\otimes e_1+e_1\otimes e_0)
+      +p^{-2}e_1\otimes e_1.
+\end{equation}
+It has mixed-shell terms and a different outer-shell
+coefficient. The proof of
+Proposition~\ref{prop:corrected-chain-map} applies to
+\eqref{eq:degree-one-factor}; multiplicativity of
+$\Phi_{\sigma_p}$ cannot be used to justify the other
+expression.
+
+\begin{proposition}\label{prop:chain-Fourier-defect}
+The degree-one local factor $H_p$ is not fixed by
+componentwise local Fourier transformation. For every
+$x,y\in B_{-1}$,
+\begin{equation}\label{eq:chain-Fourier-defect}
+ H_p(x,y)=0,\qquad
+ ((\mathscr F_p\otimes\mathscr F_p)H_p)(x,y)
+       =-\frac{(p-1)^3}{p^2}\ne0.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The shells supporting $e_0,e_1$ do not meet $B_{-1}$,
+so $H_p$ vanishes there. Formula \eqref{eq:ball-fourier}
+gives
+\begin{equation}\label{eq:shell-transform-pair}
+ \mathscr F_pe_0=\ind_{B_0}-p^{-1}\ind_{B_1},\qquad
+ \mathscr F_pe_1=p\ind_{B_{-1}}-\ind_{B_0}.
+\end{equation}
+Their values on $B_{-1}$ are $1-p^{-1}$ and $p-1$.
+Therefore the transformed local tensor factor has value
+\begin{equation}\label{eq:chain-Fourier-value}
+ (1-p^{-1})^2-p^{-1}(p-1)^2
+    =(p-1)^2(p^{-2}-p^{-1})
+    =-(p-1)^3/p^2.
+\end{equation}
+The number is nonzero because $p>1$.
+\end{proof}
+
+This is an obstruction to the straightforward componentwise
+Fourier symmetry of the corrected chain map. It does not
+assert that Fourier transformation is itself a chain map
+for the pointwise coefficient algebra. Indeed, Fourier
+transformation exchanges pointwise multiplication and
+additive convolution, so any geometric use of Fourier
+duality must specify how the corresponding products are
+related. The proposition isolates the local coefficient
+failure without assuming such a relation.
+
+The degree-zero local factor remains Fourier fixed:
+$\mathscr F_p\sigma_p=\sigma_p$. Degree one already
+requires additional structure. Thus the corrected chain
+construction solves the extension problem at the level
+of the algebraic boundary, while exposing a separate
+duality problem. An eventual primitive comparison cannot
+infer higher-degree Fourier compatibility from the
+degree-zero identity.
+
+\section{Two-prime chain compatibility}
+
+The signed chain construction has a two-prime square at the
+algebraic level. This square follows from local tensor embeddings,
+not merely from the scalar Euler factors. It does not involve a
+primitive projection or a Hermitian pairing.
+
+For distinct primes $p,q\notin S$, write $e_{p,i}$ for the
+$i$th local shell indicator at $p$, where $i\in\{0,1\}$,
+and use $e_{q,j}$ at $q$. Set
+\begin{equation}\label{eq:chain-coefficients}
+ c_{p,0}=1,\qquad c_{p,1}=-p^{-1},\qquad
+ c_{q,0}=1,\qquad c_{q,1}=-q^{-1}.
+\end{equation}
+Use a superscript $S$ to indicate the source place set of a
+shell embedding or chain map. For example,
+$\Psi_{p,n}^{S}$ maps $C_n(\mathcal A_S)$ to
+$C_n(\mathcal A_{S\cup\{p\}})$.
+All target local coordinates are placed in the same fixed
+order when comparing compositions.
+
+\begin{proposition}\label{prop:chain-square}
+For every $n\ge0$,
+\begin{equation}\label{eq:chain-square}
+ \Psi_{q,n}^{S\cup\{p\}}\Psi_{p,n}^{S}
+     =\Psi_{p,n}^{S\cup\{q\}}\Psi_{q,n}^{S}.
+\end{equation}
+Both compositions are chain maps. Their degree-zero
+component is the coefficient map obtained by tensoring
+with $\sigma_p\otimes\sigma_q$ and retaining the old
+group element.
+\end{proposition}
+
+\begin{proof}
+Each $\gamma\in\Gamma_{S\cup\{p\}}$ is a $q$-adic
+unit, because $q\notin S\cup\{p\}$. Thus the
+$q$-shell embeddings are defined on the full intermediate
+algebra, including its new $p$ group elements. The analogous
+statement holds with $p$ and $q$ exchanged.
+
+On an elementary term $fU_\gamma$ from $\mathcal A_S$,
+the composition of the $p$-shell $i$ embedding and
+the $q$-shell $j$ embedding is
+\begin{equation}\label{eq:two-shell-map}
+ fU_\gamma\longmapsto(e_{p,i}\otimes e_{q,j}\otimes f)U_\gamma.
+\end{equation}
+Changing the order of the embeddings only interchanges the
+two displayed local coordinates. The chosen common order
+makes the maps equal. Call this algebra embedding
+$\Phi_{i,j}$.
+
+Composition of tensor powers equals the tensor power
+of the composition. Expand the signed maps by linearity
+to obtain, in either order,
+\begin{equation}\label{eq:four-chain-terms}
+ \sum_{i,j\in\{0,1\}}c_{p,i}c_{q,j}
+            \Phi_{i,j}^{\otimes(n+1)}.
+\end{equation}
+This proves \eqref{eq:chain-square}. Each summand is a
+chain map by the proof of
+Proposition~\ref{prop:corrected-chain-map}; their combination is
+therefore a chain map. At degree zero, factor the two
+local sums in \eqref{eq:four-chain-terms} to recover
+$\sigma_p\otimes\sigma_q$.
+\end{proof}
+
+No product of the signed maps was assumed to be
+multiplicative in this proof. The calculation used the
+four genuine algebra embeddings before combining their
+induced chain maps. This distinction permits an exact
+chain square despite
+\cref{thm:local-correspondence:tensor-obstruction}.
+The construction takes place over $\C$, where the
+rational coefficients $p^{-1}$ and $q^{-1}$ are allowed.
+It does not assert an integral correspondence with
+integer multiplicities.
+
+For a finite set $F$ of newly adjoined primes, the same
+construction gives
+\begin{equation}\label{eq:finite-chain-map}
+ \Psi_{F,n}=
+ \sum_{\mathbf i\in\{0,1\}^{F}}
+ \left(\prod_{p\in F}c_{p,i_p}\right)
+ \Phi_{\mathbf i}^{\otimes(n+1)},
+\end{equation}
+where $\Phi_{\mathbf i}$ tensors with the corresponding
+product of shell indicators. Its degree-zero coefficient
+is $\bigotimes_{p\in F}\sigma_p$. The formula is
+independent of the order of adjoining the primes, since
+each finite shell tensor product is independent of
+that order after the canonical coordinate permutation.
+Every summand is a chain map, so the formula gives a
+finite algebraic directed system of chain maps.
+
+The local Fourier failure also persists in all
+positive degrees. The one-prime local factor in degree
+$n$ is
+\begin{equation}\label{eq:degree-n-factor}
+ H_{p,n}=e_0^{\otimes(n+1)}-p^{-1}e_1^{\otimes(n+1)}.
+\end{equation}
+It vanishes on $B_{-1}^{n+1}$. By
+\eqref{eq:shell-transform-pair}, its componentwise
+Fourier transform is constant there with value
+\begin{equation}\label{eq:degree-n-Fourier}
+ (p-1)^{n+1}\bigl(p^{-(n+1)}-p^{-1}\bigr).
+\end{equation}
+This vanishes at $n=0$ and is strictly negative for
+every $n\ge1$. Consequently the gap and Fourier
+symmetry of the degree-zero tensor factor do not
+extend to this componentwise construction in any
+positive degree.
+
+The algebraic boundary and the two-prime square are
+respected by \eqref{eq:finite-chain-map}. The nonzero
+local value in \eqref{eq:degree-n-Fourier} identifies
+the componentwise Fourier symmetry that fails despite
+those compatibilities.
+
+\section{Error bounds for local truncations}
+
+The convergent operator series give quantitative
+approximations independent of a chosen test function.
+Let
+\begin{equation}\label{eq:KN}
+ K_{p,\sigma}^{(N)}
+   =L\sum_{k=1}^Np^{-k\sigma}(T_{kL}+T_{-kL}).
+\end{equation}
+The absolute sum of the omitted operator norms gives
+\begin{equation}\label{eq:K-tail}
+ \|K_{p,\sigma}-K_{p,\sigma}^{(N)}\|
+       \le\frac{2Lp^{-(N+1)\sigma}}{1-p^{-\sigma}}.
+\end{equation}
+For arbitrary $f,g\in L^2(\R)$, the associated error in
+the matrix coefficient is bounded by the right side
+times $\|f\|_2\|g\|_2$. This estimate proves convergence
+of the one-prime form on the full ambient Hilbert space.
+
+For tests in $\T_a$, a different and stronger conclusion
+holds once $NL\ge2a$: every omitted correlation value
+vanishes, and the matrix-coefficient error is exactly
+zero. A compact support argument supplies exactness;
+the geometric bound supplies uniformity for functions
+with no compact support. The two conclusions have
+different domains.
+
+The same comparison applies to the inverse. If
+$R_N=\sum_{k=0}^Nr^kT_{kL}$, then
+\begin{equation}\label{eq:inverse-residual}
+ A_pR_N-I=-r^{N+1}T_{(N+1)L}.
+\end{equation}
+Its residual norm is exactly $r^{N+1}$, since the
+translation is unitary. The inverse error is at most
+$r^{N+1}/(1-r)$. At $p=2$, for example, $r=2^{-1/2}$;
+the residual after $N$ is $2^{-(N+1)/2}$. A small
+residual is a statement about this bounded local
+inverse, not a bound for an arithmetic primitive
+comparison.
+
+The logarithm itself has the estimate
+\begin{equation}\label{eq:log-tail}
+ \left\|\log G_{p,\sigma}
+ +\sum_{k=1}^N\frac{p^{-k\sigma}}k(T_{kL}+T_{-kL})\right\|
+ \le\frac{2p^{-(N+1)\sigma}}{(N+1)(1-p^{-\sigma})}.
+\end{equation}
+It follows by replacing $1/k$ by $1/(N+1)$ in the
+tail. Together with \eqref{eq:K-tail}, this gives a
+direct local justification for differentiating after
+uniform truncation on $\sigma\ge\sigma_0>0$.
+
+For finite $F$, the matrix-coefficient errors from
+truncating $\sum_{p\in F}K_{p,\sigma}$ are at most
+the sum of their individual bounds. This elementary
+estimate gives explicit error control for finite calculations with
+different cutoffs for different primes. It supplies
+no all-prime convergence statement at $\sigma=1/2$,
+where summability over the prime index is a separate
+question. Support-admissible tests avoid that question
+for the distributional evaluation by making only
+finitely many local coefficients relevant.
+
+\section{Pairings and the geometric comparison}
+
+The tensor obstruction occurs before a primitive pairing has been
+specified. To obtain an intersection interpretation of
+\eqref{eq:operator-local-Weil}, one needs an arithmetic complex
+associated with $\mathcal A_S$, a primitive sector in its homology
+or cohomology, and a pairing obtained from a specified duality and
+trace. The analytic Sonin space would then require an actual
+comparison map to that sector. Identifying vector spaces is only
+one part of this construction.
+
+An arithmetic comparison requires a primitive cohomological sector
+$P_S$, a Hermitian pairing $I_S$ on that sector, and a complex-linear
+test map $\mathcal G_S:\T\to P_S$. Their construction must establish
+the finite comparison
+\begin{equation}\label{eq:geometric-target}
+ \begin{aligned}
+ &I_{S\cup\{p\}}(\mathcal G_{S\cup\{p\}}f,\mathcal G_{S\cup\{p\}}g)
+ -I_S(\mathcal G_Sf,\mathcal G_Sg)\\
+ &\qquad=W_p(f*g^*)
+ \end{aligned}
+\end{equation}
+after all degree and boundary terms have been accounted for.
+The plus sign is forced by \eqref{eq:finite-increment} and the
+desired identity $B_W=-I$.
+
+The operator $K_{p,1/2}$ gives the right side a bounded analytic
+realization for one prime. Defining $I_S$ by summing those
+operators would transport the target arithmetic form. An
+independently defined intersection pairing must instead be
+compared with these operator matrix coefficients.
+
+In the identity $\langle\theta_Sf,\eta_Sf\rangle=\|f\|^2$, the two
+arguments belong to different images, and imposing one image as
+the primitive sector would need a reason from the arithmetic
+complex. Replacing $\eta$ by $\theta$ changes the form by
+\eqref{eq:metric-defect}; differentiating that form changes it
+again. These operations cannot be interchanged without changing
+the proposed comparison.
+
+At a two-prime stage, a primitive projection could introduce
+mixed terms even though the analytic multipliers commute.
+An equality of maps on ambient Hilbert spaces does not prove
+compatibility of a pairing after those projections. The explicit
+mixed translation term \eqref{eq:mixed-translations} gives a
+test for any construction that claims to use inherited analytic
+norms without modification.
+
+Part II, Theorems 3.4 and 9.2 \cite{PartII}, rejects two additional explicit choices:
+the ambient pointwise polar normalization on a nonzero entire
+carrier, and an orthogonal nonpositive enlargement whose
+increment is required to equal a positive local witness.
+Those obstructions leave mixed pairings, boundary corrections,
+and changing primitive projections unresolved. Together with
+\cref{thm:local-correspondence:tensor-obstruction}, they narrow
+the construction problem to correspondences with additional
+structure beyond a tensor algebra map and a normalized Hilbert
+inclusion.
+
+\section{Completion and dilation domains}
+
+For a finite set $F$ of primes, the product
+$A_F=\prod_{p\in F}A_p$ is bounded and invertible. Repeated use
+of \eqref{eq:Ap-bounds} gives
+\begin{equation}\label{eq:finite-product-bounds}
+ \prod_{p\in F}(1-p^{-1/2})\|u\|_2
+ \le\|A_Fu\|_2
+ \le\prod_{p\in F}(1+p^{-1/2})\|u\|_2.
+\end{equation}
+These are finite bounds. They do not provide uniform control
+as $F$ grows through all primes. Neither the operator-norm
+convergence of each one-prime inverse nor the compact-support
+stabilization of the arithmetic distribution establishes
+convergence of this infinite product on the critical line.
+
+The local derivative behaves better with respect to a finite
+product because of \eqref{eq:log-additivity}. For
+$G_{F,\sigma}=\prod_{p\in F}G_{p,\sigma}$,
+\begin{equation}\label{eq:finite-log-sum}
+ \frac{d}{d\sigma}\log G_{F,\sigma}
+       =\sum_{p\in F}K_{p,\sigma}.
+\end{equation}
+At $\sigma=1/2$, pairing with a fixed compact test correlation
+eventually stabilizes to the finite-prime part of the explicit
+formula. This is a statement about matrix coefficients on the
+test algebra, not operator-norm convergence on the ambient
+Hilbert space. Its distinction from an infinite product remains
+even though both use the same local factors.
+
+The fixed Sonin gap also places a constraint on dynamics.
+For $b>0$, let $D_bv(x)=b^{1/2}v(bx)$ on $L^2(\R)$.
+If $v$ has spatial and Fourier gaps both equal to $\lambda$,
+then $D_bv$ has the two guaranteed gaps
+\begin{equation}\label{eq:dilation-gaps}
+ \lambda/b\quad\hbox{and}\quad b\lambda,
+\end{equation}
+respectively. The second follows from
+$\mathscr F(D_bv)(\xi)=b^{-1/2}(\mathscr Fv)(\xi/b)$.
+Thus the definition of a fixed Sonin space does not by itself
+supply an invariant representation of all dilations on that
+space. A self-adjoint generator for the ambient scaling action
+cannot simply be restricted without a domain argument.
+
+The same issue arises for a proposed weight-one generator
+$\Theta$. If a densely defined operator on a Hilbert space
+satisfies $\Theta^*=I-\Theta$ with equality of domains, then
+$D=(\Theta-\tfrac12I)/i$ is self-adjoint. Indeed,
+$D^*=i(\Theta^*-\tfrac12I)=D$, and the assumed domain equality
+is exactly what makes this an equality of operators. A formal
+identity on a common core is insufficient unless the closures
+and their domains are controlled.
+
+An arithmetic spectral realization would also have to account
+for every nontrivial zero with its multiplicity. The local
+operators in this paper were built without using a preselected
+zero list. That feature avoids circularity, but it does not
+identify their spectra with the zeta zeros. The local
+translation spectrum and a complete arithmetic zero
+realization are different objects.
+
+\section{Formal scope}
+
+The companion source archive \cite{APCcode} contains the Lean 4
+development. Its toolchain is \texttt{v4.30.0-rc2}; the Lake
+manifest pins mathlib to commit
+\nolinkurl{0f9072dd907c6e2e4264ab241a049cab50137f7c}.
+The September 2026 source hashes are recorded in
+\nolinkurl{research/lean-source-sha256.txt}, and
+\nolinkurl{research/lean-results.md} states the proof scope.
+
+The module \nolinkurl{lean/APC/SoninShell.lean} verifies the
+shell-coefficient algebra underlying
+Theorem~\ref{thm:local-correspondence:tensor-obstruction}.
+The function \nolinkurl{APC.soninShellCoefficient} assigns the
+complex values $1$, $-1/p$, and $0$ to integer shell indices
+$0$, $1$, and all other indices. The theorem
+\nolinkurl{soninShell_no_nonzero_scalar_idempotent}, in namespace
+\texttt{APC}, proves for every natural $p>1$ and every
+nonzero complex $c$ that these scaled values cannot all
+satisfy $(c\sigma(n))^2=c\sigma(n)$.
+
+The theorem \nolinkurl{soninShell_tensor_not_multiplicative}
+then rejects multiplicativity of the scalar-to-shell
+function map. These statements formalize the algebraic
+contradiction at the two shell values. The development
+does not define $p$-adic functions or the crossed-product
+algebra, and it does not prove the uniqueness or Fourier
+invariance of the local Sonin vector. Those passages
+are the mathematical arguments of Sections 4 and 13.
+
+In \nolinkurl{lean/APC/LocalFactor.lean}, the squared modulus
+is computed by \nolinkurl{localWeight_formula}. Its bounds
+are \nolinkurl{localWeight_lower} and \nolinkurl{localWeight_upper}.
+The declarations
+\nolinkurl{localWeight_defect_negative} and
+\nolinkurl{localWeight_defect_positive} prove its strict
+signs at the specified frequencies. The theorem
+\nolinkurl{localPrimePowerSum_eq_zero_of_support}
+proves support vanishing for the finite local sum.
+All these declarations are in namespace \texttt{APC}.
+The operator logarithm, its norm-convergent derivative,
+and Fourier inversion in Theorem~\ref{thm:local-correspondence:logarithmic}
+remain proofs in the manuscript. No Lean theorem is
+claimed for the Hochschild maps or a primitive geometric
+pairing. The distinction records exactly which parts
+of the construction the formal statements cover.
+
+\section{Conclusion}
+
+The shell construction gives a bounded prime-adjoining
+transition with exact Fourier duality, and its metric logarithm
+has an operator derivative equal to the full local prime-power
+distribution. The inherited norm defect has a different
+kernel and nonzero mixed-prime terms. Support-admissible
+windows recover the complete arithmetic distribution without
+requiring an infinite Euler product.
+
+The direct tensor map from the local Sonin vector fails
+multiplicativity in the semilocal crossed-product algebra.
+This failure holds for every nonzero scalar normalization and
+therefore rejects that specific geometric upgrade of the
+analytic transition. Signed shell embeddings give a corrected
+algebraic Hochschild map and commuting prime transitions,
+but componentwise Fourier symmetry fails in every positive
+degree. A replacement duality must recover the local
+logarithmic term. The primitive sign and the complete
+arithmetic comparison remain unproved.
+
+\begin{thebibliography}{9}
+\small
+\bibitem{CCM}
+Alain Connes, Caterina Consani and Henri Moscovici.
+\emph{Zeta zeros and prolate wave operators: Semilocal adelic operators}.
+arXiv:2310.18423v2, 2024.
+\url{https://arxiv.org/html/2310.18423v2}.
+
+\bibitem{Connes2026}
+Alain Connes.
+\emph{The Riemann Hypothesis: Past, Present and a Letter Through Time}.
+arXiv:2602.04022v1, 2026.
+\url{https://arxiv.org/html/2602.04022v1}.
+
+\bibitem{CCMar}
+Alain Connes, Caterina Consani and Matilde Marcolli.
+\emph{The Weil proof and the geometry of the adeles class space}.
+arXiv:math/0703392v1, 2007.
+\url{https://arxiv.org/html/math/0703392v1}.
+
+\bibitem{PartII}
+Matthew Long and The YonedaAI Collaboration.
+\emph{Obstructions to Adelic Polarization}.
+Part II of \emph{Adelic Polarization Conjecture}, companion manuscript,
+September 2026.
+
+\bibitem{CC2020}
+Alain Connes and Caterina Consani.
+\emph{Weil positivity and Trace formula, the archimedean place}.
+arXiv:2006.13771v1, 2020.
+\url{https://arxiv.org/html/2006.13771v1}.
+
+\bibitem{APCcode}
+Matthew Long and The YonedaAI Collaboration.
+\emph{Adelic Polarization Conjecture: companion source archive}.
+September 2026. Lean sources, toolchain, dependency manifest
+and source hashes accompany the manuscripts.
+\url{https://github.com/YonedaAI/adelic-polarization-conjecture}.
+\end{thebibliography}
+\end{document}

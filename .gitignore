@@ -1,0 +1,25 @@
+.DS_Store
+*.aux
+*.log
+*.toc
+*.out
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+.review.lock/
+sources/*.pdf
+sources/*.txt
+papers/latex/*.pdf
+# User-supplied conversation exports remain local research context.
+context/
+lean/.lake/
+website/node_modules/
+website/.next/
+website/out/
+website/.vercel/
+website/*.tsbuildinfo
+tmp/
+.env*
+!.env.example

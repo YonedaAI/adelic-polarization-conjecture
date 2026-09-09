@@ -1,0 +1,39 @@
+Review the actual synthesis manuscript for scholarly prose, mathematical notation, source-to-render consistency, and publication typography. You are a read-only reviewer: do not edit any file, install tools, render new artifacts or scan unrelated directories. Use the existing rendered evidence below. This is call 1 of a maximum 3-call format/prose review loop.
+
+Read the full document supplied by path and these explicitly allowed files in this repository:
+papers/latex/synthesis.log
+papers/latex/synthesis.aux
+papers/pdf/synthesis.pdf
+team/synthesis/codex-1/pdfinfo.txt
+reviews/synthesis-review-round-1.md
+reviews/synthesis-review-fixes.md
+research/lean-results.md
+research/lean-theorems.json
+research/lean-source-sha256.txt
+research/lean-axioms.txt
+lean/APC/LocalFactor.lean
+lean/APC/LocalSigns.lean
+lean/APC/LatticeDistribution.lean
+lean/APC/EntireObstruction.lean
+lean/APC/SoninShell.lean
+
+Actual pre-rendered preview paths (view them with an available image reader; do not claim visual inspection if you cannot view them):
+tmp/pdfs/synthesis-codex-1/contact.png
+tmp/pdfs/synthesis-codex-1/detail-01.png
+tmp/pdfs/synthesis-codex-1/detail-08.png
+tmp/pdfs/synthesis-codex-1/detail-09.png
+tmp/pdfs/synthesis-codex-1/detail-10.png
+tmp/pdfs/synthesis-codex-1/detail-15.png
+tmp/pdfs/synthesis-codex-1/detail-16.png
+tmp/pdfs/synthesis-codex-1/detail-19.png
+tmp/pdfs/synthesis-codex-1/detail-20.png
+
+Required house format: 11pt letterpaper, one-inch margins, single-spaced, paragraph indentation 1.5em, parskip zero; abstract 150-250 words; substantial 20-page minimum, not padded by white space. Title and author PDF metadata must be present. The first-page gray rotated GrokRxiv string is a LOCAL catalog identifier, not a registered DOI. Keep that house sidebar. Shared section theorem counter with definition/proposition/conjecture environments is intentional. Bibliographic arXiv version URLs are deliberate. User author block is intentional.
+
+Check all mathematical symbols and line breaks carefully, especially the Hochschild boundary, cone degree shift and signs, restriction target, origin commutator, moment matrix, and conjecture display. Escaped TeX commands must not render as the plain text quad/qquad/Psi/max. Check undefined references, clipped display math, crowded statements, malformed URLs, page endings and widows/orphans from actual evidence. Source/PDF compilation alone is not a visual review. Do not invent clipping from unsupported assumptions.
+
+Keep the epistemic boundary exact. This paper constructs an algebraic restriction cone and proves nonzero degree-one relative homology but does not construct a primitive arithmetic duality. The central conjecture requires independent geometric construction, never defining the pairing by -B_W or assuming Weil positivity. The known Weil criterion already holds on the full complex two-moment kernel. Support-complete sign differs from orthogonal nonpositive intermediate local increments. The exact finite Lean arithmetic results are not a formalization of the cone, smooth bumps, p-adic Fourier transforms, global geometry or RH. Check claimed Lean coverage against the supplied actual declarations and receipts.
+
+Identify any remaining AI-style prose, process badges, unsupported novelty praise, excessive negative disclaimers, or repetitive transitions, while retaining qualifications essential to precise mathematics. Name up to three weakest paragraphs and show one concise scholarly rewrite if changes would improve them. Do not force changes merely to fill a quota, and do not suggest deleting necessary scope boundaries.
+
+Return a substantive review with explicit critical, major and minor findings, line or equation/page locators, concrete fixes, and the evidence you actually inspected. Distinguish source inspection from raster inspection. End with exactly one terminal line VERDICT: PASS or VERDICT: NEEDS_FIX. A PASS means no actionable issue remains. If a real issue remains, use NEEDS_FIX and state every requested correction so the author can address them together.

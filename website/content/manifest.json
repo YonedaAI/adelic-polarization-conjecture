@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "local-correspondence",
+    "mathCount": 591,
+    "tableCount": 0,
+    "theoremCount": 19,
+    "equationCount": 100,
+    "sections": 21,
+    "words": 7009,
+    "source": "papers/latex/local-correspondence.tex"
+  },
+  {
+    "slug": "polarization-obstructions",
+    "mathCount": 658,
+    "tableCount": 0,
+    "theoremCount": 19,
+    "equationCount": 49,
+    "sections": 24,
+    "words": 7727,
+    "source": "papers/latex/polarization-obstructions.tex"
+  },
+  {
+    "slug": "synthesis",
+    "mathCount": 597,
+    "tableCount": 0,
+    "theoremCount": 10,
+    "equationCount": 76,
+    "sections": 21,
+    "words": 8251,
+    "source": "papers/latex/synthesis.tex"
+  }
+]

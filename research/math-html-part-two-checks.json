@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "scope": [
+    "polarization-obstructions"
+  ],
+  "results": [
+    {
+      "slug": "polarization-obstructions",
+      "sourceHash": "cb12c18e5766737405b9439230331e58184f3004cf1e3eefb59b546c69758645",
+      "sourceMath": 652,
+      "inlineMath": 583,
+      "displayMath": 69,
+      "equationNumbers": 49,
+      "accessibleEquationNumbers": 49,
+      "theoremEnvironments": 19,
+      "sourceLabels": 81,
+      "crossReferences": 65,
+      "bibliographyEntries": 9,
+      "citationLinks": 13,
+      "mathML": 652,
+      "svg": 25,
+      "formulaFidelity": "PASS",
+      "mathMLAndSvgPreservation": "PASS",
+      "numberingAndAnchors": "PASS",
+      "initialHtml": "PASS"
+    }
+  ]
+}

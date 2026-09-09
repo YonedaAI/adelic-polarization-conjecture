@@ -1,0 +1,28 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,hyperref,cleveref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{proposition}[theorem]{Proposition}
+\title{Numbered environment fixture}
+\author{Test fixture}
+\date{}
+\begin{document}
+\maketitle
+\section{Shared counter}
+\begin{theorem}\label{thm:first}
+The identity $1=1$ holds.
+\end{theorem}
+\begin{conjecture}\label{conj:middle}
+The proposed pairing satisfies $I\leq 0$.
+\end{conjecture}
+\begin{proposition}\label{prop:last}
+The reference to \Cref{conj:middle} keeps its name and number.
+\end{proposition}
+\appendix
+\section{Appendix counter}
+\begin{conjecture}\label{conj:appendix}
+The appendix proposes $x=y$.
+\end{conjecture}
+See \Cref{conj:appendix} and \ref{prop:last}.
+\end{document}

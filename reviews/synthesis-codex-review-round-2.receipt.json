@@ -1,0 +1,10 @@
+{
+  "reviewer": "codex",
+  "exit_code": 0,
+  "document": "papers/latex/synthesis.tex",
+  "document_sha256": "91555b0abcab2e79784ee17ff1b4d8e5eab4797410b872504e3081e9a4052032",
+  "prompt_sha256": "f00f058e13515568a37a68409cee81c6ec35c00f264c36300ca5f6a3d90f22a5",
+  "review_sha256": "d108eeab7f8c506be57c9270a55a7345625df4f8b7eaffbc64eb72855affbf70",
+  "characters": 3242,
+  "verdict": "PASS"
+}

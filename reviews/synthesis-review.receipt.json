@@ -1,0 +1,10 @@
+{
+  "reviewer": "agy",
+  "exit_code": 0,
+  "document": "papers/latex/synthesis.tex",
+  "document_sha256": "042b9e0e2ccd6e916cd707858bd8cd1e02cda3afd778afeb926b61754aa12f41",
+  "prompt_sha256": "42943ff02f4df31ffe5f5705407e1b4f761b3d8a7a31c36020c6a7a22275550d",
+  "review_sha256": "4117132030a7b78822a7744df8b79ad99ed3d89ee03d7fd1407aa1f12c6779c1",
+  "characters": 3331,
+  "verdict": "ACCEPT"
+}

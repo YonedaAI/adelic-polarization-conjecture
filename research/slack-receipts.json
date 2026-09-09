@@ -1,0 +1,20 @@
+[
+  {
+    "milestone": "lean",
+    "message_file": "reviews/slack-lean.md",
+    "lint_exit_code": 0,
+    "message_url": "https://magneton.slack.com/archives/C0AK269AVSA/p1788921679309249"
+  },
+  {
+    "milestone": "local-correspondence",
+    "message_file": "reviews/slack-local-correspondence.md",
+    "lint_exit_code": 0,
+    "message_url": "https://magneton.slack.com/archives/C0AK269AVSA/p1788923201705649"
+  },
+  {
+    "milestone": "polarization-obstructions",
+    "message_file": "reviews/slack-polarization-obstructions.md",
+    "lint_exit_code": 0,
+    "message_url": "https://magneton.slack.com/archives/C0AK269AVSA/p1788923627018649"
+  }
+]

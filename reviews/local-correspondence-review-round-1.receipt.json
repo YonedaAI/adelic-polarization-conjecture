@@ -1,0 +1,10 @@
+{
+  "reviewer": "agy",
+  "exit_code": 0,
+  "document": "papers/latex/local-correspondence.tex",
+  "document_sha256": "ad76336336d3da111d8a34ecc5cb66e081c6823ce68b751928c2df5723aedc7c",
+  "prompt_sha256": "43a91988a981974f21ff37f194a8162c4c0979277c20ff36fda89ca136b3fab5",
+  "review_sha256": "1c64bf0da1fdfe0d8b7313aac584cde173c947d75c826665d2f63c89fcc3ee74",
+  "characters": 7684,
+  "verdict": "MINOR REVISIONS"
+}

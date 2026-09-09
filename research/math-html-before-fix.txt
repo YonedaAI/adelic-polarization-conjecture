@@ -1,0 +1,139 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: polarization-obstructions: sanitizer changed MathML or SVG trees
++ actual - expected
+
++ [
++   {
++     expression: 47,
++     kind: 'math',
++     tex: "D_p'(0)=L(1-p^{-1})\\ne0"
++   },
++   {
++     expression: 81,
++     kind: 'math',
++     tex: 'F(z)=z^mu(z),\\qquad G(z)=z^nv(z),\\qquad\nu(0)v(0)\\ne0.'
++   },
++   {
++     expression: 83,
++     kind: 'math',
++     tex: 'd(0)\\ne0'
++   },
++   {
++     expression: 124,
++     kind: 'math',
++     tex: 'q\\ne p'
++   },
++   {
++     expression: 258,
++     kind: 'math',
++     tex: '\\begin{equation}\n' +
++       'A_1A_2-A_2A_1=\n' +
++       '\\begin{pmatrix}0&-1/(3\\sqrt3)\\\\1/(3\\sqrt3)&0\\end{pmatrix}\\ne0.\\tag{15}\\end{equation}'
++   },
++   {
++     expression: 293,
++     kind: 'math',
++     tex: '\\begin{align}\n' +
++       'F_{f_c}(z)&=F_\\psi(z)C_c(e^{Lz}),\\tag{20}\\\\\n' +
++       'W_p(f_c*f_c^*)&=L\\|\\psi\\|_2^2Q_r(c),\\tag{21}\\\\\n' +
++       'Q_r(c)&=\\sum_{i\\ne j}c_i\\overline{c_j}r^{|i-j|}.\\tag{22}\\end{align}'
++   },
++   {
++     expression: 314,
++     kind: 'math',
++     tex: 'i\\ne j'
++   },
++   {
++     expression: 366,
++     kind: 'math',
++     tex: '\\begin{align}\n' +
++       'k_r(\\theta)\n' +
++       '&=\\sum_{k\\ne0}r^{|k|}e^{ik\\theta}\n' +
++       '=\\frac{1-r^2}{1-r(z+z^{-1})+r^2}-1.\\tag{30}\\end{align}'
++   },
++   {
++     expression: 432,
++     kind: 'math',
++     tex: "g'(r)=-4+6r-6r^2=-6(r-1/2)^2-5/2<0"
++   },
++   {
++     expression: 501,
++     kind: 'math',
++     tex: 'p\\notin S'
++   },
++   {
++     expression: 504,
++     kind: 'math',
++     tex: '(f*g^*)(x)\\ne0'
++   },
++   {
++     expression: 551,
++     kind: 'math',
++     tex: 'uv(e^{-b/2}-e^{b/2})\\ne0'
++   },
++   {
++     expression: 552,
++     kind: 'math',
++     tex: 'b\\ne0'
++   }
++ ]
+- []
+
+    at file:///Users/mlong/Documents/Development/magneton_work/adelic-polarization-conjecture/website/scripts/test-math-preservation.mjs:93:10
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [
+    { expression: 47, kind: 'math', tex: "D_p'(0)=L(1-p^{-1})\\ne0" },
+    {
+      expression: 81,
+      kind: 'math',
+      tex: 'F(z)=z^mu(z),\\qquad G(z)=z^nv(z),\\qquad\nu(0)v(0)\\ne0.'
+    },
+    { expression: 83, kind: 'math', tex: 'd(0)\\ne0' },
+    { expression: 124, kind: 'math', tex: 'q\\ne p' },
+    {
+      expression: 258,
+      kind: 'math',
+      tex: '\\begin{equation}\n' +
+        'A_1A_2-A_2A_1=\n' +
+        '\\begin{pmatrix}0&-1/(3\\sqrt3)\\\\1/(3\\sqrt3)&0\\end{pmatrix}\\ne0.\\tag{15}\\end{equation}'
+    },
+    {
+      expression: 293,
+      kind: 'math',
+      tex: '\\begin{align}\n' +
+        'F_{f_c}(z)&=F_\\psi(z)C_c(e^{Lz}),\\tag{20}\\\\\n' +
+        'W_p(f_c*f_c^*)&=L\\|\\psi\\|_2^2Q_r(c),\\tag{21}\\\\\n' +
+        'Q_r(c)&=\\sum_{i\\ne j}c_i\\overline{c_j}r^{|i-j|}.\\tag{22}\\end{align}'
+    },
+    { expression: 314, kind: 'math', tex: 'i\\ne j' },
+    {
+      expression: 366,
+      kind: 'math',
+      tex: '\\begin{align}\n' +
+        'k_r(\\theta)\n' +
+        '&=\\sum_{k\\ne0}r^{|k|}e^{ik\\theta}\n' +
+        '=\\frac{1-r^2}{1-r(z+z^{-1})+r^2}-1.\\tag{30}\\end{align}'
+    },
+    {
+      expression: 432,
+      kind: 'math',
+      tex: "g'(r)=-4+6r-6r^2=-6(r-1/2)^2-5/2<0"
+    },
+    { expression: 501, kind: 'math', tex: 'p\\notin S' },
+    { expression: 504, kind: 'math', tex: '(f*g^*)(x)\\ne0' },
+    { expression: 551, kind: 'math', tex: 'uv(e^{-b/2}-e^{b/2})\\ne0' },
+    { expression: 552, kind: 'math', tex: 'b\\ne0' }
+  ],
+  expected: [],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.18.0

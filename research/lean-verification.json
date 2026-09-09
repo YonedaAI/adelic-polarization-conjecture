@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "toolchain": "leanprover/lean4:v4.30.0-rc2",
+  "mathlib_revision": "0f9072dd907c6e2e4264ab241a049cab50137f7c",
+  "explicit_theorem_count": 46,
+  "audit_command_count": 46,
+  "observed_axiom_entries": 46,
+  "inventory_matches": true,
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "nonstandard_axioms": [],
+  "source_admission_or_absolute_dependency_matches": [],
+  "build_exit_code": 0,
+  "audit_exit_code": 0,
+  "external_review": {
+    "reviewer": "Codex gpt-5.6-sol high",
+    "rounds": 1,
+    "verdict": "PASS",
+    "blocking_issues": 0,
+    "optional_strengthenings": 1,
+    "disposition": "Retained the explicit nonzero F and G hypotheses matching the intended theorem scope.",
+    "review_sha256": "d534a62a746642d52ac68fead5b9ff8f6f59d81c09ada84ffed6dace0298cb07",
+    "source_hash_manifest_sha256": "d714df4f2e137f5a3dfa0344b488fd46e3bae83680ee7188d41afc231255ba2c",
+    "independent_build_passed": true,
+    "independent_axiom_audit_passed": true
+  }
+}

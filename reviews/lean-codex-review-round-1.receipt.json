@@ -1,0 +1,10 @@
+{
+  "reviewer": "codex",
+  "exit_code": 0,
+  "document": null,
+  "document_sha256": null,
+  "prompt_sha256": "50835e1a831ba856dc20195e27fb9bcccb3fe33f39c04e93d9734e6eb6561ba6",
+  "review_sha256": "d534a62a746642d52ac68fead5b9ff8f6f59d81c09ada84ffed6dace0298cb07",
+  "characters": 4076,
+  "verdict": "PASS"
+}
