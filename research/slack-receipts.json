@@ -28,5 +28,14 @@
     "message_file": "reviews/slack-deployment.md",
     "lint_exit_code": 0,
     "message_url": "https://magneton.slack.com/archives/C0AK269AVSA/p1788929838278869"
+  },
+  {
+    "milestone": "final",
+    "message_file": "reviews/slack-final.md",
+    "message_sha256": "be78441f1e510a482a1f4ffc47b3410b57171f6fad508a4a47f66c0470829fc1",
+    "lint_exit_code": 0,
+    "independent_validator": "reviews/pipeline-validator.md",
+    "independent_validator_verdict": "OVERALL: PASS",
+    "message_url": "https://magneton.slack.com/archives/C0AK269AVSA/p1788930928923269"
   }
 ]

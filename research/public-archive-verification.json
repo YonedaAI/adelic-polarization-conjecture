@@ -1,13 +1,13 @@
 {
-  "checked_at": "2026-09-09T04:36:59.706Z",
+  "checked_at": "2026-09-09T05:07:41.821Z",
   "repository": "https://github.com/YonedaAI/adelic-polarization-conjecture",
-  "commit": "c2516d142f30ba978fea0dfafb9114ac1434324d",
+  "commit": "9bf06b81707c0f313a922a7b9149dd0cc0441b3b",
   "public_exact_files": [
     {
       "path": "README.md",
       "status": 200,
-      "bytes": 5525,
-      "sha256": "2c1793bff15611fbac42bc99700223408f42443e3d451d88417863379d0019ca"
+      "bytes": 5610,
+      "sha256": "00d91be2750c6af9225c5e3013e4f6d824a64ae8f9379976034fb3d7ed5720a2"
     },
     {
       "path": "lean/lean-toolchain",
@@ -86,6 +86,36 @@
       "status": 200,
       "bytes": 443987,
       "sha256": "6f0820549262ece9f032fa82b79eca9b1fc8c94dd1c3798f831122d2075eedd1"
+    },
+    {
+      "path": ".vercel-url",
+      "status": 200,
+      "bytes": 50,
+      "sha256": "a55e55156ce3e35d1d6b19abc014421633f2ed3330ab78f5497527bb43afdc9e"
+    },
+    {
+      "path": "research/cokernel-survival-attempt.md",
+      "status": 200,
+      "bytes": 8426,
+      "sha256": "d54d7a01a70e02d65bd43b3f739611644888c098f1b200ff3388c6ef61c4274a"
+    },
+    {
+      "path": "research/cone-transition-proof-attempt.md",
+      "status": 200,
+      "bytes": 7973,
+      "sha256": "877c234348123d43de367eafb6c64762e1492e11cbd5e9c16e34f9c8ef8488d3"
+    },
+    {
+      "path": "research/production-browser-review.md",
+      "status": 200,
+      "bytes": 6226,
+      "sha256": "4527d2728b7b0329a0484efc2d9f6c4ccdf61eec5662c85a27bbe3624d61740e"
+    },
+    {
+      "path": "reviews/slack-final.md",
+      "status": 200,
+      "bytes": 968,
+      "sha256": "be78441f1e510a482a1f4ffc47b3410b57171f6fad508a4a47f66c0470829fc1"
     }
   ],
   "status": "PASS"
